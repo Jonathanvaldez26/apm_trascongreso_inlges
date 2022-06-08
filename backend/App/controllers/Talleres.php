@@ -288,12 +288,9 @@ html;
                         <div class="card-body " style="height:235px;">
                             <input class="curso" hidden type="text" value="{$value['clave']}" readonly>
                             <div class="caratula-content">
-                            <!-- <a href="/Talleres/Video/{$value['clave']}"> -->
+                          
                                 <img class="caratula-img border-radius-15" src="/caratulas/{$value['caratula']}" style="object-fit: cover; object-position: center center; height: auto;">
-                            <!--</a>-->
-                            <!--<div class="duracion"><p>{$value['duracion']}</p></div>-->
-                            <!--<button class="btn btn-outline-danger"></button-->
-                
+                           
 html;
 
                             $like = TalleresDao::getlikeProductCurso($value['id_producto'], $_SESSION['user_id']);
@@ -308,34 +305,21 @@ html;
                             }
 
                 $card_cursos .= <<<html
-                        <!-- <div class="row">
-                                <div class="col-11 m-auto" id="">
-                                    <progress class="barra_progreso_small mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
-                                </div>
-                            </div>-->
+                       
                         </div>
-                        <!--<a href="/Talleres/Video/{$value['clave']}">-->
+                        
                             <p style="font-size: 14px;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['nombre']}</b></p> 
 
-                            <!--<p class="text-left mx-3 text-sm">{$value['fecha_curso']}
-                                {$value['descripcion']}<br>
-                                {$value['vistas']} vistas
-                                <br> <br>
-                                <b>Avance: $porcentaje %</b>
-                            </p>-->
+                           
 
 html;
-                        if ($value['status'] == 2 || $porcentaje >= 80) {
-                            $card_cursos .= <<<html
-                                <!--<div class="ms-3 me-3 msg-encuesta px-2 py-1">Se ha habilitado un examen para este taller</div><br><br>-->
-html;
-                        }
+                       
 
                     $link_parametro_user_id = base64_encode($_SESSION['user_id']);
                     $link_parametro_id_producto = base64_encode($value['id_producto']);
 
                     $card_cursos .= <<<html
-                            <!--</a>-->
+                            
 
                             <div>
                     
@@ -345,7 +329,13 @@ html;
                         <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                         <div style = "display: flex; justify-content:start">
                         <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>-->
-                        <a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>
+                        <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
+                        <div style = "display: flex; justify-content:start">
+                            <p class="badge badge-info" style="margin-left: 5px;margin-bottom: 38px;">
+                            En espera de validación de pago.
+                            </p>
+                   
+                        </div>
                     
                     </div>
                 </div>
@@ -364,7 +354,82 @@ html;
         // });
     </script>
 html;
-
+                }else if($pendientes_pago['status'] == 2){
+                    //pago rechazado
+                    $card_cursos .= <<<html
+    
+    
+                    <div class="col-12 col-md-4 mt-3">
+                        <div class="card card-course p-0 border-radius-15">
+                            <div class="card-body " style="height:235px;">
+                                <input class="curso" hidden type="text" value="{$value['clave']}" readonly>
+                                <div class="caratula-content">
+                              
+                                    <img class="caratula-img border-radius-15" src="/caratulas/{$value['caratula']}" style="object-fit: cover; object-position: center center; height: auto;">
+                               
+html;
+    
+                                $like = TalleresDao::getlikeProductCurso($value['id_producto'], $_SESSION['user_id']);
+                                if ($like['status'] == 1) {
+                                    $card_cursos .= <<<html
+                                <span id="video_{$value['clave']}" data-clave="{$value['clave']}" class="fas fa-heart heart-like p-2"></span>
+html;
+                                } else {
+                                    $card_cursos .= <<<html
+                                <span id="video_{$value['clave']}" data-clave="{$value['clave']}" class="fas fa-heart heart-not-like p-2"></span>
+html;
+                                }
+    
+                    $card_cursos .= <<<html
+                           
+                            </div>
+                            
+                                <p style="font-size: 14px;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['nombre']}</b></p> 
+    
+                               
+    
+html;
+                           
+    
+                        $link_parametro_user_id = base64_encode($_SESSION['user_id']);
+                        $link_parametro_id_producto = base64_encode($value['id_producto']);
+    
+                        $card_cursos .= <<<html
+                                
+    
+                                <div>
+                        
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
+                            <div style = "display: flex; justify-content:start">
+                            <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>-->
+                            <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
+                            <div style = "display: flex; justify-content:start">
+                                <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
+                                    No se pudo validar tu pago, vuelve a subir tu comprobante ó contacta a soporte.
+                                </p>
+                       
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>        
+            </div>
+    
+        <script>
+            // $('#video_{$value['clave']}').on('click', function(){
+            //     let like = $('#video_{$value['clave']}').hasClass('heart-like');
+                
+            //     if (like){
+            //         $('#video_{$value['clave']}').removeClass('heart-like').addClass('heart-not-like')
+            //     } else {
+            //         $('#video_{$value['clave']}').removeClass('heart-not-like').addClass('heart-like')
+            //     }
+            // });
+        </script>
+html;
                 
                 }else {
                     //echo "pagado";
@@ -401,31 +466,16 @@ html;
                             }
 
                 $card_cursos .= <<<html
-                        <!-- <div class="row">
-                                <div class="col-11 m-auto" id="">
-                                    <progress class="barra_progreso_small mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
-                                </div>
-                            </div>-->
+                        
                         </div>
-                        <!--<a href="/Talleres/Video/{$value['clave']}">-->
+                       
                             <p style="font-size: 14px;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['nombre']}</b></p> 
 
-                            <!--<p class="text-left mx-3 text-sm">{$value['fecha_curso']}
-                                {$value['descripcion']}<br>
-                                {$value['vistas']} vistas
-                                <br> <br>
-                                <b>Avance: $porcentaje %</b>
-                            </p>-->
-
 html;
-                        if ($value['status'] == 2 || $porcentaje >= 80) {
-                            $card_cursos .= <<<html
-                                <!--<div class="ms-3 me-3 msg-encuesta px-2 py-1">Se ha habilitado un examen para este taller</div><br><br>-->
-html;
-                        }
+                        
 
                     $card_cursos .= <<<html
-                            <!--</a>-->
+                            
 
                             <div>
                     
@@ -434,7 +484,8 @@ html;
                     <div class="card-footer">
                         <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                         <div style = "display: flex; justify-content:start">
-                        <button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>
+                        <button class="btn btn-primary btn_comprar_individual" style="margin-right: 5px;margin-left: 5px; width:145px;"  value="{$value['id_producto']}">Comprar</button>
+                        <button class="btn btn-primary btn_cart" value="{$value['id_producto']}" style="margin-right: 5px;margin-left: 5px;">Agregar <i class="fa far fa-cart-plus"></i></button>
                     
                     </div>
                 </div>
@@ -544,11 +595,11 @@ html;
                 <div class="card-footer">
                 <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['precio_publico']}</b></p>
                 <div style = "display: flex; justify-content:start">
-                <p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
-                  Este curso ya lo compraste.
-                </p>
+                    <p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
+                    Este curso ya lo compraste.
+                    </p>
                
-            </div>
+                </div>
           </div>
                 </div>
                 
@@ -660,7 +711,14 @@ html;
                     <div style = "display: flex; justify-content:start">
                         <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>-->
 
-                        <a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>
+                        <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
+
+                        <div style = "display: flex; justify-content:start">
+                            <p class="badge badge-info" style="margin-left: 5px;margin-bottom: 38px;">
+                            En espera de validación de pago.
+                            </p>
+                
+                        </div>
        
                     </div>
                 </div>
@@ -745,7 +803,8 @@ html;
                 <div class="card-footer">
                     <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$costoUser} {$value['tipo_moneda']}</b></p>
                     <div style = "display: flex; justify-content:start">
-                        <button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>
+                        <button class="btn btn-primary btn_comprar_individual" style="margin-right: 5px;margin-left: 5px; width:145px;" value="{$value['id_producto']}">Comprar</button>
+                        <button class="btn btn-primary btn_cart" value="{$value['id_producto']}" style="margin-right: 5px;margin-left: 5px;">Agregar <i class="fa far fa-cart-plus"></i></button>
        
                     </div>
                 </div>
@@ -798,8 +857,9 @@ html;
             $precio_curso = '$ '.$datos['precio_publico']." ".$datos['tipo_moneda'];
             $solo_precio_curso = $datos['precio_publico'];
         }
-        
-       
+
+        $clave = $this->generateRandomString();
+
         $modal = <<<html
         <div class="modal fade" id="comprar-curso{$datos['id_producto']}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="comprar-curso">
         <div class="modal-dialog modal-xl" role="document">
@@ -809,7 +869,7 @@ html;
                 Completa tu compra
                 </h5>
 
-                <span type="button" class="btn bg-gradient-danger" data-dismiss="modal" aria-label="Close">
+                <span type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal" aria-label="Close">
                     X
                 </span>
             </div>
@@ -824,16 +884,30 @@ html;
                     <p class="text-center mt-3"><b>{$datos['nombre']}</b></p>
 
                     <p class="text-center" style="color: #2B932B;"><b>{$precio_curso}</b></p>
-                    <input type="text" value="{$solo_precio_curso}" name="costo"/>
-                    <input type="text" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
-                    <input type="text" value="{$datos['id_producto']}" name="id_producto"/>
-                    <input type="text" value="{$datos['nombre']}" name="nombre_curso"/>
-                    <input type="text" class="tipo_pago" name="tipo_pago"/>
+                    <input type="hidden" value="{$solo_precio_curso}" name="costo"/>
+                    <input type="hidden" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
+                    <input type="hidden" value="{$datos['id_producto']}" name="id_producto"/>
+                    <input type="hidden" value="{$datos['nombre']}" name="nombre_curso"/>
+                    <input type="hidden" class="tipo_pago" name="tipo_pago"/>
+
+                    <br><br><br><br>
+
+                    <!-- campos para paypal -->
+                    <input type="hidden" name="charset" value="utf-8">
+                    <input type='hidden' name='business' value='jvaldez_2610@hotmail.com'> 
+                    <input type='hidden' name='item_name' value='{$datos['nombre']}'> 
+                    <input type='hidden' name='item_number' value="{$clave}"> 
+                    <input type='hidden' name='amount' value='{$solo_precio_curso}'> 
+                    <input type='hidden' name='currency_code' value='MXN'> 
+                    <input type='hidden' name='notify_url' value=''> 
+                    <input type='hidden' name='return' value='http://localhost:8112/ComprobantePago/'> 
+                    <input type="hidden" name="cmd" value="_xclick">  
+                    <input type="hidden" name="order" value="{$clave}">
 
                     <div class="row d-flex justify-content-center">
                         <div class="col-4">
                             <label>Elige tu metodo de pago *</label>
-                            <select class="multisteps-form__select form-control all_input_second_select metodo_pago" name="metodo_pago">
+                            <select class="multisteps-form__select form-control all_input_second_select metodo_pago" name="metodo_pago" required>
                                 <option value="" disabled selected>Selecciona una Opción</option>
                                 <option value="Paypal">Paypal</option>
                                 <option value="Efectivo">Efectivo</option>
@@ -1385,6 +1459,312 @@ html;
         } else {
             View::render("404");
         }
+    }
+
+    public function Cart(){
+        $extraHeader = <<<html
+html;
+        $extraFooter = <<<html
+    <!--footer class="footer pt-0">
+              <div class="container-fluid">
+                  <div class="row align-items-center justify-content-lg-between">
+                      <div class="col-lg-6 mb-lg-0 mb-4">
+                          <div class="copyright text-center text-sm text-muted text-lg-start">
+                              © <script>
+                                  document.write(new Date().getFullYear())
+                              </script>,
+                              made with <i class="fa fa-heart"></i> by
+                              <a href="https://www.creative-tim.com" class="font-weight-bold" target="www.grupolahe.com">Creative GRUPO LAHE</a>.
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                              <li class="nav-item">
+                                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">privacy policies</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </footer--    >
+          <!-- jQuery -->
+            <script src="/js/jquery.min.js"></script>
+            <!--   Core JS Files   -->
+            <script src="/assets/js/core/popper.min.js"></script>
+            <script src="/assets/js/core/bootstrap.min.js"></script>
+            <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+            <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+            <!-- Kanban scripts -->
+            <script src="/assets/js/plugins/dragula/dragula.min.js"></script>
+            <script src="/assets/js/plugins/jkanban/jkanban.js"></script>
+            <script src="/assets/js/plugins/chartjs.min.js"></script>
+            <script src="/assets/js/plugins/threejs.js"></script>
+            <script src="/assets/js/plugins/orbit-controls.js"></script>
+            
+          <!-- Github buttons -->
+            <script async defer src="https://buttons.github.io/buttons.js"></script>
+          <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+            <script src="/assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+
+          <!-- VIEJO INICIO -->
+            <script src="/js/jquery.min.js"></script>
+          
+            <script src="/js/custom.min.js"></script>
+
+            <script src="/js/validate/jquery.validate.js"></script>
+            <script src="/js/alertify/alertify.min.js"></script>
+            <script src="/js/login.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <!-- VIEJO FIN -->
+   <script>
+    $( document ).ready(function() {
+
+          $("#form_vacunacion").on("submit",function(event){
+              event.preventDefault();
+              
+                  var formData = new FormData(document.getElementById("form_vacunacion"));
+                  for (var value of formData.values()) 
+                  {
+                     console.log(value);
+                  }
+                  $.ajax({
+                      url:"/Talleres/uploadComprobante",
+                      type: "POST",
+                      data: formData,
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      beforeSend: function(){
+                      console.log("Procesando....");
+                  },
+                  success: function(respuesta){
+                      if(respuesta == 'success'){
+                         // $('#modal_payment_ticket').modal('toggle');
+                         
+                          swal("¡Se ha guardado tu prueba correctamente!", "", "success").
+                          then((value) => {
+                              window.location.replace("/Talleres/");
+                          });
+                      }
+                      console.log(respuesta);
+                  },
+                  error:function (respuesta)
+                  {
+                      console.log(respuesta);
+                  }
+              });
+          });
+
+        
+
+      });
+</script>
+
+html;
+
+        $productos = TalleresDao::getCarritoByIdUser($_SESSION['user_id']);
+        $precios = array();
+        $total = 0;
+
+        foreach($productos as $key => $value){
+            // echo $value['precio_publico'];
+            if($value['es_congreso'] == 1){
+                $precio = $value['amout_due'];
+            }else if($value['es_servicio'] == 1){
+                $precio = $value['precio_publico'];
+            }else if($value['es_curso'] == 1){
+                $precio = $value['precio_publico'];
+            }
+            array_push($precios,$precio);
+        }
+
+        if(count($productos) >= 1){
+            $style = 'display:flex;';
+        }else{
+            $style = 'display:none';
+        }
+
+        $total = array_sum($precios);
+
+        //get productos
+        $nombres_productos = '';
+        $productos = TalleresDao::getCarritoByIdUser($_SESSION['user_id']);
+        foreach($productos as $key => $value){
+            // array_push($nombres_productos,$value['nombre']);
+            $nombres_productos .= $value['nombre'].", ";
+        }
+        $nombres_productos = substr($nombres_productos, 0, -2);
+        $clave = $this->generateRandomString();
+
+        View::set('clave',$clave);
+        View::set('producto_s',$nombres_productos);
+        View::set('header', $this->_contenedor->header($extraHeader));
+        View::set('footer', $this->_contenedor->footer($extraFooter));
+        View::set('tabla',$this->getAllProductsCartByUser($_SESSION['user_id']));
+        View::set('style',$style);
+        View::set('total',intval($total));
+        View::render("carrito");
+    }
+
+    public function getAllProductsCartByUser($id_user){
+
+        $html = "";
+        foreach (TalleresDao::getCarritoByIdUser($id_user) as $key => $value) {
+
+            if($value['es_congreso'] == 1){
+                $precio = $value['amout_due'];
+            }else if($value['es_servicio'] == 1){
+                $precio = $value['precio_publico'];
+            }else if($value['es_curso'] == 1){
+                $precio = $value['precio_publico'];
+            }
+            
+            $html .= <<<html
+            <tr>
+                <td >
+                    
+                    
+                    <div class=""> 
+                                                   
+                            <p><button class="btn btn-danger btn-sm btn-icon-only btn-delete" style="margin-top: 10px; margin-right:10px;" value="{$value['id_carrito']}">x</button><img src="/caratulas/{$value['caratula']}" style="width:100px;heigth:100px; border-radius:8px;"> {$value['nombre']}</p>                       
+                    </div>
+                </td>
+         
+                <td style="text-align:left; vertical-align:middle;" > 
+                    
+                    <div class="text-center">
+                        <p>{$precio} - {$value['tipo_moneda']}</p>
+                    </div>
+                  
+                </td>
+
+                <td style="text-align:left; vertical-align:middle;" > 
+                    
+                    <div class="text-center">
+                        <p>{$precio} - {$value['tipo_moneda']}</p>
+                    </div>
+                
+                </td>  
+
+               
+        </tr>
+html;
+        }    
+        
+        if($html == ""){
+
+            $html .= <<<html
+
+            <tr>
+                    <td class="text-center">
+                        
+                        
+                      
+                    
+                    </td>  
+
+                    <td class="text-center">
+                        
+                            
+                        No hay productos en su carrito
+                    
+                    </td>  
+
+                 <td class="text-center">
+                        
+    
+                
+                </td>  
+
+                
+            </tr>
+html;
+
+        }
+       
+        return $html;
+    }
+
+    public function getNumberPorducts(){
+
+        $user_id = $_SESSION['user_id'];
+
+        $getNumberProducts = TalleresDao::getProductsNumber($user_id)[0]['total_productos'];
+
+        echo $getNumberProducts;
+
+    }
+
+
+    public function searchProductCart(){
+        $id_producto = $_POST['id_producto'];
+        $data = [];
+        $getProductCart = TalleresDao::getProductCart($_SESSION['user_id'],$id_producto);
+
+        if($getProductCart){
+            $data = [
+                "msg" => "Este producto ya esta en su cesta",
+                "status" => "warning"
+            ];
+        }else{
+            $data = [
+                "status"=>"success"
+            ];
+        }
+
+        echo json_encode($data);
+
+
+
+    }
+
+    public function cartShopping(){
+        $id_producto =  $_POST['id_producto'];
+
+        // $producto = TalleresDao::getProductoById($id_producto);
+
+        $getProductCart = TalleresDao::getProductCart($_SESSION['user_id'],$id_producto);
+
+        if($getProductCart){
+            $data = [
+                "msg" => "Este producto ya esta en su cesta",
+                "status" => "warning"
+            ];
+        }else{
+            $documento = new \stdClass();
+            $documento->_id_producto = $id_producto;
+            $documento->_user_id = $_SESSION['user_id'];
+
+            $insertProductCart = TalleresDao::insertProductCart($documento);
+
+            if($insertProductCart){
+                $data = [
+                    "msg" => "Se ingreso el producto a su cesta",
+                    "status" => "success"
+                ];
+            }else{
+                $data = [
+                    "msg" => "Error al gurdar el producto",
+                    "status" => "error"
+                ];
+            }
+        }
+
+        echo json_encode($data);
+    }
+
+    public function remove(){
+        $id = $_POST['id'];
+
+        $delete = TalleresDao::deleteItem($id);
+
+        if($delete){
+            echo "success";
+        }else{
+            echo "fail";
+        }
+
+        
     }
 
     

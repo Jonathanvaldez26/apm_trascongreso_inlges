@@ -2,6 +2,20 @@
     Cursos - APM
 </title>
 <?php echo $header; ?>
+<style>
+    .badge-carrito {
+        height: 17px;
+        width: 17px;
+        border-radius: 50%;
+        position: relative;
+        right: 9px;
+        top: -13px;
+        font-size: 9px;        
+        background-color: red;
+        color: white;
+
+    }
+</style>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <script language="javascript" type="text/javascript">
@@ -99,7 +113,7 @@
                     <div class="input-group"></div>
                 </div>
 
-                <ul class="navbar-nav  justify-content-end">
+                <!-- <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
@@ -107,6 +121,8 @@
                         </a>
                     </li>
                 </ul>
+                
+                
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Login/cerrarSession" class="nav-link text-body font-weight-bold px-0">
@@ -114,12 +130,48 @@
                             <span class="d-sm-inline d-none">Logout</span>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
+
+            <!-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-bell cursor-pointer" style="margin-left: 23px;"></i>
+                    <span class="badge text-center" id="num_noti_sin_leer"></span>
+
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                    <h5><b>Notificaciones de Sistema</b></h5>
+                    <div class="scroll-notif" id="cont-notif">
+
+                    </div>
+                </ul>
+            </li> -->
+
+            <li class="nav-item d-flex align-items-center">
+                <a href="/Talleres/cart" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
+                    <i class="fa far fa-shopping-cart"></i>
+                    <span class="badge-carrito text-center" id="num_prod_carrito"></span>
+                </a>
+            </li>
+
+            <li class="nav-item d-flex align-items-center">
+                <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
+                            <i class="fa fa-home me-sm-0"></i>
+                    <span class="d-sm-inline d-none">Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item d-flex align-items-center">            
+                <a href="/Login/cerrarSession" class="nav-link text-body font-weight-bold px-0">
+                    <i class="fa fa-power-off me-sm-1"></i>
+                    <span class="d-sm-inline d-none">Logout</span>
+                </a>
+            </li>
+
         </div>
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-">
+    <input type="hidden" id="user_id" name="user_id" value="<?=$_SESSION['user_id']?>">
         <div class="row mt-0 m-auto">
             <div class="col-lg-1">
             </div>
@@ -179,6 +231,7 @@
                 </div>
                 
                 <div class="card-body p-3">
+                   
 
                     <div class="row mt-3">
                         <?php echo $card_cursos ?>
@@ -238,6 +291,8 @@
         function mandarMensaje() {
             console.log("Ha pasado 1 segundo.");
         }
+
+        getNumberPorducts();
 
         $('.heart-not-like').on('click', function(){
             let clave = $(this).attr('data-clave');
@@ -299,14 +354,14 @@
             var tipo = $(this).val();
            
             if(tipo == 'Paypal'){
-                $(".form_compra").attr('action','/OrdenPago/PagarPaypal');
+                // $(".form_compra").attr('action','/OrdenPago/PagarPaypal');
+                $(".form_compra").attr('action','https://www.paypal.com/es/cgi-bin/webscr'); 
                 $(".btn_comprar").val('Paypal');
                 $(".tipo_pago").val('Paypal');
             }else if(tipo == 'Efectivo'){
                 $(".form_compra").attr('action','/OrdenPago/ordenPago');
                 $(".btn_comprar").val('Efectivo');
                 $(".tipo_pago").val('Efectivo');
-
              
             }
 
@@ -349,16 +404,115 @@
                         $(this).closest(".form_compra").submit();
                     }
                 })
+            }else{
+
+                Swal.fire(
+                    "Debes seleccionar un metodo de pago.",
+                    '',
+                    'info'
+                );   
+
             }
             
 
         });
 
+        $(".btn_cart").on("click",function(){            
+            var id_producto = $(this).val();
+            $.ajax({
+                url: "/Talleres/cartShopping",
+                type: "POST",
+                dataType: 'json',
+                data: {id_producto},
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+
+                    Swal.fire(
+                        respuesta.msg,
+                        '',
+                        respuesta.status
+                    );   
+                    getNumberPorducts();             
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+            });
+        });
+
+        $(".btn_comprar_individual").on("click",function(){
+            var id_producto = $(this).val();
+            // $(this).prop("data-toggle","modal");            
+            
+            $.ajax({
+                url: "/Talleres/searchProductCart",
+                type: "POST",
+                dataType: 'json',
+                data: {id_producto},
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    
+                    if(respuesta.status == "success"){
+                        // $(this).attr("data-toggle","modal");
+                        $("#comprar-curso"+id_producto).modal('show');
+                        
+                    }else{
+                        Swal.fire(
+                            respuesta.msg,
+                            '',
+                            respuesta.status
+                        );
+                    }                
+                                
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+            });
+
+
+            // $(this).attr("data-toggle","modal");
+            // // data-toggle="modal"
+            // alert(id_producto);
+        })
+
+        function getNumberPorducts(){
+            $.ajax({
+                url: "/Talleres/getNumberPorducts",
+                type: "POST",
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    
+                    if(respuesta == 0){
+                        $("#num_prod_carrito").html('');
+                    }else{
+                        $("#num_prod_carrito").html(respuesta);
+                        $("#num_prod_carrito").css("padding", "0.55em 0.9em");
+                    }
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+            });
+        }
+
         
 
         // repetirCadaSegundo();
 
-        var v = document.getElementById("transmision_prueba");
+        // var v = document.getElementById("transmision_prueba");
 
         // v.addEventListener("timeupdate",function(ev){
         //     document.getElementById("tiempo_segundos").innerHTML = v.currentTime;

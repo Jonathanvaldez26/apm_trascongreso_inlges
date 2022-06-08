@@ -79,14 +79,16 @@
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="Invitados" role="tabpanel" aria-labelledby="Invitados">
                                 <div class="table-responsive p-0">
-                                    <table class="align-items-center mb-0 table table-borderless" id="user_list_table">
+                                    <table class="align-items-center mb-0 table table-borderless" id="user_list_table" style="width:100%">
                                         <thead class="thead-light">
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"></th>
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Nombre del Curso o Congreso</th>
+                                            <!-- <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"></th> -->
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7" style="width:30%">Nombre del Curso o Congreso</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estatus</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Metodo de Pago</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fa fa-eye"></i></th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Monto a Pagar</th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Metodo de Pago</th>   
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Ticket</th>                                     
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"><i class="fa fa-eye"></i></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -96,24 +98,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade position-relative height-350 border-radius-lg" id="Faltantes" role="tabpanel" aria-labelledby="Faltantes">
-                                <div class="table-responsive p-0">
-                                    <table class="align-items-center mb-0 table table-borderless" id="user_list_table_faltante">
-                                        <thead class="thead-light">
-                                        <tr>
-
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Usuario</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Teléfono</th>
-                                            <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th> -->
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php echo $tabla_faltantes; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -151,117 +136,38 @@
             console.log("Ha pasado 1 segundo.");
         }
 
-        $('.heart-not-like').on('click', function(){
-            let clave = $(this).attr('data-clave');
-            let heart = $(this);
-
-            if (heart.hasClass('heart-like')) {
-                heart.removeClass('heart-like').addClass('heart-not-like');
-            } else {
-                heart.removeClass('heart-not-like').addClass('heart-like');
-            }
-            console.log('se cambió a like: '+clave);
-            $.ajax({
-                url: "/Talleres/Likes",
-                type: "POST",
-                data: {clave},
-                beforeSend: function() {
-                    console.log("Procesando....");
-                },
-                success: function(respuesta) {
-                    console.log(respuesta);
-                    
-                },
-                error: function(respuesta) {
-                    console.log(respuesta);
-                }
-            });
-        })
-
-        $('.heart-like').on('click', function(){
-            let clave = $(this).attr('data-clave');
-            let heart = $(this);
-
-            if (heart.hasClass('heart-like')) {
-                heart.removeClass('heart-like').addClass('heart-not-like');
-            } else {
-                heart.removeClass('heart-not-like').addClass('heart-like');
-            }
-            console.log('se cambió a like: '+clave);
-            $.ajax({
-                url: "/Talleres/Likes",
-                type: "POST",
-                data: {clave},
-                beforeSend: function() {
-                    console.log("Procesando....");
-                },
-                success: function(respuesta) {
-                    console.log(respuesta);
-                    
-                },
-                error: function(respuesta) {
-                    console.log(respuesta);
-                }
-            });
-        })
-
-       
-
-        $('.metodo_pago').on('change',function(e){
-            var tipo = $(this).val();
-           
-            if(tipo == 'Paypal'){
-                $(".form_compra").attr('action','/OrdenPago/PagarPaypal');
-                $(".btn_comprar").val('Paypal');
-                $(".tipo_pago").val('Paypal');
-            }else if(tipo == 'Efectivo'){
-                $(".form_compra").attr('action','/OrdenPago/ordenPago');
-                $(".btn_comprar").val('Efectivo');
-                $(".tipo_pago").val('Efectivo');
-
-             
-            }
-
+        $(document).on('change', '#file-input', function(e) {
+            $("#form_comprobante").submit();
         });
 
-        $(".btn_comprar").on("click",function(e){
-            e.preventDefault();
-            var tipo = $(this).val();
+        $("#form_comprobante").on("submit", function(event) {
+            event.preventDefault();
+            // alert("funciona");
 
-            if(tipo == 'Efectivo'){
-                Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se emitira tu orden de pago!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Comprar!'
-                    }).then((result) => {
-                    if (result.isConfirmed) {                        
-                        $(this).closest(".form_compra").submit();                      
+            var formData = $(this).serialize();
+            console.log(formData);
 
-                    }
-                })
-            }
+            $.ajax({
+                url: "/ComprobantePago/uploadComprobante",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                // cache: false,
+                // contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
 
-            else if(tipo == 'Paypal'){
-                Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se enviara a PayPal!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Comprar!'
-                    }).then((result) => {
-                    if (result.isConfirmed) {                       
-                        $(this).closest(".form_compra").submit();
-                    }
-                })
-            }
-            
-
+            });
         });
 
         
@@ -269,6 +175,7 @@
         // repetirCadaSegundo();
 
         var v = document.getElementById("transmision_prueba");
+        // var formData = $(this).serialize();
 
         // v.addEventListener("timeupdate",function(ev){
         //     document.getElementById("tiempo_segundos").innerHTML = v.currentTime;

@@ -418,7 +418,7 @@ echo $header;
                                                                             <input class="multisteps-form__input form-control" type="text" id="code_iva" name="code_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
-                                                                            <label>Payment method *</label>
+                                                                            <label>Método de Pago *</label>
                                                                             <select class="multisteps-form__select form-control all_input_select" name="payment_method_iva" id="payment_method_iva">
                                                                                 <option value="" disabled selected>Selecciona una Opción</option>
                                                                                 <option value="ELECTRONIC TRANSFER">ELECTRONIC TRANSFER</option>
@@ -500,7 +500,7 @@ enlace a continuación a nuestro Aviso de privacidad.
                                                                         </textarea>
 
                                                                     <div class="button-row mt-2">
-                                                                        <button class="btn bg-gradient-success ms-auto mb-0" type="submit">I HAVE READ THE TERMS AND CONDITIONS AND I AGREE</button>
+                                                                        <button class="btn bg-gradient-success ms-auto mb-0" type="submit">HE LEÍDO LOS TERMINOS Y CONDICIONES Y ESTOY DE ACUERDO</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

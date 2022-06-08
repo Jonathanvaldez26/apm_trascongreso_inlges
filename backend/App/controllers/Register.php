@@ -627,7 +627,7 @@ html;
 
 
         $register->_costo = $costo;
-        var_dump($_POST["APM_radio"]);
+        
 
         $id = RegisterDao::insert($register);
         if($id >= 1)

@@ -1,9 +1,21 @@
+<!--<title>
+    Home 
+</title>-->
 <?php echo $header; ?>
 <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
 <body class="bg-body" id="body-home">
 
+<!-- <div id="content"> -->
+    
     <main>
+        <!-- <video class="video-fondo" autoplay="true" muted="false" loop="true" src="/videos/dfic.mp4" type="video/mp4">
+        </video> -->
+
+        <!-- <div class="barra-amarilla"></div> -->
+
         <div class="barra-verde"></div>
+
+        <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg bg-gradient-yellow position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
@@ -60,35 +72,332 @@
                 </div>
             </div>
         </nav>
+
+        
+        <!-- End Navbar -->
         <div class="container-fluid py-0">
-            <div class="card col-lg-12 mt-lg-4 mt-1" >
-                <div class="card-header pb-0 p-3">
-                    <p style="font-size: 14px">(Seleccione a continuación lo que desea pagar y presione el boton de pagar y muestre el codigo de pago en caja)</p>
-                </div>
-                <div class="card-body px-0 pb-0">
-                    <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="Invitados" role="tabpanel" aria-labelledby="Invitados">
-                                <div class="table-responsive p-0">
-                                    <table class="align-items-center mb-0 table table-borderless" id="user_list_table">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Metodo de Pago</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><i class="fa fa-eye"></i></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php echo $tabla; ?>
-                                        </tbody>
-                                    </table>
+
+        <div class="row mt-3">
+                <?php //echo $card_cursos;?>
+        </div>        
+            <div class="row">
+                <div class="col-xl-12 mt-xl-0 mt-0">
+                    <div class="row mt-md-4 mt-0">
+
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    <a href="#">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/1.png)">
+                                            <div class="card-body mt-md-3 text-center content-card-home">
+                                                <div class="col-12 text-center">
+                                                   
+                                                </div>
+
+                                                
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Talleres/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/9_1.png); background-size: contain;">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                            
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/ComprobantePago/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/11.png); background-size: contain;">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                          
+                                        
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    <a href="/Transmission/">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/7.png); background-size: contain;">
+                                            <div class="card-body mt-md-3 text-center content-card-home">
+                                                <div class="col-12 text-center">
+                                                  
+                                                </div>                                               
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+
+                       
+
+                       
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    <a href="/Account/">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/6.png); background-size: contain;  object-position: center center;">
+                                            <div class="card-body mt-md-3 text-center content-card-home">
+                                                <div class="col-12 text-center">
+                                               
+                                                </div>
+
+                                             
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    <a href="#">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/15.png); background-size: contain;  object-position: center center;">
+                                            <div class="card-body mt-md-3 text-center content-card-home">
+                                                <div class="col-12 text-center">
+                                               
+                                                </div>
+
+                                             
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Programa/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/13.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="#">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/5.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            <img class="w-30 btn-img-home" src="../../assets/img/icons/iCONOS_Mesa de trabajo 1.png">
+                                            <span class="color-yellow fas fa-spinner text-large"></span>
+                                        </div>
+                                        
+                                        <h6 class="mb-0 mt-2 mt-md-4 font-weight-bolder text-btn color-green">Avances</h6>
+                                        <p class="opacity-8 mb-0 text-sm">Disponible <i class="fa fa-clock me-sm-0" style="color: #8a6d3b"></i></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Profesores/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/15.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                           
+                                        </div>
+                                        
+                                   
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/TrabajosLibres/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/7.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                           
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Patrocinadores/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/12.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                        
+                                      
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="#">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/9.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            <img class="w-30 btn-img-home" src="../../assets/img/icons/iCONOS-07.png">
+                                            <span class="color-yellow fas fa-tasks text-large"></span>
+                                        </div>
+                                        
+                                        <h6 class="mb-0 mt-2 mt-md-4 font-weight-bolder text-btn color-green">Plenarias</h6>
+                                        <p class="opacity-8 mb-0 text-sm">A un click</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/AreaComercial/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/11.png)">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+                    </div>
+                        
                 </div>
             </div>
+
         </div>
+
+         <?php //echo $footer; ?> 
     </main>
+<!-- </div> -->
+    <?php echo $modalComprar?>
+
+
+
 
     <script type='text/javascript'>
+
+        getData($("#datos").val());
+        function getData(datos){
+            $.ajax({
+                    url:"/Home/getData",
+                    type: "POST",
+                    data: {datos},                   
+                    beforeSend: function(){
+                        console.log("Procesando....");
+
+                    
+                    },
+                    success: function(respuesta){
+
+                        console.log(respuesta);
+                        if(respuesta == 0){
+                            Swal.fire({
+                            title: '¡Es necesario que actualice sus datos.!',
+                            text: "",
+                            icon: 'info',
+                            showCancelButton: true,
+                            showCancelButton: false,
+                            // allowOutsideClick: false,
+                            confirmButtonColor: '#3085d6'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.replace("/Account/");
+                                }
+                            })
+                        }
+
+                    },
+                    error:function (respuesta)
+                    {
+                        
+                        console.log(respuesta);
+                    }
+
+                });
+        }
+    $(function(){
+        
+        $(document).bind("contextmenu",function(e){
+            return true;
+        });
+
+        $('.heart-not-like').on('click', function(){
+            let clave = $(this).attr('data-clave');
+            let heart = $(this);
+
+            if (heart.hasClass('heart-like')) {
+                heart.removeClass('heart-like').addClass('heart-not-like');
+            } else {
+                heart.removeClass('heart-not-like').addClass('heart-like');
+            }
+            console.log('se cambió a like: '+clave);
+            $.ajax({
+                url: "/Talleres/Likes",
+                type: "POST",
+                data: {clave},
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+            });
+        })
+
+        $('.heart-like').on('click', function(){
+            let clave = $(this).attr('data-clave');
+            let heart = $(this);
+
+            if (heart.hasClass('heart-like')) {
+                heart.removeClass('heart-like').addClass('heart-not-like');
+            } else {
+                heart.removeClass('heart-not-like').addClass('heart-like');
+            }
+            console.log('se cambió a like: '+clave);
+            $.ajax({
+                url: "/Talleres/Likes",
+                type: "POST",
+                data: {clave},
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+                    
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                }
+            });
+        })
+    });
+
+   
 
     </script>
 </body>

@@ -55,6 +55,73 @@ sql;
       return $mysqli->queryAll($query);
     }
 
+    public static function getProductCart($user_id,$id_producto){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * FROM carrito WHERE id_producto = $id_producto AND user_id = $user_id and status = 1
+sql;
+      return $mysqli->queryAll($query);
+    }
+
+    public static function insertProductCart($data){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      INSERT INTO carrito(id_producto, user_id, status) VALUES ('$data->_id_producto','$data->_user_id',1)
+sql;
+      $id = $mysqli->insert($query);
+   
+      return $id;
+    }
+
+    public static function getProductsNumber($user_id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT count(1) as total_productos FROM carrito WHERE user_id = $user_id and status = 1
+sql;
+      return $mysqli->queryAll($query);
+
+    }
+
+    public static function getCarritoByIdUser($user_id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT c.id_carrito,pro.id_producto,pro.nombre,pro.precio_publico,pro.precio_socio,pro.tipo_moneda,pro.caratula,pro.es_curso,pro.es_servicio,pro.es_congreso,ua.amout_due,ua.wadd_member,ua.apm_member,ua.APAL,ua.AILANCYP,ua.AMPI,ua.LC
+      FROM productos pro
+      INNER JOIN carrito c ON(c.id_producto = pro.id_producto)
+      INNER JOIN utilerias_administradores ua ON(c.user_id = ua.user_id)
+      WHERE c.user_id = $user_id and c.status = 1
+sql;
+      return $mysqli->queryAll($query);
+
+    } 
+    
+    public static function getCarritoByIdUserTicket($user_id,$clave){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT c.id_carrito,pro.id_producto,pro.nombre,pro.precio_publico,pro.precio_socio,pro.tipo_moneda,pro.caratula,pro.es_curso,pro.es_servicio,pro.es_congreso,ua.amout_due,ua.wadd_member,ua.apm_member,ua.APAL,ua.AILANCYP,ua.AMPI,ua.LC
+      FROM productos pro
+      INNER JOIN carrito c ON(c.id_producto = pro.id_producto)
+      INNER JOIN utilerias_administradores ua ON(c.user_id = ua.user_id)
+      INNER JOIN pendiente_pago pp ON (pp.id_producto = c.id_producto)
+      WHERE c.user_id = $user_id AND pp.clave = '$clave'
+sql;
+      return $mysqli->queryAll($query);
+
+    } 
+
+    public static function deleteItem($id){
+      $mysqli = Database::getInstance();
+//       $query=<<<sql
+//       DELETE FROM carrito WHERE id_carrito = $id
+// sql;
+    $query=<<<sql
+      UPDATE carrito SET status = 0  WHERE id_carrito = $id
+sql;  
+      return $mysqli->delete($query);
+
+    }  
+    
+
     public static function getProductosPendientesPagoTicket($user_id,$id_producto){
       $mysqli = Database::getInstance();
       $query=<<<sql
@@ -62,6 +129,16 @@ sql;
       FROM pendiente_pago pp
       INNER JOIN productos p ON (pp.id_producto = p.id_producto)
       WHERE pp.id_producto = $id_producto AND pp.user_id = $user_id 
+sql;
+      return $mysqli->queryAll($query);
+    }
+
+    public static function getProductoById($id_producto){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT id_producto,nombre,precio_publico,precio_socio,tipo_moneda 
+      FROM productos      
+      WHERE id_producto = $id_producto
 sql;
       return $mysqli->queryAll($query);
     }
@@ -458,13 +535,14 @@ sql;
   public static function inserPendientePago($data){ 
     $mysqli = Database::getInstance(1);
     $query=<<<sql
-    INSERT INTO pendiente_pago (id_producto, user_id, reference, 	fecha, monto, tipo_pago, status) VALUES (:id_producto, :user_id, :reference, :fecha, :monto, :tipo_pago, :status);
+    INSERT INTO pendiente_pago (id_producto, user_id, reference, clave,fecha, monto, tipo_pago, status) VALUES (:id_producto, :user_id, :reference,:clave,:fecha, :monto, :tipo_pago, :status);
 sql;
 
   $parametros = array(
     ':id_producto'=>$data->_id_producto,
     ':user_id'=>$data->_user_id,
     ':reference'=>$data->_reference,
+    ':clave'=>$data->_clave,
     ':fecha'=>$data->_fecha,
     ':monto'=>$data->_monto,
     ':tipo_pago'=>$data->_tipo_pago,
