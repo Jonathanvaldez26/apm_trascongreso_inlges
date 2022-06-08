@@ -184,7 +184,7 @@
                     <div style="background-color: rgb( 0 145 135 ); border-radius: 20px; height: 38px;"></div>
                     </div>
                     <h4 class="mb-1 mt-4 text-left"><i class="fa fa-desktop"></i> IV CONGRESO MUNDIAL DE PATOLOGÍA DUAL</h4>
-                    <p>(CONGRESO)</p>
+                    <p>(CONGRESS)</p>
                     
                 </div>
                 

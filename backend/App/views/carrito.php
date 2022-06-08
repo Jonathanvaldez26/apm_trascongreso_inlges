@@ -28,9 +28,9 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Talleres/">Talleres</a></li>
-                    <li class="breadcrumb-item text-sm">Carrito</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Talleres/">Courses</a></li>
+                    <li class="breadcrumb-item text-sm">Shopping Cart</li>
                 </ol>
             </nav>
 
@@ -43,7 +43,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                            <span class="d-sm-inline d-none">Inicio</span>
+                            <span class="d-sm-inline d-none">Home</span>
                         </a>
                     </li>
                 </ul>
@@ -71,7 +71,7 @@
                         <!-- <img src="/assets/img/cinta_menu.jpeg" style="border-radius: 20px; height: 38px;" alt=""> -->
                         <div style="background-color: rgb( 0 145 135 ); border-radius: 20px; height: 38px;"></div>
                     </div>
-                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Carrito de compras</h4>
+                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Shopping Cart</h4>
                 </div>
 
                 <div class="card-body p-3">
