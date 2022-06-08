@@ -84,8 +84,8 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <!-- <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"></th> -->
-                                                <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Producto</th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Precio</th>
+                                                <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Product</th>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
                                                 <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Subtotal</th>
 
                                             </tr>
