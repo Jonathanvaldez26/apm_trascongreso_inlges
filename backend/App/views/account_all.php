@@ -37,7 +37,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                            <span class="d-sm-inline d-none">Inicio</span>
+                            <span class="d-sm-inline d-none">Home</span>
                         </a>
                     </li>
                 </ul>
@@ -106,7 +106,7 @@
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
                     <div class="card-header">
-                        <h5>INFORMACIÓN BÁSICA</h5>
+                        <h5>PERSONAL INFORMATION</h5>
                         
                     </div>
                     <form class="form-horizontal" id="update_form" action="" method="POST">
@@ -114,26 +114,26 @@
                             <div class="row">
                                 <div class="col-12 col-lg-4">
                                     <!-- <input type="text" id="id_registro" name="id_registro" value="<?= $userData['id_registro'] ?> "> -->
-                                    <label class="form-label">Primer nombre *</label>
+                                    <label class="form-label">Name *</label>
                                     <div class="input-group">
                                         <input id="nombre" name="nombre" maxlength="29" pattern="[a-zA-Z ÑñáÁéÉíÍóÚ]*" class="form-control" type="text" placeholder="Alec" required="" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['name_user'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-4">
-                                    <label class="form-label">Segundo nombre </label>
+                                    <label class="form-label">Middle Name </label>
                                     <div class="input-group">
                                         <input id="segundo_nombre" name="segundo_nombre" maxlength="49" pattern="[a-zA-Z ÑñáÁéÉíÍóÚ]*" class="form-control" type="text" placeholder="Alec" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['middle_name'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-4">
-                                    <label class="form-label">Apellido paterno *</label>
+                                    <label class="form-label">Surname *</label>
                                     <div class="input-group">
                                         <input id="apellido_paterno" name="apellido_paterno" maxlength="29" pattern="[a-zA-Z ÑñáÁéÉíÍóÚ]*" class="form-control" type="text" placeholder="Thompson" required="required" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['surname'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
 
                                 <div class="col-12 col-lg-4">
-                                    <label class="form-label">Apellido materno *</label>
+                                    <label class="form-label">Second surname </label>
                                     <div class="input-group">
                                         <input id="apellido_materno" name="apellido_materno" maxlength="29" pattern="[a-zA-Z ÑñáÁéÉíÍóÚ]*" class="form-control" type="text" placeholder="Thompson" required="required" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['second_surname'] ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
