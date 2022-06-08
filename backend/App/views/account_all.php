@@ -233,7 +233,7 @@
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="fiscal-info">
                     <div class="card-header">
-                            <h5>INFORMACIÓN FISCAL</h5>
+                            <h5>VAT INFORMATION</h5>
                             
                         </div>
 
@@ -243,18 +243,18 @@
                                 <input id="email_user" name="email_user" maxlength="49" class="form-control" type="hidden" placeholder="example@email.com" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['usuario'] ?>">
 
                                     <div class="col-12 col-sm-4">
-                                        <label>Razón Social *</label>
+                                        <label>Business name *</label>
                                         <input class="multisteps-form__input form-control" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="49" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['business_name_iva'] ?>">
                                     </div>                             
                             
 
                                     <div class="col-12 col-sm-4 mt-1 mt-sm-0">
-                                        <label>RFC *</label>
+                                        <label>VAT Code *</label>
                                         <input class="multisteps-form__input form-control" type="text" id="code_iva" name="code_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['code_iva'] ?>">
                                     </div>
 
                                     <div class="col-12 col-sm-4 mt-1 mt-sm-0">
-                                        <label>Metodo de Pago *</label>
+                                        <label>Payment method *</label>
                                         <input class="multisteps-form__input form-control" type="text" id="payment_method_iva" name="payment_method_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['payment_method_iva'] ?>">
                                         <!-- <select class="multisteps-form__select form-control all_input_select" name="payment_method_iva" id="payment_method_iva">
                                             <option value="" disabled selected>Selecciona una Opción</option>
@@ -264,12 +264,12 @@
                                     </div>
 
                                     <div class="col-12 col-sm-5">
-                                        <label>Correo Electrónico facturación * </label>
+                                        <label>Email to send the receipt * </label>
                                         <input class="multisteps-form__input form-control" type="text"  id="email_receipt_iva" name="email_receipt_iva" placeholder="eg. user@domain.com" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['email_receipt_iva'] ?>">
                                         <span class="mb-0 text-sm" id="error_email_send" style="display:none;color:red;">Wrong email</span>
                                     </div>
                                     <div class="col-12 col-sm-2">
-                                        <label>C.P *</label>
+                                        <label>Postal Code *</label>
                                         <input class="multisteps-form__input form-control" type="text" id="postal_code_iva" name="postal_code_iva" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. 50398"  value="<?= $userData['postal_code_iva'] ?>">
                                     </div>
 
