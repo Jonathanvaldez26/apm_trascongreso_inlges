@@ -1,0 +1,14 @@
+#flag{
+    width: 30px;
+}
+
+.flag-cont{
+    border-radius: 25%;
+    margin-left: 10px;
+   
+}
+
+#flag:hover{
+    /*transform: translateY(-3px);*/
+	transform: scale3d(1.2, 1.2, 1.2);
+}
