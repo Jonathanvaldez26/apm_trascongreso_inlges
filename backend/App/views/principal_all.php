@@ -37,7 +37,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item text-sm"><a class="opacity-10 text-dark" href="javascript:;">Inicio</a></li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-10 text-dark" href="javascript:;">Home</a></li>
                     </ol>
                 </nav>
 
@@ -104,7 +104,7 @@
 
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <a href="/Talleres/">
-                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/9_1.png); background-size: contain;">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/9_1.jpeg); background-size: contain;">
                                     <div class="card-body mt-md-3 text-center content-card-home">
                                         <div class="col-12 text-center">
                                             
@@ -119,7 +119,7 @@
 
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <a href="/ComprobantePago/">
-                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/11.png); background-size: contain;">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/11.jpeg); background-size: contain;">
                                     <div class="card-body mt-md-3 text-center content-card-home">
                                         <div class="col-12 text-center">
                                           
@@ -156,7 +156,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12">
                                     <a href="/Account/">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/6.png); background-size: contain;  object-position: center center;">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/6.jpeg); background-size: contain;  object-position: center center;">
                                             <div class="card-body mt-md-3 text-center content-card-home">
                                                 <div class="col-12 text-center">
                                                
@@ -174,7 +174,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12">
                                     <a href="#">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/15.png); background-size: contain;  object-position: center center;">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/15.jpeg); background-size: contain;  object-position: center center;">
                                             <div class="card-body mt-md-3 text-center content-card-home">
                                                 <div class="col-12 text-center">
                                                
