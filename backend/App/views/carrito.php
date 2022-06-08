@@ -116,11 +116,11 @@
                     <input type="hidden" id="tipo_pago" name="tipo_pago">
                     <div>
 
-                        <label>Elige tu metodo de pago *</label>
+                        <label>Choose your payment method *</label>
                         <select class="multisteps-form__select form-control all_input_second_select" id="metodo_pago" name="metodo_pago" style="width: auto;">
-                            <option value="" disabled selected>Selecciona una Opción</option>
+                            <option value="" disabled selected>Select an Option</option>
                             <option value="Paypal">Paypal</option>
-                            <option value="Efectivo">Efectivo</option>
+                            <option value="Efectivo">Cash</option>
                         </select>
                         <input type='hidden' name='clave' value="<?=$clave?>"> 
 
@@ -135,7 +135,7 @@
                         <input type="text" name="cmd" value="_xclick">  
                         <input type="text" name="order" value="<?=$clave?>">
 
-                        <button id="btn_comprar" class="btn btn-success mt-3" style="width: 100%;">Comprar</button>
+                        <button id="btn_comprar" class="btn btn-success mt-3" style="width: 100%;">finish buying</button>
                     </div>
                 </form>
 
