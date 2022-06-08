@@ -222,7 +222,7 @@
                                 <div class="row">
                                     <div class="button-row d-flex mt-4 col-12">
                                         <a class="btn bg-gradient-light mb-0 js-btn-prev" href="/Home/" title="Prev">Next</a>
-                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Actualizar">Actualizar</button>
+                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Actualizar">Update</button>
                                     </div>
                                 </div>
                         </div>
@@ -276,7 +276,7 @@
                                     <div class="row">
                                         <div class="button-row d-flex mt-4 col-12">
                                             <a class="btn bg-gradient-light mb-0 js-btn-prev" href="/Home/" title="Prev">Next</a>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Actualizar">Actualizar</button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Actualizar">Update</button>
                                         </div>
                                     </div>
                                 </div>    
@@ -336,7 +336,7 @@
                         <br>
 
                         <div class="card-header">
-                        <h5 class="font-weight-bolder">ACERCA DE SUS SUSCRIPCIONES</h5>
+                        <h5 class="font-weight-bolder">ABOUT YOUR SUBSCRIPTIONS</h5>
                         
                         </div>
 
@@ -344,7 +344,7 @@
                             <div class="card-body pt-0">
                                 <div class="row mt-3">  
                                     <div class="col-4">
-                                        <label>¿Eres miembro de la WADD? *</label>
+                                        <label>Are you a WADD member? *</label>
                                         <!-- <select class="multisteps-form__select form-control all_input_second_select" id="wadd_member" name="wadd_member">
                                             <option value="" disabled selected>Selecciona una Opción</option>
                                             <option value="1">Si</option>
@@ -354,7 +354,7 @@
                                         <input class="multisteps-form__input form-control" type="text" id="wadd_member" name="wadd_member" maxlength="5" value="<?=  $wadd_member = $userData['wadd_member'] == '1' ? "SI" : "NO";?>" readonly>
                                     </div>
                                     <div class="col-4">
-                                        <label>¿Eres socio de la APM? *</label>
+                                        <label>Are you a APM member? *</label>
                                         <input class="multisteps-form__input form-control" type="text" id="apm_member" name="apm_member" maxlength="5" value="<?=  $apm_member = $userData['apm_member'] == '1' ? "SI" : "NO";?>" readonly>
                                         <!-- <select class="multisteps-form__select form-control all_input_second_select" id="apm_member" name="apm_member">
                                             <option value="" disabled selected>Selecciona una Opción</option>
@@ -363,7 +363,7 @@
                                         </select> -->
                                     </div>
                                     <div class="col-4">
-                                        <label>¿Eres miembro de alguna otra asociación?</label>
+                                        <label>Are you a member of any other association?</label>
                                         <?php echo $radio ?>
                                         <!-- <div class="form-check">
                                             <input class="form-check-input" type="radio" name="APM_radio" id="APAL" value="1" aria-label="APAL">
@@ -429,7 +429,7 @@
                         .append($('<option>', {
                                 value: ''
                             })
-                            .text('Selecciona una opción'));
+                            .text('Select an option'));
 
                     $.each(respuesta, function(key, value) {
                         //console.log(key);
@@ -473,12 +473,12 @@
                 success: function(respuesta) {
                     console.log(respuesta);
                     if (respuesta == 'success') {
-                        swal("¡Se actualizaron tus datos correctamente!", "", "success").
+                        swal("¡Your details have been successfully updated.!", "", "success").
                         then((value) => {
                             window.location.replace("/Home/");
                         });
                     } else {
-                        swal("¡Usted No Actualizo Nada!", "", "warning").
+                        swal("¡You did not update anything!", "", "warning").
                         then((value) => {
                             window.location.replace("/Account/")
                         });
