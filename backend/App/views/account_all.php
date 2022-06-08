@@ -292,7 +292,7 @@
 
                 <div class="card mt-4" id="adicional-info">
                     <div class="card-header">
-                        <h5>INFORMACIÓN ADICIONAL</h5>
+                        <h5>ADDITIONAL INFORMATION</h5>
                         
                     </div>
 
@@ -300,17 +300,17 @@
                         <div class="card-body pt-0">
                             <div class="row mt-3">
                                     <div class="col">
-                                        <label>Organización *</label>
+                                        <label>Organization *</label>
                                         <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="35" id="organization" name="organization" placeholder="eg. Associated APM"  value="<?= $userData['organization'] ?>" readonly>
                                     </div>
                                     <div class="col">
-                                        <label>Puesto *</label>
+                                        <label>Position *</label>
                                         <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="25" id="position" name="position" placeholder="eg. Associated"  value="<?= $userData['position_organization'] ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12 col-sm-6">
-                                        <label>Dirección</label>
+                                        <label>Address</label>
                                         <input class="multisteps-form__input form-control" type="text" id="address" maxlength="50" name="address" placeholder="eg. 1388 Sutter Street
                                                 San Francisco 94109 California USA"  value="<?= $userData['address'] ?>" readonly>
                                     </div>
