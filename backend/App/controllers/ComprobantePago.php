@@ -225,25 +225,25 @@ public function getAllComprobantesPagoById($id_user){
 
         if ($value['status'] == 0 ) {
             $icon_status = '<i class="fa fad fa-hourglass" style="color: #4eb8f7;"></i>';
-            $status = '<span class="badge badge-info">En espera de validación</span>';
+            $status = '<span class="badge badge-info">Waiting for validation</span>';
         } else if ($value['status'] == 1 ){
             $icon_status = '<i class="far fa-check-circle" style="color: #269f61;"></i>';
-            $status = '<span class="badge badge-success">Aceptado</span>';
+            $status = '<span class="badge badge-success">Accepted</span>';
 
         }
         else{
             $icon_status = '<i class="far fa-times-circle" style="color: red;"></i>';
-            $status = '<span class="badge badge-danger">Carga un Archivo PDF valido</span>';
+            $status = '<span class="badge badge-danger">Upload a valid PDF File</span>';
         }
 
         
-        $reimprimir_ticket = '<a href="/comprobantePago/ticketImp/'.$value["clave"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reimprimir Ticket" target="_blank"><i class="fas fa-file"></i></a>';
+        $reimprimir_ticket = '<a href="/comprobantePago/ticketImp/'.$value["clave"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reprint Ticket" target="_blank"><i class="fas fa-file"></i></a>';
 
         if (empty($value['url_archivo']) || $value['url_archivo'] == '') {
             $button_comprobante = '<form method="POST" enctype="multipart/form-data" action="/ComprobantePago/uploadComprobante" data-id-pp='.$value["id_pendiente_pago"].'>
                                     <input type="hidden" name="id_pendiente_pago" id="id_pendiente_pago" value="'.$value["id_pendiente_pago"].'"/>
-                                    <input type="file" accept="application/pdf" class="form-control" id="file-input" name="file-input" style="width: auto; margin: 0 auto;">
-                                    <button class="btn btn-primary btn-only-icon mt-2" type="submit">Subir</button>
+                                    <input type="file" accept="application/pdf" class="form-control" id="file-input" name="file-input" style="width: auto; margin: 0 auto;" aria-label="Archivo">
+                                    <button class="btn btn-primary btn-only-icon mt-2" type="submit">Upload</button>
                                     </form>';
         } else {
             $button_comprobante = '<a href="/comprobantesPago/'.$value["url_archivo"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Ver mi comprobante" target="_blank"><i class="fas fa-print"> </i></a>';
@@ -281,7 +281,7 @@ html;
                     $precio = number_format($precio,2);
 
                     $html .= <<<html
-                    <p>{$icon_status} {$value2['nombre']} $ {$precio}</p>
+                    <p>{$icon_status} {$value2['nombre_ingles']} $ {$precio}</p>
 html;
 
                 }   

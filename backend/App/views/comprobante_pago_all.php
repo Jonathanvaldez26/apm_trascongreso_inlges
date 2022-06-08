@@ -28,8 +28,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <i class="breadcrumb-item text-sm">Comprobantes de Pago</i>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <i class="breadcrumb-item text-sm">Payment Tickets</i>
                 </ol>
             </nav>
 
@@ -42,7 +42,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                            <span class="d-sm-inline d-none">Inicio</span>
+                            <span class="d-sm-inline d-none">Home</span>
                         </a>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
                     <!-- <img src="/assets/img/cinta_menu.jpeg" style="border-radius: 20px; height: 38px;" alt=""> -->
                     <div style="background-color: rgb( 0 145 135 ); border-radius: 20px; height: 38px;"></div>
                     </div>
-                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Comprobantes y estatus de pago</h4>
+                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Tickets and payment status</h4>
                 </div>
                 
                 <div class="card-body p-3">
@@ -83,10 +83,10 @@
                                         <thead class="thead-light">
                                         <tr>
                                             <!-- <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"></th> -->
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7" style="width:30%">Nombre del Curso o Congreso</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estatus</th>
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Monto a Pagar</th>
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Metodo de Pago</th>   
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7" style="width:30%">NAME OF THE COURSE OR CONGRESS</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Amount payable</th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Payment method</th>   
                                             <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Ticket</th>                                     
                                             <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7"><i class="fa fa-eye"></i></th>
                                         </tr>
