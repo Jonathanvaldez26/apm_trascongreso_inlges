@@ -233,7 +233,7 @@ html;
                 <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                 <div style = "display: flex; justify-content:start">
                 <p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
-                  Este curso ya lo compraste.
+                  You already bought this course.
                 </p>
                
             </div>
@@ -591,7 +591,7 @@ html;
                 <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['precio_publico']}</b></p>
                 <div style = "display: flex; justify-content:start">
                     <p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
-                    Este curso ya lo compraste.
+                    You already bought this course.
                     </p>
                
                 </div>
