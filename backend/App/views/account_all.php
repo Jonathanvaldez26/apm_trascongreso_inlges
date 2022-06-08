@@ -325,7 +325,7 @@
                                     </div>
                                     <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                                         <div class="col-12 col-sm-6">
-                                            <label>C.P *</label>
+                                            <label>Postal Code *</label>
                                             <input class="multisteps-form__input form-control" type="text" id="organization_postal_code" name="organization_postal_code" maxlength="5" value="<?= $userData['organization_postal_code'] ?>" readonly>
                                         </div>
                                     </div>
