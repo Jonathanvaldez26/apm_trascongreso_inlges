@@ -2,7 +2,7 @@
 echo $header;
 ?>
 
-<body class="">
+    <body class="">
 
     <main class="main-content main-content-bg mt-0">
         <section>
@@ -12,7 +12,7 @@ echo $header;
                     <img src="/assets/img/logos/apm.png" height="40" alt=""> &nbsp;&nbsp;
                     <img src="/assets/img/logos/wadd.png" style="width: 40px; height: 40px; margin-left: 5px; margin-right: 5px;">&nbsp;&nbsp;
                     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 ">
-                    VI Congreso Mundial de Patología Dual
+                        VI World Congress on Dual Disorders
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon mt-2">
@@ -127,11 +127,11 @@ echo $header;
                         <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                             <div class="card card-plain mt-7">
                                 <div class="card-header pb-0 text-start">
-                                    <h5 style="color:#1B8586;" class="font-weight-bolder text-center">Congreso de la Asociación Psiquiátrica Mexicana</h5>
+                                    <h5 style="color:#1B8586;" class="font-weight-bolder text-center">Congress of the Mexican Psychiatric Association</h5>
                                     <hr>
-                                    <h4 style="color: #a19a9a;" class="font-weight-bolder text-center">"VI Congreso Mundial de Patología Dual"</h4>
+                                    <h4 style="color: #a19a9a;" class="font-weight-bolder text-center">"VI World Congress on Dual Disorders"</h4>
                                     <div id="counter" class="group text-center mt-4">
-                                        <!-- <span><em>days</em></span> 
+                                        <!-- <span><em>days</em></span>
                                         <span><em>hours</em></span>
                                         <span><em>minutes</em></span>
                                         <span><em>seconds</em></span>  -->
@@ -148,12 +148,12 @@ echo $header;
                                             <div class="col-3">Segundos</div> -->
                                         </div>
                                     </div>
-                                    <p class="mb-0 mt-5">Introduzca el correo electrónico con el cual usted fue registrado para poder iniciar sesión</p>
+                                    <p class="mb-0 mt-5">Enter the email with which you were registered to be able to Log In</p>
                                 </div>
                                 <!-- Button trigger modal -->
                                 <div class="card-body">
                                     <form role="form" class="text-start" id="login" action="/Login/crearSession" method="POST" class="form-horizontal">
-                                        <label style="font-weight:bold;">¿Ya realizaste tu registro?</label>
+                                        <label>Do you have an account?</label>
                                         <div class="mb-5">
                                             <input type="email" name="usuario" id="usuario" class="form-control" placeholder="usuario@grupolahe.com" aria-label="Email">
                                         </div>
@@ -167,7 +167,7 @@ echo $header;
                                         </div> -->
 
                                         <div class="text-center">
-                                            <button type="button" id="btnEntrar" class="btn bg-gradient-info w-100 mt-1 mb-0"><b style="color: #FFFFFF">ENTRAR</b></button>
+                                            <button type="button" id="btnEntrar" class="btn bg-gradient-info w-100 mt-1 mb-0"><b style="color: #FFFFFF">SIGN IN</b></button>
                                         </div>
                                     </form>
                                     <!-- <button type="button" style="background: #1B8586; color: #ffffff;" id="btn_modal_add" class="btn mb-0 mt-3 w-100" data-toggle="modal" data-target="#Modal_Add" disabled="">REGISTRARSE</button> -->
@@ -367,8 +367,8 @@ echo $header;
 
                         $('#estado')
                             .append($('<option>', {
-                                    value: ''
-                                })
+                                value: ''
+                            })
                                 .text('Selecciona una opción'));
 
                         $.each(respuesta, function(key, value) {
@@ -376,8 +376,8 @@ echo $header;
                             console.log(value);
                             $('#estado')
                                 .append($('<option>', {
-                                        value: value.id_estado
-                                    })
+                                    value: value.id_estado
+                                })
                                     .text(value.estado));
                         });
 
@@ -618,6 +618,6 @@ echo $header;
         requestAnimationFrame(update);
     </script>
 
-</body>
+    </body>
 
 <?php echo $footer; ?>
