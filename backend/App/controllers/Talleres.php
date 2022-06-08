@@ -954,7 +954,7 @@ html;
           <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                Completa tu compra
+                Complete your purchase
                 </h5>
 
                 <span type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal" aria-label="Close">
@@ -969,34 +969,34 @@ html;
                         <img src="/caratulas/{$datos['caratula']}" style="width:60%; border-radius: 10px;" alt="" />
                     </div>
 
-                    <p class="text-center mt-3"><b>{$datos['nombre']}</b></p>
+                    <p class="text-center mt-3"><b>{$datos['nombre_ingles']}</b></p>
 
                     <p class="text-center" style="color: #2B932B;"><b>{$precio_curso}</b></p>
-                    <input type="text" value="{$solo_precio_curso}" name="costo"/>
-                    <input type="text" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
-                    <input type="text" value="{$datos['id_producto']}" name="id_producto"/>
-                    <input type="text" value="{$datos['nombre']}" name="nombre_curso"/>
-                    <input type="text" class="tipo_pago" name="tipo_pago"/>
+                    <input type="hidden" value="{$solo_precio_curso}" name="costo"/>
+                    <input type="hidden" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
+                    <input type="hidden" value="{$datos['id_producto']}" name="id_producto"/>
+                    <input type="hidden" value="{$datos['nombre_ingles']}" name="nombre_curso"/>
+                    <input type="hidden" class="tipo_pago" name="tipo_pago"/>
 
-                    <br><br><br><br>
+                    <br>
 
                     <!-- campos para paypal -->
-                    <input type="text" name="charset" value="utf-8">
-                    <input type='text' name='business' value='jvaldez_2610@hotmail.com'> 
-                    <input type='text' name='item_name' value='{$datos['nombre']}'> 
-                    <input type='text' name='item_number' value="{$clave}"> 
-                    <input type='text' name='amount' value='{$solo_precio_curso}'> 
-                    <input type='text' name='currency_code' value='MXN'> 
-                    <input type='text' name='notify_url' value=''> 
-                    <input type='text' name='return' value='http://localhost:8112/ComprobantePago/'> 
-                    <input type="text" name="cmd" value="_xclick">  
-                    <input type="text" name="order" value="{$clave}">
+                    <input type="hidden" name="charset" value="utf-8">
+                    <input type='hidden' name='business' value='jvaldez_2610@hotmail.com'> 
+                    <input type='hidden' name='item_name' value='{$datos['nombre_ingles']}'> 
+                    <input type='hidden' name='item_number' value="{$clave}"> 
+                    <input type='hidden' name='amount' value='{$solo_precio_curso}'> 
+                    <input type='hidden' name='currency_code' value='MXN'> 
+                    <input type='hidden' name='notify_url' value=''> 
+                    <input type='hidden' name='return' value='http://localhost:8112/ComprobantePago/'> 
+                    <input type="hidden" name="cmd" value="_xclick">  
+                    <input type="hidden" name="order" value="{$clave}">
 
                     <div class="row d-flex justify-content-center">
                         <div class="col-4">
-                            <label>Elige tu metodo de pago *</label>
+                            <label>Choose your payment method *</label>
                             <select class="multisteps-form__select form-control all_input_second_select metodo_pago" name="metodo_pago" required>
-                                <option value="" disabled selected>Selecciona una Opción</option>
+                                <option value="" disabled selected>Select an Option</option>
                                 <option value="Paypal">Paypal</option>
                                 <option value="Efectivo">Efectivo</option>
                             </select>
@@ -1018,12 +1018,12 @@ html;
               </form>
                 
               <form id="form_compra_paypal{$datos['id_producto']}">
-                    <input type="text" value="{$solo_precio_curso}" name="costo"/>
-                    <input type="text" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
-                    <input type="text" value="{$datos['id_producto']}" name="id_producto"/>
-                    <input type="text" value="{$datos['nombre']}" name="nombre_curso"/>
-                    <input type="text" class="tipo_pago" name="tipo_pago"/>                    
-                    <input type='text' name='clave' value="{$clave}">                    
+                    <input type="hidden" value="{$solo_precio_curso}" name="costo"/>
+                    <input type="hidden" value="{$datos['tipo_moneda']}" name="tipo_moneda"/>
+                    <input type="hidden" value="{$datos['id_producto']}" name="id_producto"/>
+                    <input type="hidden" value="{$datos['nombre_ingles']}" name="nombre_curso"/>
+                    <input type="hidden" class="tipo_pago" name="tipo_pago"/>                    
+                    <input type='hidden' name='clave' value="{$clave}">                    
 
 
               </form>
@@ -1826,7 +1826,7 @@ html;
 
         if ($getProductCart) {
             $data = [
-                "msg" => "Este producto ya esta en su cesta",
+                "msg" => "This product is already in your basket",
                 "status" => "warning"
             ];
         } else {
@@ -1838,12 +1838,12 @@ html;
 
             if ($insertProductCart) {
                 $data = [
-                    "msg" => "Se ingreso el producto a su cesta",
+                    "msg" => "The product was added to your basket",
                     "status" => "success"
                 ];
             } else {
                 $data = [
-                    "msg" => "Error al gurdar el producto",
+                    "msg" => "Error adding product",
                     "status" => "error"
                 ];
             }
