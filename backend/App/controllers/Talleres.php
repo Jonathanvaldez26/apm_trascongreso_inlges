@@ -1993,9 +1993,13 @@ html;
     public function Likes()
     {
         $clave = $_POST['clave'];
-        $id_curso = TalleresDao::getCursoByClave($clave)['id_curso'];
+        $id_curso = TalleresDao::getProductCursoByClave($clave)['id_producto'];
 
-        $hay_like = TalleresDao::getlike($id_curso, $_SESSION['id_registrado']);
+        // echo $clave;
+
+        // exit;
+
+        $hay_like = TalleresDao::getlikeProductCurso($id_curso, $_SESSION['user_id']);
         // var_dump($hay_like);
 
         if ($hay_like) {
@@ -2005,10 +2009,10 @@ html;
             } else if ($hay_like['status'] == 0) {
                 $status = 1;
             }
-            TalleresDao::updateLike($id_curso, $_SESSION['id_registrado'], $status);
+            TalleresDao::updateLikeProductos($id_curso, $_SESSION['user_id'], $status);
             // echo 'siuu '.$clave;
         } else {
-            TalleresDao::insertLike($id_curso, $_SESSION['id_registrado']);
+            TalleresDao::insertLikeProducto($id_curso, $_SESSION['user_id']);
             // echo 'nooouuu '.$clave;
         }
     }

@@ -252,6 +252,15 @@ sql;
       return $mysqli->update($query);
     }
 
+    public static function updateLikeProductos($id_curso, $registrado,$status){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+        UPDATE likes_product_curso SET status = '$status'
+        WHERE id_producto = '$id_curso' AND user_id = '$registrado'
+sql;
+      return $mysqli->update($query);
+    }
+
     public static function getContenidoByAsignacion($id_registrado,$clave_taller){
       $mysqli = Database::getInstance();
       $query=<<<sql
@@ -322,6 +331,21 @@ sql;
     return $id;
       // return "insert"+$data;
   }
+
+  public static function insertLikeProducto($curso,$registrado){
+    // $fecha_carga_documento = date("Y-m-d");
+    $mysqli = Database::getInstance(1);
+    $query=<<<sql
+    INSERT INTO likes_product_curso(id_like, user_id, id_producto, status) 
+    VALUES (null,'$registrado','$curso','1')
+sql;
+
+  $id = $mysqli->insert($query);
+
+  //UtileriasLog::addAccion($accion);
+  return $id;
+    // return "insert"+$data;
+}
 
 
   //-------------------------Encuestas-----------------------------///
