@@ -251,7 +251,7 @@ class OrdenPago extends Controller
 
         // $pdf->Output('F', 'C:/pases_abordar/'. $clave.'.pdf');
     }
-
+    
 
 
     public function impticket($user_id = null, $id_producto = null)
@@ -530,6 +530,55 @@ class OrdenPago extends Controller
         //     // Add business logic here which deals with invalid IPN messages
         //     error_log(date('[Y-m-d H:i e] '). "Invalid IPN: $req" . PHP_EOL, 3, 'app.log');
         // }
+    }
+
+    public function PagarPaypal($clave = null, $id_curso = null)
+    {
+        date_default_timezone_set('America/Mexico_City');
+
+        // $this->generaterQr($clave_ticket);
+
+        $datos_user = RegisterDao::getUser($this->getUsuario())[0];
+        $clave = $_POST['clave'];
+        $flag = 0;
+
+        $documento = new \stdClass();  
+
+        $nombre_curso = $_POST['nombre_curso'];
+        $id_producto = $_POST['id_producto'];
+        $user_id = $datos_user['user_id'];
+        $reference = $datos_user['reference'];
+        $fecha =  date("Y-m-d");
+        $monto = $_POST['costo'];
+        $tipo_pago = $_POST['tipo_pago'];
+        $status = 0;
+
+        $documento->_id_producto = $id_producto;
+        $documento->_user_id = $user_id;
+        $documento->_reference = $reference;
+        $documento->_clave = $clave;
+        $documento->_fecha = $fecha;
+        $documento->_monto = $monto;
+        $documento->_tipo_pago = $tipo_pago;
+        $documento->_status = $status;
+
+        $d = $this->fechaCastellano($fecha);
+
+        // var_dump($documento);
+        // exit;
+
+        $existe = TalleresDao::getProductosPendientesPago($user_id,$id_producto);
+
+        if(!$existe){
+            $id = TalleresDao::inserPendientePago($documento); 
+            $flag = 1;  
+        }
+        
+        if($flag = 1){
+            echo "success";
+        }else{
+            echo "fail";
+        }
     }
 
     function fechaCastellano ($fecha) {
