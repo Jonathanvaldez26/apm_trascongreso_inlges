@@ -148,6 +148,7 @@ echo $header;
                                             <div class="col-3">Segundos</div> -->
                                         </div>
                                     </div>
+                                    <p class="mb-0 mt-5">Enter the email with which you were registered to be able to Log In</p>
                                 </div>
                                 <!-- Button trigger modal -->
                                 <div class="card-body">
