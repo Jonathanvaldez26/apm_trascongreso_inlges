@@ -65,7 +65,7 @@ class Contenedor extends Controller{
             <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
             <link rel="icon" type="image/png" href="/assets/img/favicon.png">
             <title>
-               GRUPO LAHE
+               IV WORLD CONGRESS ON DUAL DISORDERS
             </title>
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
             <!-- Nucleo Icons -->

@@ -1,5 +1,5 @@
 <title>
-    Cursos - APM
+    Courses - APM
 </title>
 <?php echo $header; ?>
 <style>
@@ -182,8 +182,8 @@
                     <div class="row">
                     <!-- <img src="/assets/img/cinta_menu.jpeg" style="border-radius: 20px; height: 38px;" alt=""> -->
                     <div style="background-color: rgb( 0 145 135 ); border-radius: 20px; height: 38px;"></div>
-                    </div>
-                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-desktop"></i> IV WORLD CONGRESS OF DUAL DISORDERS</h4>
+
+                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-desktop"></i> IV WORLD CONGRESS ON DUAL DISORDERS</h4>
                     <p>(CONGRESS)</p>
                     
                 </div>
