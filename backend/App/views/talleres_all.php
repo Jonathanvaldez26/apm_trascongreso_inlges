@@ -1,5 +1,5 @@
 <title>
-    Cursos - APM
+    Courses - APM
 </title>
 <?php echo $header; ?>
 <style>
