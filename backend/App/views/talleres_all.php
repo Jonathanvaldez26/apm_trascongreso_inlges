@@ -103,8 +103,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm">Talleres</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <li class="breadcrumb-item text-sm">Courses</li>
                 </ol>
             </nav>
 
@@ -157,7 +157,7 @@
             <li class="nav-item d-flex align-items-center">
                 <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                    <span class="d-sm-inline d-none">Inicio</span>
+                    <span class="d-sm-inline d-none">Home</span>
                 </a>
             </li>
             <li class="nav-item d-flex align-items-center">            
