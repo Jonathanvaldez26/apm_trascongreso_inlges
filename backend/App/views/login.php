@@ -148,12 +148,11 @@ echo $header;
                                             <div class="col-3">Segundos</div> -->
                                         </div>
                                     </div>
-                                    <p class="mb-0 mt-5">You don´t have an account? To create your Congress account, click the Register button and provide a valid email address.</p>
                                 </div>
                                 <!-- Button trigger modal -->
                                 <div class="card-body">
                                     <form role="form" class="text-start" id="login" action="/Login/crearSession" method="POST" class="form-horizontal">
-                                        <label style="font-weight:bold; font-size: 15px">Email</label>
+                                        <label>Do you have an account?</label>
                                         <div class="mb-5">
                                             <input type="email" name="usuario" id="usuario" class="form-control" placeholder="usuario@grupolahe.com" aria-label="Email">
                                         </div>
