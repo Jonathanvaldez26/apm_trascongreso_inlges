@@ -23,8 +23,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;" disabled>Datos Personales</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;" disabled>Personal Information</a></li>
                 </ol>
             </nav>
 
@@ -152,7 +152,7 @@
                                 </div>
 
                                 <div class="col-sm-6 col-12 col-lg-6">
-                                    <label class="form-label mt-4">Estado *</label>
+                                    <label class="form-label mt-4">State *</label>
                                     <select class="multisteps-form__select form-control all_input_select" name="estado" id="estado_edit" required>
                                         <?php echo $select_estado;?>
                                     </select>
@@ -160,21 +160,21 @@
                                 </div>
 
                                 <div class="col-lg-5 col-12">
-                                    <label class="form-label mt-4">Correo electrónico *</label>
+                                    <label class="form-label mt-4">Email *</label>
                                     <div class="input-group">
                                         <input id="email" name="email" maxlength="49" class="form-control" type="email" placeholder="example@email.com" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['usuario'] ?>" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2 col-12">
-                                    <label class="form-label mt-4">Código de País</label>
+                                    <label class="form-label mt-4">International dialling code</label>
                                     <div class="input-group">
                                         <input id="cod_telefono" name="cod_telefono" maxlength="10" pattern="[0-9]" class="form-control" type="number" placeholder="+52" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['international_code'] ?>">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-5 col-12">
-                                    <label class="form-label mt-4">Número de teléfono</label>
+                                    <label class="form-label mt-4">Telephone</label>
                                     <div class="input-group">
                                         <input id="telefono" name="telefono" maxlength="10" pattern="[0-9]" class="form-control" type="number" placeholder="+40 735 631 620" onfocus="focused(this)" onfocusout="defocused(this)" value="<?= $userData['telephone'] ?>">
                                     </div>
@@ -186,7 +186,7 @@
                                    
                                     
                                     <div class="col-lg-4 col-12">
-                                        <label class="form-label mt-4">Especialidad *</label>
+                                        <label class="form-label mt-4">Specialties *</label>
                                         
                                             <!-- <select class="form-control" style="cursor: pointer;" name="especialidad" id="especialidad" tabindex="-1" data-choice="active" disabled>
                                                 <?php echo $select_especialidad; ?>
