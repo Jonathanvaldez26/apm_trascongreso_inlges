@@ -120,7 +120,7 @@
                         <select class="multisteps-form__select form-control all_input_second_select" id="metodo_pago" name="metodo_pago" style="width: auto;">
                             <option value="" disabled selected>Select an Option</option>
                             <option value="Paypal">Paypal</option>
-                            <option value="Efectivo">Cash</option>
+                            <option value="Efectivo">Cash / Electronic Transfer</option>
                         </select>
                         <input type='hidden' name='clave' value="<?=$clave?>"> 
 

@@ -240,7 +240,7 @@ public function getAllComprobantesPagoById($id_user){
 
             $reimprimir_ticket = '<a href="/comprobantePago/ticketImp/'.$value["clave"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reimprimir Ticket" target="_blank"><i class="fas fa-file"></i></a>';
 
-        }else if($value['tipo_pago'] == "Paypal"){
+        }else if($value['tipo_pago'] == "Paypal" && empty($value['url_archivo'])){
             $total_array_paypal = array();
             $nombre_producto = '';
 
@@ -276,6 +276,9 @@ public function getAllComprobantesPagoById($id_user){
             </form>';
 
             $nombre_producto = '';
+        }
+        else if($value['tipo_pago'] == "Paypal" && !empty($value['url_archivo'])){
+            $reimprimir_ticket = '';
         }
 
         if (empty($value['url_archivo']) || $value['url_archivo'] == '') {
