@@ -998,7 +998,7 @@ html;
                             <select class="multisteps-form__select form-control all_input_second_select metodo_pago" name="metodo_pago" required>
                                 <option value="" disabled selected>Select an Option</option>
                                 <option value="Paypal">Paypal</option>
-                                <option value="Efectivo">Efectivo</option>
+                                <option value="Efectivo">Cash / Electronic Transfer</option>
                             </select>
                         </div>
                     </div>
