@@ -279,7 +279,7 @@
 
                     if (respuesta == "success") {
                         Swal.fire(
-                            "Se quito el articulo",
+                            "removed the item",
                             '',
                             "success"
                         );
@@ -288,7 +288,7 @@
 
                     } else {
                         Swal.fire(
-                            "Error al quitar el articulo, contacte a soporte",
+                            "Error removing item, contact support",
                             '',
                             "error"
                         );
@@ -359,14 +359,14 @@
 
             if (tipo == 'Efectivo') {
                 Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se emitira tu orden de pago!",
+                    title: '',
+                    text: "Once you confirm your payment order will be issued!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Comprar'
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Buy'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $("#form_compra").submit();                        
@@ -376,14 +376,14 @@
                 })
             } else if (tipo == 'Paypal') {
                 Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se enviara a PayPal!",
+                    title: 'Do you want to buy the course?',
+                    text: "Once you confirm it will be sent to PayPal!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Comprar'
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Buy'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $("#form_compra").submit();
@@ -393,7 +393,7 @@
                 })
             } else {
                 Swal.fire(
-                    "Selecciona un metodo de pago",
+                    "Select a payment method.",
                     '',
                     "info"
                 );
