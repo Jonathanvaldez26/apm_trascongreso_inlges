@@ -455,7 +455,7 @@ sql;
     ON ap.user_id = uad.user_id
     INNER JOIN productos p
     ON p.id_producto = ap.id_producto
-    WHERE ap.user_id = $usuario and p.es_curso = 1
+    WHERE ap.user_id = $usuario and p.es_curso = 1 ORDER BY p.id_producto ASC
 sql;
 
     return $mysqli->queryAll($query);

@@ -236,8 +236,47 @@ public function getAllComprobantesPagoById($id_user){
             $status = '<span class="badge badge-danger">Upload a valid PDF File</span>';
         }
 
-        
-        $reimprimir_ticket = '<a href="/comprobantePago/ticketImp/'.$value["clave"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reprint Ticket" target="_blank"><i class="fas fa-file"></i></a>';
+        if($value['tipo_pago'] == "Efectivo"){
+
+            $reimprimir_ticket = '<a href="/comprobantePago/ticketImp/'.$value["clave"].'" class="btn bg-pink btn-icon-only morado-musa-text text-center"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Reimprimir Ticket" target="_blank"><i class="fas fa-file"></i></a>';
+
+        }else if($value['tipo_pago'] == "Paypal"){
+            $total_array_paypal = array();
+            $nombre_producto = '';
+
+            foreach(ComprobantePagoDao::getAllComprobantesbyClave($id_user,$value['clave']) as $key => $value){
+
+                if($value['es_congreso'] == 1){
+                    $precio = $value['amout_due'];
+                }else if($value['es_servicio'] == 1){
+                    $precio = $value['precio_publico'];
+                }else if($value['es_curso'] == 1){
+                    $precio = $value['precio_publico'];
+                }                    
+
+                array_push($total_array_paypal,$precio);
+
+                $nombre_producto .= $value['nombre'] .",";
+
+            } 
+
+            $total_paypal = number_format(array_sum($total_array_paypal));
+            $reimprimir_ticket = '<form method="POST"  action="https://www.paypal.com/es/cgi-bin/webscr" data-form-paypal='.$value["id_pendiente_pago"].' target="_blank">
+            <input type="hidden" name="business" value="jvaldez_2610@hotmail.com"> 
+            <input type="hidden" name="item_name" value="'.$nombre_producto.'"> 
+            <input type="hidden" name="item_number" value="'.$value["clave"].'"> 
+            <input type="hidden" name="amount" value="'.$total_paypal.'"> 
+            <input type="hidden" name="currency_code" value="USD"> 
+            <input type="hidden" name="notify_url" value=""> 
+            <input type="hidden" name="return" value="https://register.dualdisorderswaddmexico2022.com/ComprobantePago/"> 
+            <input type="hidden" name="cmd" value="_xclick">  
+            <input type="hidden" name="order" value="'.$value["clave"].'">
+           
+            <button class="btn btn-primary btn-only-icon mt-2" type="submit">Make PayPal payment</button>
+            </form>';
+
+            $nombre_producto = '';
+        }
 
         if (empty($value['url_archivo']) || $value['url_archivo'] == '') {
             $button_comprobante = '<form method="POST" enctype="multipart/form-data" action="/ComprobantePago/uploadComprobante" data-id-pp='.$value["id_pendiente_pago"].'>
