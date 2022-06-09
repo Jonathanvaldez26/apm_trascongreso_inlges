@@ -374,14 +374,14 @@
 
             if(tipo == 'Efectivo'){
                 Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se emitira tu orden de pago!",
+                    title: 'Do you want to buy the course?',
+                    text: "Once you confirm your payment order will be issued!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Comprar'
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Buy'
                     }).then((result) => {
                     if (result.isConfirmed) {                        
                         $(this).closest(".form_compra").submit();                      
@@ -392,14 +392,14 @@
 
             else if(tipo == 'Paypal'){
                 Swal.fire({
-                    title: '¿Quieres comprar el curso?',
-                    text: "Una vez que confirmes se enviara a PayPal!",
+                    title: 'Do you want to buy the course?',
+                    text: "Once you confirm it will be sent to PayPal!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Comprar'
+                    cancelButtonText: 'Cancel',
+                    confirmButtonText: 'Buy'
                     }).then((result) => {
                     if (result.isConfirmed) {                                               
                         $(this).closest(".form_compra").submit();
@@ -437,7 +437,7 @@
             }else{
 
                 Swal.fire(
-                    "Debes seleccionar un metodo de pago.",
+                    "You must select a payment method.",
                     '',
                     'info'
                 );   
