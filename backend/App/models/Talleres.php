@@ -109,6 +109,19 @@ sql;
 
     } 
 
+    public static function getTicketUser($user_id,$clave){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT pro.id_producto,pro.nombre,pro.precio_publico,pro.precio_socio,pro.tipo_moneda,pro.caratula,pro.es_curso,pro.es_servicio,pro.es_congreso,ua.amout_due,ua.wadd_member,ua.apm_member,ua.APAL,ua.AILANCYP,ua.AMPI,ua.LC
+      FROM productos pro         
+      INNER JOIN pendiente_pago pp ON (pp.id_producto = pro.id_producto)
+      INNER JOIN utilerias_administradores ua ON(pp.user_id = ua.user_id)
+      WHERE pp.user_id = $user_id AND pp.clave = '$clave'
+sql;
+      return $mysqli->queryAll($query);
+
+    } 
+
     public static function deleteItem($id){
       $mysqli = Database::getInstance();
 //       $query=<<<sql
@@ -278,7 +291,7 @@ sql;
     public static function getContenidoProdductCursoByAsignacion($id_registrado,$clave_taller){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT p.nombre, uad.nombre as nombre_usuario, ap.* FROM asigna_producto ap
+      SELECT p.nombre, uad.name_user as nombre_usuario, ap.* FROM asigna_producto ap
       INNER JOIN utilerias_administradores uad
       ON ap.user_id = uad.user_id
       INNER JOIN productos p
@@ -540,6 +553,17 @@ sql;
         SET segundos = '$segundos', fecha_ultima_vista = NOW()
         WHERE id_curso = '$id_curso' 
         AND id_registrado = '$registrado'
+sql;
+    return $mysqli->update($query);
+  } 
+
+  public static function updateProgresoFechaProducto($id_curso, $registrado, $segundos){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+        UPDATE progresos_productocursos 
+        SET segundos = '$segundos', fecha_ultima_vista = NOW()
+        WHERE id_producto = '$id_curso' 
+        AND user_id = '$registrado'
 sql;
     return $mysqli->update($query);
   } 

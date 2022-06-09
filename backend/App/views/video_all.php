@@ -270,7 +270,7 @@
     }
 
     function saveChat() {
-        //event.preventDefault(event);
+        event.preventDefault(event);
         var formData = new FormData(document.getElementById("form_chat"));
 
         var id_tipo = formData.get('id_tipo');
@@ -372,7 +372,7 @@
                 $.each(respuesta, function(index, el) {
 
                     // console.log(el.title);
-                    var nombre_completo = el.nombre + ' ' + el.apellidop + ' ' + el.apellidom;
+                    var nombre_completo = el.name_user + ' ' + el.surname + ' ' + el.second_surname;
 
                     $("#cont_chat").append(
                         `<div class="d-flex mt-3">
@@ -523,16 +523,16 @@
 
             }, 1000);
 
-            $(window).blur(function() {
-                ventana = 0;
-                increment = 0;
-                console.log('fuera de la ventana');
-            });
-            $(window).focus(function() {
-                ventana = 1;
-                increment = 1;
-                console.log('dentro de la ventana');
-            });
+            // $(window).blur(function() {
+            //     ventana = 0;
+            //     increment = 0;
+            //     console.log('fuera de la ventana');
+            // });
+            // $(window).focus(function() {
+            //     ventana = 1;
+            //     increment = 1;
+            //     console.log('dentro de la ventana');
+            // });
         }
 
         function actualizarProgreso(curso, segundos) {

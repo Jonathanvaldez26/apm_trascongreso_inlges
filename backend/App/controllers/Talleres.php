@@ -1519,7 +1519,7 @@ html;
 
 
             foreach ($chat_taller as $chat => $value) {
-                $nombre_completo = $value['nombre_ingles'] . ' ' . $value['apellidop'] . ' ' . $value['apellidom'];
+                $nombre_completo = $value['name_user'] . ' ' . $value['surname'] . ' ' . $value['second_surname'];
                 $nombre_completo = utf8_encode($nombre_completo);
                 $cont_chat .= <<<html
             <div class="d-flex mt-3">
@@ -1874,7 +1874,7 @@ html;
         $id_tipo = $_POST['id_tipo'];
 
         $data = new \stdClass();
-        $data->_id_registrado = $_SESSION['id_registrado'];
+        $data->_id_registrado = $_SESSION['user_id'];
         $data->_chat = $chat;
         $data->_tipo = 2; //taller
         $data->_id_tipo = $id_tipo;
@@ -1898,7 +1898,7 @@ html;
         $data = new \stdClass();
         $data->_tipo = 2;
         $data->_sala = $sala;
-        $data->_id_tipo = $taller['id_curso'];
+        $data->_id_tipo = $taller['id_producto'];
 
         $chat_taller = TransmisionDao::getNewChatByID($data);
 

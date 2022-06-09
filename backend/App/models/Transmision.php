@@ -91,7 +91,7 @@ sql;
     public static function insertNewChat($data){
         $mysqli = Database::getInstance(1);
         $query=<<<sql
-        INSERT INTO chat (user_id, chat, 	fecha, tipo, id_tipo, sala) 
+        INSERT INTO new_chat (user_id, chat, fecha, tipo, id_tipo, sala) 
         VALUES (:user_id,:chat,NOW(),:tipo,:id_tipo,:sala)
 sql;
         $parametros = array(
