@@ -9,7 +9,7 @@ echo $header;
                 <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 ">
                     <img src="/assets/img/logos/apmn.png" style="width: 40px; height: 40px; margin-left: 5px; margin-right: 5px;">
                     <img src="/assets/img/logos/waddn.png" style="width: 40px; height: 40px; margin-left: 5px; margin-right: 5px;">
-                    VI Congreso Mundial de Patología Dual
+                    VI World Congress on Dual Disorders
                 </a>
 
                 <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
@@ -17,7 +17,7 @@ echo $header;
                     </ul>
                     <ul class="navbar-nav d-lg-block d-none">
                         <li class="nav-item">
-                            <a href="/Login/" class="btn btn-sm  bg-gradient-info  btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">INICIAR SESIÓN</a>
+                            <a href="/Login/" class="btn btn-sm  bg-gradient-info  btn-round mb-0 me-1" onclick="smoothToPricing('pricing-soft-ui')">SIGN IN</a>
                         </li>
                     </ul>
                 </div>
@@ -37,9 +37,9 @@ echo $header;
                                                 <div class="col-12 col-lg-12 mx-auto my-4">
                                                     <div class="multisteps-form__progress">
                                                         <button class="multisteps-form__progress-btn js-active" title="User Info" disabled>
-                                                            <span>Información de usuario</span>
+                                                            <span>User Info</span>
                                                         </button>
-                                                        <button class="multisteps-form__progress-btn" title="Others" disabled>Otros</button>
+                                                        <button class="multisteps-form__progress-btn" title="Others" disabled>Others</button>
                                                         <!-- <button class="multisteps-form__progress-btn" title="Payment" disabled>Pago</button> -->
                                                     </div>
                                                 </div>
@@ -50,145 +50,148 @@ echo $header;
                                                     <form class="multisteps-form__form" id="add" action="/Register/Success" method="POST">
                                                         <!--single form panel-->
                                                         <div id="card_one" class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" id="card_one"data-animation="FadeIn">
-                                                            <h5 class="font-weight-bolder mb-0">INFORMACIÓN PERSONAL</h5>
-                                                            <p class="mb-0 text-sm">Completa el siguiente formulario para crear tu cuenta. Los campos marcados con un * son obligatorios. 
-                                                            Escribe tu nombre(s) y apellido(s) como deseas que se lea en tu constancia.</p>
+                                                            <h5 class="font-weight-bolder mb-0">PERSONAL INFORMATION</h5>
+                                                            <p class="mb-0 text-sm">Please complete the form below to create your Congress account. The fields marked with
+                                                                an * are compulsory.
+                                                                Please write your name(s) and surname(s) exactly as you want them to appear on your
+                                                                certificate.</p>
                                                             <div class="multisteps-form__content">
                                                                 <br>
-                                                                <p class="mb-0 text-sm">Para crear su cuenta del Congreso, proporcione una dirección de correo electrónico válida.</p>
+                                                                <p class="mb-0 text-sm">To create your Congress account, please provide a valid email address</p>
 
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-6">
-                                                                        <label>Correo Electrónico*</label>
+                                                                        <label>Email *</label>
                                                                         <input class="multisteps-form__input form-control all_input" type="email" id="email" name="email" placeholder="eg. user@domain.com" autocomplete="no">
-                                                                        <span class="mb-0 text-sm" id="error" style="display:none;color:red;">Correo incorrecto</span>
+                                                                        <span class="mb-0 text-sm" id="error" style="display:none;color:red;">Wrong email</span>
                                                                     </div>
                                                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                                        <label>Confirma tu Correo Electrónico *</label>
+                                                                        <label>Confirm Email *</label>
                                                                         <input class="multisteps-form__input form-control all_input all_email" type="email" id="confirm_email" name="confirm_email" placeholder="eg. user@domain.com" disabled autocomplete="no">
-                                                                        <span class="mb-0 text-sm" id="error_confirm" style="display:none;color:red;"><label style="color:red;"> El correo no coincide *</label></span>
+                                                                        <span class="mb-0 text-sm" id="error_confirm" style="display:none;color:red;"><label style="color:red;"> Email does not match *</label></span>
                                                                     </div>
                                                                     <input type="hidden" id="email_validado" name="email_validado" >
 
-                                                                    <p class="mb-0 text-sm">Todas las notificaciones de la WADD y la APM, incluyendo las facuras e información general del evento, solo serán enviadas a este correo electrónico.</p>
+                                                                    <p class="mb-0 text-sm">All information related to your registration, will be sent to this email
+                                                                        address</p>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-2">
-                                                                        <label>Prefijo *</label>
+                                                                        <label>Title *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="title" id="title" required disabled>
-                                                                            <option value="Dr.">Dr.</option>
-                                                                            <option value="Dra.">Dra.</option>
-                                                                            <option value="Sr.">Sr.</option>
-                                                                            <option value="Sra.">Sra.</option>
+                                                                            <option value="" disabled selected>Select Option</option>
+                                                                            <option value="Dr.">DR.</option>
+                                                                            <option value="Sr.">MR.</option>
+                                                                            <option value="Sra.">MSS.</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Nombre *</label>
+                                                                        <label>Name *</label>
                                                                         <input class="multisteps-form__input form-control all_input" type="text" id="name_user" name="name_user" maxlength="15" placeholder="eg. Christopher" required disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                                        <label>Segundo Nombre</label>
+                                                                        <label>Middle Name</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="middle_name" name="middle_name" maxlength="15" placeholder="eg. Prior" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-5">
-                                                                        <label>Primer apellido *</label>
+                                                                        <label>Surname *</label>
                                                                         <input class="multisteps-form__input form-control all_input" type="text" id="surname" name="surname" maxlength="15" placeholder="eg. Jones" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-5 mt-3 mt-sm-0">
-                                                                        <label>Segundo apellido</label>
+                                                                        <label>Second surname</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="second_surname" name="second_surname" maxlength="15" placeholder="eg. Wilson" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-2">
-                                                                        <label>Modalidad *</label>
+                                                                        <label>Modality *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="modality" id="modality" disabled>
                                                                             <option value="" disabled selected>Selecciona</option>
                                                                             <option value="Virtual">Virtual</option>
-                                                                            <option value="Presencial">Presencial</option>
+                                                                            <option value="On Site">Presencial</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Teléfono</label>
+                                                                        <label>Telephone</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone" name="telephone" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="ej. (555) 555-1234" autocomplete="no" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Código de país</label>
+                                                                        <label>International dialling code</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone_code" name="telephone_code" maxlength="3" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="ej. +1" autocomplete="no" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Especialidades *</label>
+                                                                        <label>Specialties *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="specialties" id="specialties" disabled>
-                                                                            <option value="" disabled selected>Selecciona una Opción</option>
-                                                                            <option value="Psychiatrist">Psiquiatría</option>
-                                                                            <option value="Child_Psychiatry">Psiquiatría infantil</option>
-                                                                            <option value="Neurology">Neurología</option>
-                                                                            <option value="Pediatric_Neurology">Neurología Pediátrica</option>
-                                                                            <option value="Paidapsychiatry">Paidopsiquiatría</option>
-                                                                            <option value="Pedagogy">Pedagogía</option>
-                                                                            <option value="Psychogeriatrics">Psicogeriatría</option>
-                                                                            <option value="Psychology">Psicología</option>
-                                                                            <option value="Clinical_psychology">Psicología clínica</option>
-                                                                            <option value="Residents">Residentes</option>
-                                                                            <option value="Students">Estudiantes</option>
-                                                                            <option value="Others">Otros</option>
+                                                                            <option value="" disabled selected>Select Option</option>
+                                                                            <option value="Psychiatrist">Psychiatrist</option>
+                                                                            <option value="Child_Psychiatry">Child Psychiatry</option>
+                                                                            <option value="Neurology">Neurology</option>
+                                                                            <option value="Pediatric_Neurology">Pediatric Neurology</option>
+                                                                            <option value="Paidapsychiatry">Paidapsychiatry</option>
+                                                                            <option value="Pedagogy">Pedagogy</option>
+                                                                            <option value="Psychogeriatrics">Psychogeriatrics</option>
+                                                                            <option value="Psychology">Psychology</option>
+                                                                            <option value="Clinical_psychology">Clinical Psychology</option>
+                                                                            <option value="Residents">Residents</option>
+                                                                            <option value="Students">Students</option>
+                                                                            <option value="Others">Others</option>
 
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Nacionalidad *</label>
+                                                                        <label>Nationality *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="nationality" id="nationality" onchange="actualizaEdos();" disabled>
                                                                             <option value="" disabled selected>Selecciona una Opción</option>
                                                                             <?php echo $idCountry; ?>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-12 col-sm-4 mt-3 mt-sm-0">
-                                                                        <label>Estado *</label>
+                                                                        <label>State *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="state" id="state" disabled>
 
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-12 col-sm-4 mt-3 mt-sm-0">
-                                                                        <label>País de residencia *</label>
+                                                                        <label>Country of Residence *</label>
                                                                         <select class="multisteps-form__select form-control all_input_select" name="residence" id="residence" disabled>
-                                                                            <option value="" disabled selected>Selecciona una Opción</option>
+                                                                            <option value="" disabled selected>Select Option</option>
                                                                             <?php echo $idCountry; ?>
                                                                         </select>
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="button-row d-flex mt-4">
-                                                                    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next_one" type="button" title="Next" disabled>Siguiente</button>
+                                                                    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next_one" type="button" title="Next" disabled>Next</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!--single form panel-->
                                                         <div id="card_two" class="card multisteps-form__panel p-3 border-radius-xl bg-white" data-animation="FadeIn">
-                                                            <h5 class="font-weight-bolder">INFORMACIÓN ADICIONAL</h5>
+                                                            <h5 class="font-weight-bolder">ADDITIONAL INFORMATION</h5>
                                                             <div class="multisteps-form__content">
                                                                 <div class="row mt-3">
                                                                     <div class="col">
-                                                                        <label>Organización *</label>
+                                                                        <label>Organization *</label>
                                                                         <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="35" id="organization" name="organization" placeholder="eg. Associated APM">
                                                                     </div>
                                                                     <div class="col">
-                                                                        <label>Puesto *</label>
+                                                                        <label>Position *</label>
                                                                         <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="25" id="position" name="position" placeholder="eg. Associated">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-6">
-                                                                        <label>Dirección</label>
+                                                                        <label>Address</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="address" maxlength="50" name="address" placeholder="eg. 1388 Sutter Street
                                                                                 San Francisco 94109 California USA">
                                                                     </div>
                                                                     <div class="col-6 col-sm-3 mt-3 mt-sm-0">
-                                                                        <label>País *</label>
+                                                                        <label>Organization Country *</label>
                                                                         <select class="multisteps-form__select form-control all_input_second_select" id="organization_country" name="organization_country">
                                                                             <option value="" disabled selected>Selecciona una Opción</option>
                                                                             <?php echo $idCountry; ?>
@@ -196,61 +199,61 @@ echo $header;
                                                                     </div>
                                                                     <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                                                                         <div class="col-12 col-sm-6">
-                                                                            <label>C.P *</label>
+                                                                            <label>Postal Code *</label>
                                                                             <input class="multisteps-form__input form-control" type="text" id="organization_postal_code" name="organization_postal_code" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. 50398">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <br>
-                                                            <h5 class="font-weight-bolder">ACERCA DE SUS SUSCRIPCIONES</h5>
+                                                            <h5 class="font-weight-bolder">ABOUT YOUR SUBSCRIPTIONS</h5>
                                                             <div class="multisteps-form__content">
                                                                 <div class="row mt-3">
                                                                     <div class="col-4">
-                                                                        <label>¿Eres miembro de la WADD? *</label>
+                                                                        <label>Are you a WADD member? *</label>
                                                                         <select class="multisteps-form__select form-control all_input_second_select" id="wadd_member" name="wadd_member">
-                                                                            <option value="" disabled selected>Selecciona una Opción</option>
-                                                                            <option value="1">Si</option>
+                                                                            <option value="" disabled selected>Select Option</option>
+                                                                            <option value="1">Yes</option>
                                                                             <option value="2">No</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-4">
-                                                                        <label>¿Eres socio de la APM? *</label>
+                                                                        <label>Are you a APM member? *</label>
                                                                         <select class="multisteps-form__select form-control all_input_second_select" id="apm_member" name="apm_member">
-                                                                            <option value="" disabled selected>Selecciona una Opción</option>
-                                                                            <option value="1">Si</option>
+                                                                            <option value="" disabled selected>Select Option</option>
+                                                                            <option value="1">Yes</option>
                                                                             <option value="2">No</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-4">
-                                                                        <label>¿Eres miembro de alguna otra asociación?</label>
+                                                                        <label>Are you a member of any other association?</label>
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="APM_radio" id="APAL" value="APAL" aria-label="APAL">
+                                                                            <input class="form-check-input" type="radio" name="APM_REG" id="APAL" value="APAL" aria-label="APAL">
                                                                             <label class="form-check-label" for="APAL">APAL</label>
                                                                         </div>
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="APM_radio" id="AILANCYP" value="AILANCYP" aria-label="AILANCYP">
-                                                                            <label class="form-check-label" for="AILANCYP">AILANCYP</label>
+                                                                            <input class="form-check-input" type="radio" name="APM_REG" id="AILANCYP" value="AILANCYP" aria-label="AILANCYP">
+                                                                            <label class="form-check-label" for="APAL">AILANCYP</label>
                                                                         </div>
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="APM_radio" id="AMPI" value="AMPI" aria-label="AMPI">
+                                                                            <input class="form-check-input" type="radio" name="APM_REG" id="AMPI" value="AMPI" aria-label="AMPI">
                                                                             <label class="form-check-label" for="AMPI">AMPI</label>
                                                                         </div>
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="APM_radio" id="LC" value="LC" aria-label="LC">
-                                                                            <label class="form-check-label" for="LC">Países de América Latina y el Caribe</label>
+                                                                            <input class="form-check-input" type="radio" name="APM_REG" id="LC" value="LC" aria-label="LC">
+                                                                            <label class="form-check-label" for="LC">Latin America and the Caribbean</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <br>
-                                                            <h5 class="font-weight-bolder">CÓDIGO DE DESCUENTO</h5>
-                                                            <h6>Si tienes un código de beca o un código de descuento, favor de escribirlo en el siguiente espacio.</h6>
+                                                            <h5 class="font-weight-bolder">DISCOUNT CODE</h5>
+                                                            <h6>If you have a scholarship or speaker code, please enter it below</h6>
                                                             <div class="multisteps-form__content mt-3">
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-4"></div>
                                                                     <div class="col-12 col-sm-4">
-                                                                        <label>Beca/Código de descuento</label>
+                                                                        <label>Scholarship/Speaker code</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="scholarship" name="scholarship" maxlength="10" placeholder="eg. XXX0X0X0X0">
                                                                     </div>
                                                                     <div class="col-12 col-sm-4 mt-3 mt-sm-0"></div>
@@ -258,7 +261,7 @@ echo $header;
                                                             </div>
                                                             <div>
                                                                 <div class="button-row d-flex mt-4">
-                                                                    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next_two" type="button" title="Next" disabled>Siguiente</button>
+                                                                    <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" id="next_two" type="button" title="Next" disabled>Next</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -399,9 +402,10 @@ echo $header;
                                                                 <div class="row text-center">
                                                                     <div class="row text-center mt-1">
                                                                         <div class="col-10 mx-auto">
-                                                                            <h5 class="font-weight-normal">Información Fiscal:</h5>
+                                                                            <h5 class="font-weight-normal">VAT INFORMATION:</h5>
                                                                             <p class="mb-0 text-sm">
-                                                                            AVISO SAT: Si usted requiere factura, solo necesitamos la siguiente información para la expedición.
+                                                                            SAT notice: If you request a receipt, only your VAT CODE (RFC) is needed; no further data is
+                                                                                required for issuance.
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -410,17 +414,17 @@ echo $header;
                                                                 <div class="row mt-0">
                                                                     <div class="row mt-1">
                                                                         <div class="col-12 col-sm-4">
-                                                                            <label>Razón Social *</label>
+                                                                            <label>Business name *</label>
                                                                             <input class="multisteps-form__input form-control" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="20" onfocus="focused(this)" onfocusout="defocused(this)">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
-                                                                            <label>RFC *</label>
+                                                                            <label>VAT Code *</label>
                                                                             <input class="multisteps-form__input form-control" type="text" id="code_iva" name="code_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
-                                                                            <label>Método de Pago *</label>
+                                                                            <label>Payment method *</label>
                                                                             <select class="multisteps-form__select form-control all_input_select" name="payment_method_iva" id="payment_method_iva">
-                                                                                <option value="" disabled selected>Selecciona una Opción</option>
+                                                                                <option value="" disabled selected>Select Option</option>
                                                                                 <option value="ELECTRONIC TRANSFER">ELECTRONIC TRANSFER</option>
                                                                                 <option value="CREDIT OR DEBIT CARD">CREDIT OR DEBIT CARD</option>
                                                                             </select>
@@ -428,12 +432,12 @@ echo $header;
                                                                     </div>
                                                                     <div class="row mt-1">
                                                                         <div class="col-12 col-sm-5">
-                                                                            <label>Correo Electrónico facturación * </label>
+                                                                            <label>Email to send the receipt * </label>
                                                                             <input class="multisteps-form__input form-control" type="text"  id="email_receipt_iva" name="email_receipt_iva" placeholder="eg. user@domain.com" onfocus="focused(this)" onfocusout="defocused(this)">
                                                                             <span class="mb-0 text-sm" id="error_email_send" style="display:none;color:red;">Wrong email</span>
                                                                         </div>
                                                                         <div class="col-12 col-sm-2">
-                                                                            <label>C.P *</label>
+                                                                            <label>Postal Code *</label>
                                                                             <input class="multisteps-form__input form-control" type="text" id="postal_code_iva" name="postal_code_iva" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. 50398">
                                                                         </div>
                                                                     </div>
@@ -442,7 +446,9 @@ echo $header;
                                                                     </div>
                                                                     <div class="row text-center mt-1">
                                                                         <div class="col-10 mx-auto">
-                                                                            <p class="mb-0 text-sm">Una vez que el pago haya sido ifentificado, usted recibirá su factura dentro de las 48 horas posteriores. Para reportar retrasos, favor de enviar un correo con su comprobante de pago adjunto a apm@psiquiatrasapm.org.mx recuerde que la expedición de facturas solo podrá realizarse en el mes correspondiente al pago.</p>
+                                                                            <p class="mb-0 text-sm">Once payment has been identified, you will receive your donation receipt within 48 hours. To
+                                                                                report delays send a copy of your payment slip to apm@psiquiatrasapm.org.mx.
+                                                                                Please remember that receipts can only be issued within the month of your deposit.To finish your registration select button Register</p>
                                                                         </div>
                                                                     </div>
                                                                     <div class="button-row d-flex mt-1">
@@ -456,51 +462,48 @@ echo $header;
                                                         <div class="card p-1 border-radius-xl bg-white" id="card_six" data-animation="FadeIn" style="display: none;">
                                                             <div class="row text-center">
                                                                 <div class="col-10 mx-auto">
-                                                                    <h5 class="font-weight-normal">TÉRMINOS Y CONDICIONES :</h5>
-                                                                    <textarea class="form-control" rows="11" cols="50" disabled>PAGO
-Su cuota de inscripción deberá ser liquidad antes de la fecha límite señalada en su correo. Su
-registro no está confirmado hasta haber confirmado su pago y al recibir su correo de
-confirmación con su código de barras.
-Asegúrese de que todos los cargos bancarios estén cubiertos al realizar su pago, WADD/APM
-no cubrirán ningún cargo en las transacciones. Los registros incompletos se cancelarán
-después de la fecha límite de pago indicada anteriormente.
-Tenga en cuenta que las inscripciones y/o los pagos no estarán disponibles el día del evento,
-así que le pedimos registrarse con anticipación.
-REEMBOLSOS
-Los pagos no son reembolsables en ningún caso.
-FACTURACIÓN
-La Asociación Psiquiátrica Mexicana, A.C. es una sociedad sin fines de lucro y, por lo tanto, solo
-puede emitir facturas para personas físicas y morales dentro de México. Debido a nuestro
-régimen fiscal, esto debe emitirse dentro del mes de su depósito. No podemos emitir una
-factura fuera de este tiempo.
-PROTECCIÓN DE DATOS
-Gracias por completar el formulario. Esta información se utilizará con el propósito de su
-inscripción al IV Congreso Mundial de Patología Dual 2022, y para análisis estadísticos y de
-mercado.
-Usamos su información para procesar su solicitud de registro y para comunicarnos con usted
-acerca de este evento.
-Brindamos temporalmente información personal a empresas que nos brindan servicios y les
-solicitamos que protejan su información de la misma manera que lo hacemos nosotros.
-Al presentar su gafete a los expositores y patrocinadores para que lo escaneen, expresa su
-consentimiento para compartir sus datos personales con ellos.
-SEGURIDAD DE DATOS:
-Tomamos medidas necesarias para proteger su información contra pérdida, uso indebido y
-acceso no autorizado. Cuando la información personal se transfiere a través de Internet, la
-encriptamos utilizando la tecnología de encriptación Transfer Layer Security (TLS) o una
-tecnología similar.
-SUS DERECHOS:
-Tiene derecho a recibir la información que tenemos sobre usted, solicitar su corrección o, en
-determinadas circunstancias, su eliminación.
-CONTACTANOS:
-Las consultas relacionadas con la protección de datos pueden dirigirse a nuestra oficina de
-protección de datos en contact@grupolahe.com
-POLÍTICAS DE PRIVACIDAD:
-Para obtener información completa sobre nuestras prácticas de protección de datos, siga el
-enlace a continuación a nuestro Aviso de privacidad.
+                                                                    <h5 class="font-weight-normal">TERMS AND CONDITIONS: </h5>
+                                                                    <textarea class="form-control" rows="11" cols="50" disabled>PAYMENT
+The conference fee must be paid in full by the deadline on your payment form. Registration is
+not guaranteed until you have paid and received a confirmation email with your bar code.
+Ensure that all the bank charges are covered when making your payment, WADD/APM cannot
+cover any shortfall on transactions. Incomplete bookings will be cancelled after the payment
+deadline as indicated above.
+Please note that registrations and/or payments are not available on the day of the event, so
+please do register in advance.
+REFUNDS
+Fees are non-refundable.
+RECEIPT
+Asociación Psiquiátrica Mexicana, A.C. is an non-profit society and can therefore only issue
+receipts that are tax-deductible for individuals and companies within Mexico. Due to our tax
+status, this must be issued within the month of your deposit. We are unable to produce a receipt
+outside this time.
+DATA PROTECTION.
+Thank you for completing the form. This information will be used for the purpose of your
+registration to IV World Congress on Dual Disorders 2022, and for statistical and market analysis.
+We use your information to process your registration application and to communicate with you
+about this event.
+We temporarily provide personal information to companies that perform services to us and
+require them to protect your information in the same way we do.
+Presenting your delegate badge to exhibitors and sponsors for scanning expresses your
+consent to share your personal details with them.
+DATA SECURITY:
+We take commercially reasonable steps to protect your information from loss, misuse, and
+unauthorized access. When personal information is transferred over the Internet, we encrypt it
+using Transfer Layer Security (TLS) encryption technology or similar technology.
+YOUR RIGHTS:
+You have the right to receive the information we hold about you, ask to correct it or, under
+certain circumstances, to delete it.
+CONTACT US:
+Inquiries regarding data protection can be directed to our data protection office at
+contact@grupolahe.com
+PRIVACY NOTICE:
+For complete information about our data protection practices, follow the link below to our
+Privacy notice.
                                                                         </textarea>
 
                                                                     <div class="button-row mt-2">
-                                                                        <button class="btn bg-gradient-success ms-auto mb-0" type="submit">HE LEÍDO LOS TERMINOS Y CONDICIONES Y ESTOY DE ACUERDO</button>
+                                                                        <button class="btn bg-gradient-success ms-auto mb-0" type="submit">I HAVE READ THE TERMS AND CONDITIONS AND I AGREE</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
