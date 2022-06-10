@@ -285,7 +285,7 @@ html;
         })
         .fail(function() 
         {
-          alert("Ocurrio un error al actualizar el estado intenta de nuevo");
+          alert("There was an error updating the status, please try again");
         })
       }
         
@@ -687,7 +687,7 @@ html;
 
         if($parametro == "error")
         {
-            $mensaje = "Al parecer ha ocurrido un problema";
+            $mensaje = "AIt seems a problem has occurred";
         }
 
         View::set('regreso',$regreso);
@@ -733,7 +733,7 @@ html;
         {
             $html="";
             $html.='
-                <option value="" disabled selected>Selecciona una Opción</option>
+                <option value="" disabled selected>Select an Option</option>
                 <option value="2537">Aguascalientes</option>
                 <option value="2538">Baja California</option>
                 <option value="2539">Baja California Sur</option>

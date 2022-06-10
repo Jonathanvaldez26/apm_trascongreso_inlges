@@ -66,7 +66,7 @@ class Login{
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/vnd.microsoft.icon" href="../../../assets/img/logos/apmn.png">
         <title>
-           Login - VI Congreso Mundial de Patología Dual
+           Login
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -222,7 +222,7 @@ html;
                     });
 
                     return response;
-                },"Este usuario no esta registrado");
+                },"This user is not registered");
 
                 $("#login").validate({
                    rules:{
@@ -236,10 +236,10 @@ html;
                     },
                     messages:{
                         usuario:{
-                            required: "Este campo es requerido",
+                            required: "This field is required",
                         },
                         password:{
-                            required: "Este campo es requerido",
+                            required: "This field is required",
                         }
                     }
                 });
@@ -261,10 +261,10 @@ html;
                                     $("#login").submit();
 
                             }else{
-                                alertify.alert("Error de autenticación <br> El usuario o contraseña es incorrecta");
+                                alertify.alert("Authentication error <br> The username or password is incorrect");
                             }
                             }else{
-                                alertify.alert("Error de autenticación <br> El usuario o contraseña es incorrecta");
+                                alertify.alert("Authentication error <br> The username or password is incorrect");
                             }
                         }
                     });
