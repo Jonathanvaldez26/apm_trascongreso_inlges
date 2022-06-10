@@ -15,7 +15,7 @@ class Register
     {
         $mysqli = Database::getInstance();
         $query = <<<sql
-        INSERT INTO utilerias_administradores(socio,usuario,title,name_user,middle_name,surname,second_surname,telephone,international_code,id_nationality,specialties,modality,id_state,id_country,organization,position_organization,address,organization_country,organization_postal_code,wadd_member,apm_member,APAL, AILANCYP, AMPI, LC,scholarship,business_name_iva,code_iva,payment_method_iva,email_receipt_iva,postal_code_iva,pay_ticket,status,envio_email,date,method_pay,reference,amout_due) VALUES(:socio,:usuario,:title,:name_user,:middle_name,:surname,:second_surname,:telephone,:international_code,:id_nationality,:specialties,:modality,:id_state, :id_country,:organization,:position_organization,:address,:organization_country,:organization_postal_code,:wadd_member,:apm_member,:APAL, :AILANCYP, :AMPI, :LC, :scholarship,:business_name_iva,:code_iva,:payment_method_iva,:email_receipt_iva,:postal_code_iva, null, 0,0,now(),:method_pay, :reference, :amout_due)                        
+        INSERT INTO utilerias_administradores(socio,usuario,title,name_user,middle_name,surname,second_surname,telephone,international_code,id_nationality,specialties,modality,id_state,id_country,organization,position_organization,address,organization_country,organization_postal_code,wadd_member,apm_member,APAL, AILANCYP, AMPI, LC,scholarship,business_name_iva,code_iva,payment_method_iva,email_receipt_iva,postal_code_iva,pay_ticket,status,envio_email,date,method_pay,reference,amout_due,sitio) VALUES(:socio,:usuario,:title,:name_user,:middle_name,:surname,:second_surname,:telephone,:international_code,:id_nationality,:specialties,:modality,:id_state, :id_country,:organization,:position_organization,:address,:organization_country,:organization_postal_code,:wadd_member,:apm_member,:APAL, :AILANCYP, :AMPI, :LC, :scholarship,:business_name_iva,:code_iva,:payment_method_iva,:email_receipt_iva,:postal_code_iva, null, 0,0,now(),:method_pay, :reference, :amout_due,:sitio)                        
 sql;
 
         $parametros = array(
@@ -52,7 +52,8 @@ sql;
             ':email_receipt_iva' => $register->_email_receipt_iva,
             ':postal_code_iva' => $register->_postal_code_iva,
             ':reference' => $register->_reference_user,
-            ':amout_due' => $register->_costo
+            ':amout_due' => $register->_costo,
+            ':sitio' => 2
         );
 
         $id = $mysqli->insert($query, $parametros);
