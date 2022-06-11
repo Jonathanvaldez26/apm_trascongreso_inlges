@@ -332,7 +332,7 @@ html;
                         <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
                         <div style = "display: flex; justify-content:start">
                             <p class="badge badge-info" style="margin-left: 5px;margin-bottom: 38px;">
-                            Waiting for payment validation.
+                            Waiting for payment validation. If you have already <br> made your payment or want to reprint the payment ticket, <br> <a href="/ComprobantePago/" style="color: #08a1c4; text-decoration: underline;">click here</a>
                             </p>
                    
                         </div>
@@ -408,7 +408,7 @@ html;
                             <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
                             <div style = "display: flex; justify-content:start">
                                 <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
-                                    Your payment could not be validated, upload your receipt again or contact support.
+                                    Your payment could not be validated, upload your receipt again <br> or contact support.
                                 </p>
                        
                             </div>
@@ -710,7 +710,7 @@ html;
 
                         <div style = "display: flex; justify-content:start">
                             <p class="badge badge-info" style="margin-left: 5px;margin-bottom: 38px;">
-                            Waiting for payment validation.
+                            Waiting for payment validation. If you have already <br> made your payment or want to reprint the payment ticket, <br> <a href="/ComprobantePago/" style="color: #08a1c4; text-decoration: underline;">click here</a>
                             </p>
                 
                         </div>
@@ -804,7 +804,7 @@ html;
 
                             <div style = "display: flex; justify-content:start">
                                 <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
-                                Your payment could not be validated, upload your receipt again or contact support.
+                                Your payment could not be validated, upload your receipt again <br> or contact support.
                                 </p>
 
                             </div>
