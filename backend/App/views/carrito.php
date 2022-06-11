@@ -125,7 +125,7 @@
                         <input type='hidden' name='clave' value="<?=$clave?>"> 
 
                         <br><br><br>
-                        <input type='text' name='business' value='jvaldez_2610@hotmail.com'> 
+                        <input type='text' name='business' value='aspsiqm@prodigy.net.mx'> 
                         <input type='text' name='item_name' value='<?=$producto_s?>'> 
                         <input type='text' name='item_number' value="<?=$clave?>"> 
                         <input type='text' name='amount' value='<?=$total?>'> 

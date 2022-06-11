@@ -262,7 +262,7 @@ public function getAllComprobantesPagoById($id_user){
 
             $total_paypal = number_format(array_sum($total_array_paypal));
             $reimprimir_ticket = '<form method="POST"  action="https://www.paypal.com/es/cgi-bin/webscr" data-form-paypal='.$value["id_pendiente_pago"].' target="_blank">
-            <input type="hidden" name="business" value="jvaldez_2610@hotmail.com"> 
+            <input type="hidden" name="business" value="aspsiqm@prodigy.net.mx"> 
             <input type="hidden" name="item_name" value="'.$nombre_producto.'"> 
             <input type="hidden" name="item_number" value="'.$value["clave"].'"> 
             <input type="hidden" name="amount" value="'.$total_paypal.'"> 

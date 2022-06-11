@@ -982,7 +982,7 @@ html;
 
                     <!-- campos para paypal -->
                     <input type="hidden" name="charset" value="utf-8">
-                    <input type='hidden' name='business' value='jvaldez_2610@hotmail.com'> 
+                    <input type='hidden' name='business' value='aspsiqm@prodigy.net.mx'> 
                     <input type='hidden' name='item_name' value='{$datos['nombre_ingles']}'> 
                     <input type='hidden' name='item_number' value="{$clave}"> 
                     <input type='hidden' name='amount' value='{$solo_precio_curso}'> 
