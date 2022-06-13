@@ -518,6 +518,14 @@ html;
         foreach ($cursos as $key => $value) {
             $progreso = TalleresDao::getProductProgreso($_SESSION['user_id'], $value['id_producto']);
 
+            if($value['es_congreso'] == 1){
+                $precio = $value['amout_due'];
+            }else if($value['es_servicio'] == 1){
+                $precio = $value['precio_publico'];
+            }else if($value['es_curso'] == 1){
+                $precio = $value['precio_publico'];
+            }
+
             $max_time = $value['duracion'];
             $duracion_sec = substr($max_time, strlen($max_time) - 2, 2);
             $duracion_min = substr($max_time, strlen($max_time) - 5, 2);
@@ -588,7 +596,7 @@ html;
                     </div>
                 </div>
                 <div class="card-footer">
-                <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['precio_publico']}</b></p>
+                <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>{$precio}</b></p>
                 <div style = "display: flex; justify-content:start">
                     <p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
                     You already bought this course.
