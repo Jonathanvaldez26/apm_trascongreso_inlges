@@ -408,7 +408,7 @@ html;
                             <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
                             <div style = "display: flex; justify-content:start">
                                 <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
-                                    Your payment could not be validated, upload your receipt again <br> <a href="/ComprobantePago/" style="color: #bd0000; text-decoration: underline; font-weight: bold; font-size: 15px;">by clicking here</a> <br> or contact support.
+                                    Your payment could not be validated, upload your receipt again <br> <a href="/ComprobantePago/" style="color: #bd0000; text-decoration: underline; font-weight: bold; font-size: 15px;">by clicking here</a> 
                                 </p>
                        
                             </div>
@@ -804,7 +804,7 @@ html;
 
                             <div style = "display: flex; justify-content:start">
                                 <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
-                                Your payment could not be validated, upload your receipt again <br> <a href="/ComprobantePago/" style="color: #bd0000; text-decoration: underline; font-weight: bold; font-size: 15px;">by clicking here</a> <br> or contact support.
+                                Your payment could not be validated, upload your receipt again <br> <a href="/ComprobantePago/" style="color: #bd0000; text-decoration: underline; font-weight: bold; font-size: 15px;">by clicking here</a>
                                 </p>
 
                             </div>
