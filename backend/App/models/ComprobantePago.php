@@ -48,7 +48,7 @@ sql;
         $mysqli = Database::getInstance(true);
         // var_dump($user);
         $query=<<<sql
-        UPDATE pendiente_pago SET url_archivo = :url_archivo  WHERE id_pendiente_pago = :id_pendiente_pago;
+        UPDATE pendiente_pago SET url_archivo = :url_archivo, status = 0  WHERE id_pendiente_pago = :id_pendiente_pago;
 sql;
         $parametros = array(
           ':url_archivo'=>$data->_url,
