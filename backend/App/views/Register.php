@@ -415,7 +415,7 @@ echo $header;
                                                                     <div class="row mt-1">
                                                                         <div class="col-12 col-sm-4">
                                                                             <label>Business name *</label>
-                                                                            <input class="multisteps-form__input form-control" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="20" onfocus="focused(this)" onfocusout="defocused(this)">
+                                                                            <input class="multisteps-form__input form-control" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="100" onfocus="focused(this)" onfocusout="defocused(this)">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
                                                                             <label>VAT Code *</label>
