@@ -468,7 +468,7 @@ html;
             $pdf->SetXY(118, $espace);
             $pdf->SetFont('Arial', 'B', 8);  
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Multicell(100, 4, '$ '.$precio, 0, 'C');
+            $pdf->Multicell(100, 4, '$ '.$precio.' '.$value['tipo_moneda'], 0, 'C');
 
             $espace = $espace + 8;
         }
@@ -485,11 +485,11 @@ html;
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, $fecha, 0, 'C');
 
-        //total
-        $pdf->SetXY(118, 170);
-        $pdf->SetFont('Arial', 'B', 8);  
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(100, 10, 'TOTAL : '.number_format(array_sum($total),2), 0, 'C');
+        // //total
+        // $pdf->SetXY(118, 170);
+        // $pdf->SetFont('Arial', 'B', 8);  
+        // $pdf->SetTextColor(0, 0, 0);
+        // $pdf->Multicell(100, 10, 'TOTAL : '.number_format(array_sum($total),2), 0, 'C');
 
         $pdf->Output();
         // $pdf->Output('F','constancias/'.$clave.$id_curso.'.pdf');

@@ -182,6 +182,7 @@ class OrdenPago extends Controller
         $fecha =  date("Y-m-d");
         $monto = $_POST['costo'];
         $tipo_pago = $_POST['tipo_pago'];
+        $tipo_moneda = $_POST['tipo_moneda'];
         $status = 0;
 
         $documento->_id_producto = $id_producto;
@@ -231,7 +232,7 @@ class OrdenPago extends Controller
         $pdf->SetXY(118, 125);
         $pdf->SetFont('Arial', 'B', 8);  
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(100, 10, '$ '.$monto, 0, 'C');
+        $pdf->Multicell(100, 10, '$ '.$monto.' '.$tipo_moneda, 0, 'C');
 
         //folio
         $pdf->SetXY(118, 42.5);
