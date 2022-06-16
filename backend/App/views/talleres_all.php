@@ -385,7 +385,9 @@
                     }).then((result) => {
                     if (result.isConfirmed) {                        
                         $(this).closest(".form_compra").submit();                      
-
+                        setTimeout(function() { 
+                            location.reload();
+                        }, 1000);
                     }
                 })
             }
