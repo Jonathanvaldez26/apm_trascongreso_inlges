@@ -389,6 +389,7 @@ html;
         $_SESSION['usuario'] = $user['usuario'];
         $_SESSION['nombre'] = $user['nombre'];
         $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['clave_socio'] = $user['clave_socio'];
 
         // var_dump($usuario);
         // echo "<br>";

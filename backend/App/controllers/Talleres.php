@@ -481,8 +481,20 @@ html;
                     <div class="card-footer">
                         <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                         <div style = "display: flex; justify-content:start">
+html;
+
+                if($data_user['clave_socio'] == "" || empty($data_user['clave_socio'])){
+                    $card_cursos .= <<<html
                         <button class="btn btn-primary btn_comprar_individual" style="margin-right: 5px;margin-left: 5px; width:145px;"  value="{$value['id_producto']}">Buy</button>
                         <button class="btn btn-primary btn_cart" value="{$value['id_producto']}" style="margin-right: 5px;margin-left: 5px;">Add to cart <i class="fa far fa-cart-plus"></i></button>
+html;
+                }else{
+                    $card_cursos .= <<<html
+                    <button class="btn btn-primary btn_obtener_curso" style="margin-right: 5px;margin-left: 5px; width:auto;"  value="{$value['id_producto']}">Get Course</button>
+                   
+html;
+                }
+                $card_cursos .= <<<html
                     
                     </div>
                 </div>
@@ -1038,6 +1050,52 @@ html;
 
 
         return $modal;
+    }
+
+    public function AsignarCursoSocio(){
+
+        $id_pro = $_POST['id_producto'];
+        $prorducto = TalleresDao::getPorductById($id_pro);
+        $datos_user = HomeDao::getDataUserById($_SESSION['user_id']);
+        $clave = $this->generateRandomString();
+
+
+        $documento = new \stdClass();  
+
+        $nombre_curso = $prorducto['nombre'];
+        $id_producto = $id_pro;
+        $user_id = $_SESSION['user_id'];
+        $reference = $datos_user['reference'];
+        $fecha =  date("Y-m-d");
+        $monto = 0;
+        $tipo_pago = 'socio';
+        $status = 1;
+
+        $documento->_id_producto = $id_producto;
+        $documento->_user_id = $user_id;
+        $documento->_reference = $reference;
+        $documento->_clave = $clave;
+        $documento->_fecha = $fecha;
+        $documento->_monto = $monto;
+        $documento->_tipo_pago = $tipo_pago;
+        $documento->_status = $status;
+
+        $id = TalleresDao::inserPendientePago($documento);
+        if($id){
+            $data = new \stdClass();
+            $data->_user_id = $user_id;
+            $data->_id_producto = $id_pro;    
+
+            $insertAsiganProducto = TalleresDao::insertAsignaProducto($data);
+
+            if($insertAsiganProducto){
+                echo "success";
+            }else{
+                echo "fail";
+            }
+        }else{
+            echo "fail";
+        }
     }
 
     public function Video($clave)

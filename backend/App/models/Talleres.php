@@ -227,6 +227,24 @@ sql;
     return $mysqli->queryOne($query);
 }
 
+    public static function insertAsignaProducto($data){
+
+      $mysqli = Database::getInstance();
+      $query = <<<sql
+      INSERT INTO asigna_producto (user_id,id_producto,fecha_asignacion,status) VALUES(:user_id,:id_producto,NOW(),1)                        
+sql;
+
+      $parametros = array(
+          ':user_id' => $data->_user_id,
+          ':id_producto' => $data->_id_producto
+      );
+
+      $id = $mysqli->insert($query, $parametros);
+
+      return $id;
+        
+    }
+
     public static function getRespuestasPorUsuraioTaller($id_registrado,$id_curso){
 
       $mysqli = Database::getInstance();
@@ -583,7 +601,7 @@ sql;
   public static function inserPendientePago($data){ 
     $mysqli = Database::getInstance(1);
     $query=<<<sql
-    INSERT INTO pendiente_pago (id_producto, user_id, reference, clave,fecha, monto, tipo_pago, status) VALUES (:id_producto, :user_id, :reference,:clave,:fecha, :monto, :tipo_pago, :status);
+    INSERT INTO pendiente_pago (id_producto, user_id, reference, clave,fecha, monto, tipo_pago, status,comprado_en) VALUES (:id_producto, :user_id, :reference,:clave,:fecha, :monto, :tipo_pago, :status,1);
 sql;
 
   $parametros = array(
