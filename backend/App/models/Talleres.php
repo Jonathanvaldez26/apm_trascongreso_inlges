@@ -601,7 +601,11 @@ sql;
   public static function inserPendientePago($data){ 
     $mysqli = Database::getInstance(1);
     $query=<<<sql
+<<<<<<< HEAD
     INSERT INTO pendiente_pago (id_producto, user_id, reference, clave,fecha, monto, tipo_pago, status,comprado_en) VALUES (:id_producto, :user_id, :reference,:clave,:fecha, :monto, :tipo_pago, :status,1);
+=======
+    INSERT INTO pendiente_pago (id_producto, user_id, reference, clave,fecha, monto, tipo_pago, status, comprado_en) VALUES (:id_producto, :user_id, :reference,:clave,:fecha, :monto, :tipo_pago, :status, 1);
+>>>>>>> 47da68826b83e60cf19135ff78426c5d494af0c2
 sql;
 
   $parametros = array(

@@ -109,7 +109,7 @@ class OrdenPago extends Controller
         // $pdf->SetFont('Arial', 'B', 25);
         // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
 
-        $espace = 125;
+        $espace = 141;
         $total = array();
         foreach($productos as $key => $value){            
             
@@ -125,28 +125,28 @@ class OrdenPago extends Controller
             array_push($total,$precio);
 
             //Nombre Curso
-            $pdf->SetXY(12, $espace);
+            $pdf->SetXY(30, $espace);
             $pdf->SetFont('Arial', 'B', 8);  
             $pdf->SetTextColor(0, 0, 0);
             $pdf->Multicell(100, 4, utf8_decode($value['nombre']), 0, 'C');
 
             //Costo
-            $pdf->SetXY(118, $espace);
+            $pdf->SetXY(122, $espace);
             $pdf->SetFont('Arial', 'B', 8);  
             $pdf->SetTextColor(0, 0, 0);
             $pdf->Multicell(100, 4, '$ '.$precio.' ' .$value['tipo_moneda'], 0, 'C');
 
-            $espace = $espace + 8;
+            $espace = $espace + 10;
         }
 
         //folio
-        $pdf->SetXY(118, 42.5);
+        $pdf->SetXY(92, 60.5);
         $pdf->SetFont('Arial', 'B', 13);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, $reference, 0, 'C');
 
         //fecha
-        $pdf->SetXY(118, 51.5);
+        $pdf->SetXY(90, 70.5);
         $pdf->SetFont('Arial', 'B', 13);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, $fecha, 0, 'C');
@@ -182,6 +182,7 @@ class OrdenPago extends Controller
         $fecha =  date("Y-m-d");
         $monto = $_POST['costo'];
         $tipo_pago = $_POST['tipo_pago'];
+        $tipo_moneda = $_POST['tipo_moneda'];
         $status = 0;
 
         $documento->_id_producto = $id_producto;
@@ -222,25 +223,25 @@ class OrdenPago extends Controller
         //$num_linea2 =utf8_decode("Línea: 39");
 
         //Nombre Curso
-        $pdf->SetXY(12, 125);
+        $pdf->SetXY(30, 140);
         $pdf->SetFont('Arial', 'B', 8);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, utf8_decode($nombre_curso), 0, 'C');
 
         //Costo
-        $pdf->SetXY(118, 125);
+        $pdf->SetXY(122, 140);
         $pdf->SetFont('Arial', 'B', 8);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, '$ '.$monto, 0, 'C');
 
         //folio
-        $pdf->SetXY(118, 42.5);
+        $pdf->SetXY(92, 60.5);
         $pdf->SetFont('Arial', 'B', 13);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, $reference, 0, 'C');
 
         //fecha
-        $pdf->SetXY(118, 51.5);
+        $pdf->SetXY(90, 70.5);
         $pdf->SetFont('Arial', 'B', 13);  
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(100, 10, $fecha, 0, 'C');

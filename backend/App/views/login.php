@@ -148,23 +148,19 @@ echo $header;
                                             <div class="col-3">Segundos</div> -->
                                         </div>
                                     </div>
-                                    <p class="mb-0 mt-5">Enter the email with which you were registered to be able to Log In</p>
+                                    <p class="mb-0 mt-5">Enter your email to login or register.</p>
                                 </div>
                                 <!-- Button trigger modal -->
                                 <div class="card-body">
                                     <form role="form" class="text-start" id="login" action="/Login/crearSession" method="POST" class="form-horizontal">
-                                        <label>Do you have an account?</label>
-                                        <div class="mb-5">
+                                        <label>Email</label>
+                                        <div class="mb-1">
                                             <input type="email" name="usuario" id="usuario" class="form-control" placeholder="usuario@grupolahe.com" aria-label="Email">
                                         </div>
-                                        <!-- <label style="font-weight:bold; font-size: 15px">Contraseña</label> -->
-                                        <!-- <div class="mb-3">
-                                            <input type="password" name="password" id="password" class="form-control" placeholder="•••••••••" aria-label="Password">
-                                        </div> -->
-                                        <!-- <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                                            <label class="form-check-label" for="rememberMe">Recordar contraseña</label>
-                                        </div> -->
+
+                                        <div class="mb-1 text-center">
+                                            <img src="/assets/img/logos/seroquel.png" height="100" alt="">
+                                        </div>
 
                                         <div class="text-center">
                                             <button type="button" id="btnEntrar" class="btn bg-gradient-info w-100 mt-1 mb-0"><b style="color: #FFFFFF">SIGN IN</b></button>
