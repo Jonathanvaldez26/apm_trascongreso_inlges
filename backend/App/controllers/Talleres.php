@@ -470,6 +470,11 @@ html;
 
 html;
 
+                if($data_user['clave_socio'] == "" || empty($data_user['clave_socio'])){
+                    $costo = $value['precio_publico']." ".$value['tipo_moneda'];
+                }else{
+                    $costo = "0 USD";
+                }
 
                 $card_cursos .= <<<html
                             
@@ -479,7 +484,7 @@ html;
                         </div>
                     </div>
                     <div class="card-footer">
-                        <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
+                        <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$costo}</b></p>
                         <div style = "display: flex; justify-content:start">
 html;
 
