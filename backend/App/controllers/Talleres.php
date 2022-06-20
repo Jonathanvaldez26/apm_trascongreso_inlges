@@ -1979,20 +1979,17 @@ html;
     public function savePregunta()
     {
         $pregunta = $_POST['txt_pregunta'];
-        $salapre = $_POST['salapre'];
-        $id_tipopre = $_POST['id_tipopre'];
-
-
+        $sala = $_POST['sala'];
+        $id_tipo = $_POST['id_tipo'];
 
         $data = new \stdClass();
-        $data->_id_registrado = $_SESSION['id_registrado'];
+        $data->_id_registrado = $_SESSION['user_id'];
         $data->_pregunta = $pregunta;
-        $data->_tipopre = 2;
-        $data->_id_tipopre = $id_tipopre;
-        $data->_salapre = $salapre;
+        $data->_tipo = 2; //taller
+        $data->_id_tipo = $id_tipo;
+        $data->_sala = $sala;
 
-
-        $id = TransmisionDao::insertPregunta($data);
+        $id = TransmisionDao::insertNewPregunta($data);
 
         if ($id) {
             echo "success";
@@ -2038,6 +2035,22 @@ html;
             ];
             echo json_encode($data);
         }
+    }
+
+    public function getPreguntaById()
+    {
+        $id_tipo = $_POST['id_tipo'];
+        $sala = $_POST['sala'];
+
+        $taller = TalleresDao::getPorductById($id_tipo);
+        $data = new \stdClass();
+        $data->_tipo = 2;
+        $data->_sala = $sala;
+        $data->_id_tipo = $taller['id_producto'];
+
+        $pregunta_taller = TransmisionDao::getNewPreguntaByID($data);
+
+        echo json_encode($pregunta_taller);
     }
 
     public function updateProgress()
