@@ -26,8 +26,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Congress/">Congreso</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Congress/">Congress</a></li>
                     <li class="breadcrumb-item text-sm">Video</li>
                     <li class="breadcrumb-item text-sm"><?php echo $nombre_taller; ?></li>
                 </ol>
@@ -42,7 +42,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                            <span class="d-sm-inline d-none">Inicio</span>
+                            <span class="d-sm-inline d-none">Home</span>
                         </a>
                     </li>
                 </ul>
@@ -83,8 +83,7 @@
                         </div>
 
                         <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                        
-                            <a href="/Congress/VideoTraduccion/<?=$clave?>" class="btn" style="color:#000; background-color: orange;">Traducción</a>
+                            <a href="/Congress/VideoTraduccion/<?=$clave?>" class="btn" style="color:#000; background-color: orange;">Translation</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +143,7 @@
                                                 <img alt="Image" src="../../../img/users_musa/form.jpg" class="avatar">
                                                 <div class="ms-3">
                                                     <h6 class="mb-0 d-block"><?php echo $info_user['prefijo'] . ' ' . $info_user['nombre']; ?></h6>
-                                                    <span class="text-sm text-dark opacity-8">Tus Preguntas al Ponente</span>
+                                                    <span class="text-sm text-dark opacity-8">Your Questions to the Speaker</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -165,7 +164,7 @@
 
                                     <div class="input-group">
 
-                                        <input type="text" name="txt_pregunta" id="txt_pregunta" class="form-control" placeholder="Escribe tu pregunta al ponente aquí." aria-label="Message example input" onfocus="focused(this)" onfocusout="defocused(this)">
+                                        <input type="text" name="txt_pregunta" id="txt_pregunta" class="form-control" placeholder="Write your question to the speaker here." aria-label="Message example input" onfocus="focused(this)" onfocusout="defocused(this)">
                                     </div>
 
 
