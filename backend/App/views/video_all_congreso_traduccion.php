@@ -191,7 +191,7 @@
                                         <!-- <img alt="Image" src="../../../assets/img/bruce-mars.jpg" class="avatar"> -->
                                         <div class="ms-0 text-center">
                                             <!-- <h6 class="mb-0 d-block"><?php echo $info_user['prefijo'] . ' ' . $info_user['nombre']; ?></h6> -->
-                                            <span class="text-lg text-center text-dark opacity-8">Progreso <span id="porcentaje"><?php echo $porcentaje; ?> %</span> </span>
+                                            <span class="text-lg text-center text-dark opacity-8">Progress <span id="porcentaje"><?php echo $porcentaje; ?> %</span> </span>
                                         </div>
                                     </div>
                                 </div>
