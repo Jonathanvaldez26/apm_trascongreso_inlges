@@ -131,12 +131,15 @@
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-            <div class="card">
+                <div class="card">
                     <div class="card blur shadow-blur max-height-vh-70">
                         <div class="card-header shadow-lg">
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="d-flex align-items-center">
+                                        <!--<div id="cont_pregunta" class="text-scroll">
+                                <?php echo $cont_pregunta; ?>
+                            </div>-->
                                         <!--img alt="Image" src="assets/img/bruce-mars.jpg" class="avatar"-->
                                         <div class="ms-3">
                                             <div class="d-flex align-items-center">
@@ -157,8 +160,8 @@
                             <form class="align-items-center" autocomplete="nope" id="form_pregunta" method="post" onsubmit="return false;" accept-charset="utf-8">
                                 <div class="d-flex">
                                     <div class="input-group" style="display: none;">
-                                        <input type="text" name="id_tipopre" id="id_tipopre" value="<?= $id_curso; ?>">
-                                        <input type="text" name="salapre" id="salapre" value="1">
+                                        <input type="hidden" name="id_tipo" id="id_tipo" value="<?= $id_curso ?>">
+                                        <input type="hidden" name="sala" id="sala" value="1">
 
                                     </div>
 
@@ -168,10 +171,6 @@
                                     </div>
 
 
-                                    <div class="input-group" style="display: none;">
-                                        <input class="form-control" style="visibility: hidden" type="hidden" name="registrado" id="registrado" value="90323" onfocus="focused(this)" onfocusout="defocused(this)">
-
-                                    </div>
                                     <button class="btn bg-gradient-success mb-0 ms-2" onclick="savePregunta()">
                                         <i class="ni ni-send"></i>
                                     </button>
@@ -209,7 +208,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
 
@@ -265,6 +264,7 @@
 
 <script>
     intervalo1();
+
     function intervalo1() {
         intervalo = setInterval(chats, 60000, $("#id_tipo").val(), 1);
     }
@@ -306,11 +306,16 @@
     }
 
     function savePregunta() {
-        //event.preventDefault(event);
+        event.preventDefault(event);
         var formData = new FormData(document.getElementById("form_pregunta"));
 
-        var id_tipopre = formData.get('id_tipopre');
-        var salapre = formData.get('salapre');
+        var id_tipo = formData.get('id_tipo');
+        var sala = formData.get('sala');
+
+
+        for (var value of formData.values()) {
+            console.log(value);
+        }
 
         $.ajax({
             url: "/Talleres/savePregunta",
@@ -325,18 +330,15 @@
                 // alert('Se está borrando');
             },
             success: function(respuesta) {
-                console.log(respuesta);
-                if (respuesta == "success") {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Su preguntaha sido enviada correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-
-
+                //console.log(respuesta);
+                //preguntas(id_tipo, sala);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '¡Su pregunta fue enviada exitosamente!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
 
             },
             error: function(respuesta) {
@@ -397,6 +399,79 @@
 
         });
     }
+
+
+
+
+    function preguntas(id_tipo, sala) {
+
+        console.log(id_tipo);
+        console.log("sala " + sala);
+
+        $.ajax({
+            url: "/Talleres/getPreguntaById",
+            type: "POST",
+            data: {
+                id_tipo,
+                sala
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                console.log("Procesando....");
+                $("#cont_pregunta").empty();
+
+            },
+            success: function(respuesta) {
+
+                console.log(respuesta);
+                // var numero_noti = 0;
+
+                $.each(respuesta, function(index, el) {
+
+                    // console.log(el.title);
+                    var nombre_completo = el.name_user + ' ' + el.surname + ' ' + el.second_surname;
+
+                    $("#cont_pregunta").append(
+                        `<div class="d-flex mt-3">
+                            <div class="flex-shrink-0">
+                                <img alt="Image placeholder" class="avatar rounded-circle" src="../../../img/users_musa/${el.avatar_img}">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="h5 mt-0">${nombre_completo}</h6>
+                                <p class="text-sm">${el.chat}</p>
+                                
+                            </div>
+                        </div>`
+                    );
+                });
+
+
+
+            },
+            error: function(respuesta) {
+                console.log(respuesta);
+            }
+
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $(document).ready(function() {
 

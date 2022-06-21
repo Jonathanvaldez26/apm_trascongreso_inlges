@@ -46,6 +46,14 @@ sql;
     return $mysqli->queryOne($query);
   }
 
+  public static function getDataUserById($user_id){
+    $mysqli = Database::getInstance(true);
+    $query=<<<sql
+    SELECT * FROM utilerias_administradores WHERE user_id = $user_id
+sql;
+    return $mysqli->queryOne($query);
+  }
+
   public static function getItinerarioAsistente($id){
     $mysqli = Database::getInstance(true);
     $query=<<<sql

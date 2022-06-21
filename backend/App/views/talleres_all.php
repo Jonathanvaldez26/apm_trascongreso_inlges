@@ -281,6 +281,37 @@
 
 <script>
     $(document).ready(function(){
+
+        $(".btn_obtener_curso").on("click",function(){
+           var id_producto = $(this).val();
+
+            $.ajax({
+                url: "/Talleres/AsignarCursoSocio",
+                type: "POST",
+                data: {id_producto},
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+
+                    if(respuesta == "success"){
+                        Swal.fire("The course is assigned.","","success");
+                        setTimeout(function(){
+                            location.reload();
+                        },1000)
+                    }else{
+                        Swal.fire("There was an error assigning the course.","Consult support.","success");
+                    }
+                    
+                },
+                error: function(respuesta) {
+                    Swal.fire("There was an error assigning the course.","Consult support.","success");
+                    console.log(respuesta);
+                }
+            });
+            
+        })
         
         let identificadorIntervaloDeTiempo;
 
