@@ -23,7 +23,7 @@ sql;
     public static function getAllComprobantes($id){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT pro.nombre,pro.nombre_ingles,pro.precio_publico,pro.precio_socio,pro.tipo_moneda,pro.caratula,pro.es_curso,pro.es_servicio,pro.es_congreso,ua.amout_due,ua.wadd_member,ua.apm_member,ua.APAL,ua.AILANCYP,ua.AMPI,ua.LC ,pp.id_pendiente_pago,pp.status,pp.tipo_pago,pp.url_archivo,pp.clave
+      SELECT pro.nombre,pro.precio_publico,pro.precio_socio,pro.tipo_moneda,pro.caratula,pro.es_curso,pro.es_servicio,pro.es_congreso,ua.amout_due,ua.wadd_member,ua.apm_member,ua.APAL,ua.AILANCYP,ua.AMPI,ua.LC ,pp.id_pendiente_pago,pp.status,pp.tipo_pago,pp.url_archivo,pp.clave
       FROM productos pro
       INNER JOIN pendiente_pago pp ON (pro.id_producto = pp.id_producto)
       INNER JOIN utilerias_administradores ua ON(ua.user_id = pp.user_id)

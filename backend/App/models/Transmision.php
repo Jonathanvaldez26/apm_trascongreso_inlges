@@ -53,11 +53,11 @@ sql;
     public static function insertPregunta($data){
         $mysqli = Database::getInstance(1);
         $query=<<<sql
-        INSERT INTO preguntas_transmision (id_registrado, pregunta, 	fecha, tipo, id_tipo, sala) 
-        VALUES (:id_registrado,:pregunta,NOW(),:tipo,:id_tipo,:sala)
+        INSERT INTO new_preguntas (user_id, pregunta, 	fecha, tipo, id_tipo, sala) 
+        VALUES (:user_id,:pregunta,NOW(),:tipo,:id_tipo,:sala)
 sql;
         $parametros = array(
-            ':id_registrado'=>$data->_id_registrado,
+            ':user_id'=>$data->_user_id,
             ':pregunta'=>$data->_pregunta, 
             ':tipo'=>$data->_tipopre,
             ':id_tipo'=>$data->_id_tipopre,
@@ -107,6 +107,7 @@ sql;
         return $id;
     }
 
+
     public static function insertNewPregunta($data){
         $mysqli = Database::getInstance(1);
         $query=<<<sql
@@ -126,6 +127,7 @@ sql;
         return $id;
     }
 
+
 //     public static function getChatByID($data){
 //         $mysqli = Database::getInstance(true);
 //         $query =<<<sql
@@ -142,7 +144,7 @@ sql;
 //         );
 //         return $mysqli->queryAll($query, $parametros);
 //     }
-
+ 
     public static function getNewChatByID($data){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
@@ -176,6 +178,7 @@ sql;
         );
         return $mysqli->queryAll($query, $parametros);
     }
+    
 
     public static function updateProgreso($id_transmision, $registrado, $segundos){
         $mysqli = Database::getInstance();

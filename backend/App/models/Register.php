@@ -53,7 +53,7 @@ sql;
             ':postal_code_iva' => $register->_postal_code_iva,
             ':reference' => $register->_reference_user,
             ':amout_due' => $register->_costo,
-            ':sitio' => 2
+            ":sitio" => 1
         );
 
         $id = $mysqli->insert($query, $parametros);

@@ -14,7 +14,7 @@
         <!-- <div class="barra-amarilla"></div> -->
 
         <div class="barra-verde"></div>
-
+      
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg bg-gradient-yellow position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
             <div class="container-fluid py-1 px-3">
@@ -37,7 +37,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item text-sm"><a class="opacity-10 text-dark" href="javascript:;">Home</a></li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-10 text-dark" href="/Home/">Home</a></li>
                     </ol>
                 </nav>
 
@@ -103,8 +103,8 @@
                         </div> -->
 
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
-                            <a href="/Talleres/">
-                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/congress.png); background-size: contain;">
+                            <a href="/Congress/Video/6YETRFH">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_1.png); background-size: contain;">
                                     <div class="card-body mt-md-3 text-center content-card-home">
                                         <div class="col-12 text-center">
                                             
@@ -118,8 +118,8 @@
                         </div>
 
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
-                            <a href="/ComprobantePago/">
-                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/upload.png); background-size: contain;">
+                            <a href="/Congress/Video/5GYEPOFH">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_2.png); background-size: contain;">
                                     <div class="card-body mt-md-3 text-center content-card-home">
                                         <div class="col-12 text-center">
                                           
@@ -155,8 +155,8 @@
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <div class="row">
                                 <div class="col-12 col-md-12">
-                                    <a href="/Account/">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/personal.png); background-size: contain;  object-position: center center;">
+                                    <a href="/Congress/Video/9J45GFT">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_3.png); background-size: contain;  object-position: center center;">
                                             <div class="card-body mt-md-3 text-center content-card-home">
                                                 <div class="col-12 text-center">
                                                
@@ -173,26 +173,8 @@
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <div class="row">
                                 <div class="col-12 col-md-12">
-                                    <a href="#">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/.png); background-size: contain;  object-position: center center;">
-                                            <div class="card-body mt-md-3 text-center content-card-home">
-                                                <div class="col-12 text-center">
-                                               
-                                                </div>
-
-                                             
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
-                            <div class="row">
-                                <div class="col-12 col-md-12">
-                                    <a href="/Login/cerrarSession">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/leave.png); background-size: contain;  object-position: center center;">
+                                    <a href="/Congress/Video/SD9TRFH">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_4.png); background-size: contain;  object-position: center center;">
                                             <div class="card-body mt-md-3 text-center content-card-home">
                                                 <div class="col-12 text-center">
                                                
@@ -207,9 +189,9 @@
                         </div>
 
                         
-                        <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
-                            <a href="/Programa/">
-                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/13.png)">
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Congress/Video/JHFJ6D6">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_5.png);background-size: contain;  object-position: center center;">
                                     <div class="card-body mt-md-3 text-center content-card-home">
                                         <div class="col-12 text-center">
                                             
@@ -218,7 +200,33 @@
                                     </div>
                                 </div>
                             </a>
-                        </div> -->
+                        </div>
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Congress/Video/THF56DG">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_6.png);background-size: contain;  object-position: center center;">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="/Home/">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/regresar.png);background-size: contain;  object-position: center center;">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                         <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <a href="#">
                                 <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/5.png)">
