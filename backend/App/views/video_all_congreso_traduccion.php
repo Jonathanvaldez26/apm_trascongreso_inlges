@@ -144,7 +144,7 @@
                                                 <img alt="Image" src="../../../img/users_musa/form.jpg" class="avatar">
                                                 <div class="ms-3">
                                                     <h6 class="mb-0 d-block"><?php echo $info_user['prefijo'] . ' ' . $info_user['nombre']; ?></h6>
-                                                    <span class="text-sm text-dark opacity-8">Your Questions to the Speaker</span>
+                                                    <span class="text-sm text-dark opacity-8">Ask to Speaker</span>
                                                 </div>
                                             </div>
                                         </div>
