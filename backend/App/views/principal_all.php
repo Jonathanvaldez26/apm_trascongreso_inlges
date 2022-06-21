@@ -174,7 +174,7 @@
                             <div class="row">
                                 <div class="col-12 col-md-12">
                                     <a href="/Congress/">
-                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/.png); background-size: contain;  object-position: center center;">
+                                        <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_congreso.png); background-size: contain;  object-position: center center;">
                                             <div class="card-body mt-md-3 text-center content-card-home">
                                                 <div class="col-12 text-center">
                                                
