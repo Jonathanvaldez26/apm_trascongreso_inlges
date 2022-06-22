@@ -189,6 +189,19 @@
                         </div>
 
                         <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
+                            <a href="#" id="abrir_trivia">
+                                <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/Mesa_de_trabajo_11.png);background-size: contain;  object-position: center center;">
+                                    <div class="card-body mt-md-3 text-center content-card-home">
+                                        <div class="col-12 text-center">
+                                            
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <div class="row">
                                 <div class="col-12 col-md-12">
                                     <a href="/Login/cerrarSession">
@@ -206,7 +219,7 @@
                             </div>
                         </div>
 
-                        
+                        <input type="text" id="id_curso" name="id_curso" value="<?php echo $id_curso;?>">
                         <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <a href="/Programa/">
                                 <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/13.png)">
@@ -305,10 +318,42 @@
 
         </div>
 
-         <?php //echo $footer; ?> 
+         <?php echo $footer; ?> 
     </main>
 <!-- </div> -->
-    <?php echo $modalComprar?>
+ <!-- Modal -->
+ <div class="modal fade" id="encuesta" role="dialog" aria-labelledby="encuestaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-size" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="encuestaLabel">Trivia</h5>
+                    <button type="button" class="btn bg-gradient-danger text-lg btn-icon-only" data-dismiss="modal" aria-label="Close">
+                        <span class="" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="encuesta_curso" action="" method="post">
+                    <div class="modal-body">
+                        <div>
+                            <p class="text-success text-center">
+                                <strong>Instrucciones:</strong> Responde a cada una de las preguntas, que a continuación se presentan
+                            </p>
+                        </div>
+                        <hr class="horizontal dark my-3">
+                        <div class="encuesta">
+                            <?php echo $encuesta; ?>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="enviar_encuesta" class="btn bg-gradient-success">Enviar</button>
+                        <a href="" id="constancia_download" target="_blank" download style="display: none;">descargar</a>
+                        <a href="" id="constancia_download_1" download style="display: none;">descargar</a>
+                        <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -355,6 +400,100 @@
                 });
         }
     $(function(){
+
+        function getDateFromHours(time) {
+            time = time.split(':');
+            let now = new Date();
+            return new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...time);
+        }
+
+        function timeNow() {
+
+            var d = new Date(),
+                h = (d.getHours()<10?'0':'') + d.getHours(),
+                m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+            var hora_actual = getDateFromHours(h + ':' + m);
+            var hora_inicial_trivia = getDateFromHours('16:00');
+            var hora_final_trivia = getDateFromHours('18:00');
+
+            if(hora_actual >= hora_inicial_trivia && hora_actual <= hora_final_trivia){
+
+                $("#abrir_trivia").attr('data-toggle','modal');
+                $("#abrir_trivia").attr('data-target','#encuesta');
+                
+            }else{
+                Swal.fire('La trivia estara disponible en un horario de ','4 pm a 6 pm','info');
+              
+            }
+           
+        }
+
+        $("#abrir_trivia").on("click",function(){
+            timeNow(); 
+        });
+
+        let list_r = [];
+
+        // $('#btn-examen').html('<button type="button" class="btn btn-primary" style="background-color: orangered!important;" data-toggle="modal" data-target="#encuesta">Responde la Trivia</button>');
+
+        $('#enviar_encuesta').on('click', function() {
+            // alert('envio de formulario');
+            let enc = $('.encuesta_completa');
+            let id_curso = $('#id_curso').val();
+
+            for (let index = 0; index < enc.length; index++) {
+                const respuesta = enc[index];
+                let id = $('#id_pregunta_' + (index + 1)).val();
+                let res = $('input[name=pregunta_' + (index + 1) + ']:checked', enc[index]).val();
+                let res_id = [id, res];
+                list_r.push(res_id);
+                // console.log(res_id);
+            }
+
+            // alert(list_r);
+            $.ajax({
+                url: "/Talleres/guardarRespuestas",
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    list_r,
+                    id_curso
+                },
+                beforeSend: function() {
+                    console.log("Procesando....");
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+
+                    if (respuesta.status == 'success') {
+                        Swal.fire('Ha contestado la trivia', '', 'success').
+                        then((result) => {
+                            console.log('a');
+                            // $('#constancia_download').attr('href', respuesta.href)
+                            // $('#constancia_download')[0].click();
+                            // $('#constancia_download_1').attr('href',respuesta.href_download)
+                            // $('#constancia_download_1')[0].click();
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire('Lo sentimos, usted ya ha contestado la trivia', '', 'info').
+                        then((result) => {
+                            console.log('b');
+                            window.location.reload();
+                        });
+                    }
+
+                },
+                error: function(respuesta) {
+                    console.log(respuesta);
+                    Swal.fire('Ha contestado la trivia', '', 'success');
+                //     Swal.fire('Ha ocurrido un error, contacte con soporte', '', 'error').
+                //     then((result) => {
+                //         console.log('c');
+                //     });
+                }
+            });
+        });
         
         $(document).bind("contextmenu",function(e){
             return true;

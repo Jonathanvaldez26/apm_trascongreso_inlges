@@ -207,6 +207,16 @@ sql;
       return $mysqli->queryAll($query);
     }
 
+    public static function getPreguntasTriviaUsuario($curso){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT *
+      FROM preguntas_encuesta_curso 
+      WHERE id_producto = $curso
+sql;
+      return $mysqli->queryAll($query);
+    }
+
 //     public static function getTallerById($id){
 //       $mysqli = Database::getInstance(true);
 //       $query =<<<sql
