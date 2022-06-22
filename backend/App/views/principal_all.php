@@ -422,7 +422,7 @@
                 $("#abrir_trivia").attr('data-target','#encuesta');
                 
             }else{
-                Swal.fire('La trivia estara disponible en un horario de ','4 pm a 6 pm','info');
+                Swal.fire('The trivia will be available at a time of ','4 pm a 6 pm','info');
               
             }
            
@@ -466,7 +466,7 @@
                     console.log(respuesta);
 
                     if (respuesta.status == 'success') {
-                        Swal.fire('Ha contestado la trivia', '', 'success').
+                        Swal.fire('You have answered the trivia', '', 'success').
                         then((result) => {
                             console.log('a');
                             // $('#constancia_download').attr('href', respuesta.href)
@@ -476,7 +476,7 @@
                             window.location.reload();
                         });
                     } else {
-                        Swal.fire('Lo sentimos, usted ya ha contestado la trivia', '', 'info').
+                        Swal.fire('Sorry, you have already answered the trivia', '', 'info').
                         then((result) => {
                             console.log('b');
                             window.location.reload();
