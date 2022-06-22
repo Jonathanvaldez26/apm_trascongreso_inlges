@@ -579,7 +579,7 @@ html;
             View::set('avatar', $avatar);
             View::set('header', $this->_contenedor->header($extraHeader));
             View::set('footer', $this->_contenedor->footer($extraFooter));
-            View::render("video_all");
+            View::render("video_all_congreso");
         } else {
             View::render("404");
         }
