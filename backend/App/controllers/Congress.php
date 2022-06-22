@@ -545,7 +545,7 @@ html;
 
             foreach ($chat_taller as $chat => $value) {
                 $nombre_completo = $value['name_user'] . ' ' . $value['surname'] . ' ' . $value['second_surname'];
-                $nombre_completo = utf8_encode($nombre_completo);
+                $nombre_completo = ($nombre_completo);
                 $cont_chat .= <<<html
             <div class="d-flex mt-3">
                 <div class="flex-shrink-0">
@@ -1072,7 +1072,7 @@ html;
 
             foreach ($chat_taller as $chat => $value) {
                 $nombre_completo = $value['name_user'] . ' ' . $value['surname'] . ' ' . $value['second_surname'];
-                $nombre_completo = utf8_encode($nombre_completo);
+                $nombre_completo = ($nombre_completo);
                 $cont_chat .= <<<html
             <div class="d-flex mt-3">
                 <div class="flex-shrink-0">
