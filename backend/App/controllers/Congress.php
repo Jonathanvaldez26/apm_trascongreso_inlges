@@ -534,7 +534,7 @@ html;
             }
 
             $data = new \stdClass();
-            $data->_tipo = 3;
+            $data->_tipo = 2;
             $data->_sala = 1;
             $data->_id_tipo = $id_curso;
 
@@ -549,7 +549,7 @@ html;
                 $cont_chat .= <<<html
             <div class="d-flex mt-3">
                 <div class="flex-shrink-0">
-                    <img alt="Image placeholder" class="avatar rounded-circle" src="../../../img/users_musa/form.jpg">
+                    <img alt="Image placeholder" class="avatar rounded-circle" src="../../../img/users_musa/{$value['avatar_img']}">
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h6 class="h5 mt-0">{$nombre_completo}</h6>
@@ -558,13 +558,11 @@ html;
                 </div>
             </div>
 html;
-                // $avatar = $value['avatar_img'];
-                $avatar = 'form.jpg';
+                $avatar = $value['avatar_img'];
             }
 
 
             // var_dump($preguntas)
-
 
             View::set('clave', $clave);
             View::set('encuesta', $encuesta);
@@ -581,7 +579,7 @@ html;
             View::set('avatar', $avatar);
             View::set('header', $this->_contenedor->header($extraHeader));
             View::set('footer', $this->_contenedor->footer($extraFooter));
-            View::render("video_all_congreso");
+            View::render("video_all");
         } else {
             View::render("404");
         }
@@ -1108,7 +1106,7 @@ html;
             View::set('avatar', $avatar);
             View::set('header', $this->_contenedor->header($extraHeader));
             View::set('footer', $this->_contenedor->footer($extraFooter));
-            View::render("video_all_congreso_traduccion");
+            View::render("video_all_congreso");
         } else {
             View::render("404");
         }
@@ -1261,6 +1259,82 @@ html;
       $id_asis = $_POST['id'];
       $asistenteItinerario = HomeDao::getItinerarioAsistente($id_asis)[0];
       echo json_encode($asistenteItinerario);
+    }
+    
+    public function savePregunta()
+    {
+        $pregunta = $_POST['txt_pregunta'];
+        $sala = $_POST['sala'];
+        $id_tipo = $_POST['id_tipo'];
+
+        $data = new \stdClass();
+        $data->_id_registrado = $_SESSION['user_id'];
+        $data->_pregunta = $pregunta;
+        $data->_tipo = 2; //taller
+        $data->_id_tipo = $id_tipo;
+        $data->_sala = $sala;
+
+        $id = TransmisionDao::insertNewPregunta($data);
+
+        if ($id) {
+            echo "success";
+        } else {
+            echo "fail";
+        }
+    }
+
+    public function getPreguntaById()
+    {
+        $id_tipo = $_POST['id_tipo'];
+        $sala = $_POST['sala'];
+
+        $taller = TalleresDao::getPorductById($id_tipo);
+        $data = new \stdClass();
+        $data->_tipo = 2;
+        $data->_sala = $sala;
+        $data->_id_tipo = $taller['id_producto'];
+
+        $pregunta_taller = TransmisionDao::getNewPreguntaByID($data);
+
+        echo json_encode($pregunta_taller);
+    }
+
+    public function guardarRespuestas()
+    {
+        $respuestas = $_POST['list_r'];
+        $id_curso = $_POST['id_curso'];
+
+        $ha_respondido = TalleresDao::getRespuestasCurso($_SESSION['user_id'], $id_curso);
+
+        // var_dump($respuestas);
+        $userData = RegisterDao::getUser($this->getUsuario())[0];
+
+        // var_dump($userData['clave']);
+
+        // exit;
+
+        if ($ha_respondido) {
+            // echo 'fail';
+            $data = [
+                'status' => 'success',
+                'clave_user' => $userData['clave']
+            ];
+            echo json_encode($data);
+        } else {
+            foreach ($respuestas as $key => $value) {
+                $id_pregunta = $value[0];
+                $respuesta = $value[1];
+                TalleresDao::insertRespuestaProductCurso($_SESSION['user_id'], $id_pregunta, $respuesta);
+            }
+            // echo 'success';
+            $data = [
+                'status' => 'success',
+                'clave_user' => $userData['clave'],
+                'href' => '/Talleres/abrirConstancia/' . $userData['clave'] . '/' . $id_curso,
+                'href_download' => 'constancias/' . $userData['clave'] . $id_curso . '.pdf'
+            ];
+            echo json_encode($data);
+        }
     }
 
 }
