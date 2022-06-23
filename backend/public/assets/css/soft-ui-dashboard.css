@@ -36908,14 +36908,17 @@ input#chk-6:checked ~ #lbl-6{display: block;}
 
 @media (max-width: 576px) {
   .btn-menu-home{
-    border-radius: 1000px;
+    /* border-radius: 1000px; */
     width: 10rem;
     height: 10rem;
     margin: auto;
-    background-image: url(/img/gafete.png);
-    background-size: 10rem;
-    background-position-x: -5px;
-    background-position-y: -10px;
+    background-size: contain;  
+    object-position: center center;
+    background-repeat: no-repeat;
+    /* background-image: url(/img/gafete.png); */
+    /* background-size: 10rem; */
+    /* background-position-x: -5px;
+    background-position-y: -10px; */
   }
 
   .text-large{
