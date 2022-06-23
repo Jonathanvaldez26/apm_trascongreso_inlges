@@ -131,7 +131,7 @@ html;
    
            $permisos_congreso = $data_user['congreso'] != '1' ? "style=\"display:none;\"" : "";
    
-           $id_curso = 100;
+           $id_curso = 101;
    
            $encuesta = '';
    
