@@ -596,6 +596,17 @@ sql;
     return $mysqli->update($query);
   } 
 
+  public static function updateProgresoFechaProductoCongreso($id_curso, $registrado, $segundos){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+        UPDATE progresos_productocongreso 
+        SET segundos = '$segundos', fecha_ultima_vista = NOW()
+        WHERE id_video_congreso = '$id_curso' 
+        AND user_id = '$registrado'
+sql;
+    return $mysqli->update($query);
+  }
+
   public static function getAsignaCursoByUser($registrado, $curso){
     $mysqli = Database::getInstance(true);
     $query =<<<sql

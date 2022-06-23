@@ -199,7 +199,7 @@
                         </div>
                         <div class="card-footer d-block">
                             <progress id="barra_progreso" max="<?php echo $secs_totales; ?>" value="<?php echo $progreso_curso['segundos']; ?>"></progress>
-                            <input type="text" name="" id="id_curso" hidden readonly value="<?php echo $id_curso; ?>">
+                            <input type="hidden" name="" id="id_curso" readonly value="<?php echo $id_curso; ?>">
                         </div>
                         <div class="row m-auto">
                             <div class="col-12" id="btn-examen">
