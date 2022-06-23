@@ -219,7 +219,7 @@
                             </div>
                         </div>
 
-                        <input type="text" id="id_curso" name="id_curso" value="<?php echo $id_curso;?>">
+                        <input type="hidden" id="id_curso" name="id_curso" value="<?php echo $id_curso;?>">
                         <!-- <div class="col-6 m-auto m-md-0 col-lg-3 col-md-4 my-md-3 mt-4">
                             <a href="/Programa/">
                                 <div class="card card-link btn-menu-home m-auto"  style="background-image: url(/img/SMNP_Iconos/13.png)">
