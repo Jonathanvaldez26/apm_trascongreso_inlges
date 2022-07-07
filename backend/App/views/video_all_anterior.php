@@ -1,5 +1,5 @@
 <title>
-    Cursos Video - Neuropediatría 
+    Cursos Video - APM 
 </title>
 <?php echo $header; ?>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">

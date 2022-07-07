@@ -1284,7 +1284,7 @@ html;
         View::render("programa_sala_dos");
     }
 
-    public function Video($clave) {
+    public function Video($clave,$id_producto) {
         $extraHeader =<<<html
 html;
         $extraFooter =<<<html
@@ -1351,7 +1351,7 @@ html;
                      console.log(value);
                   }
                   $.ajax({
-                      url:"/Programme/uploadComprobante",
+                      url:"/Programa/uploadComprobante",
                       type: "POST",
                       data: formData,
                       cache: false,
@@ -1366,7 +1366,7 @@ html;
                          
                           swal("¡Se ha guardado tu prueba correctamente!", "", "success").
                           then((value) => {
-                              window.location.replace("/Programme/");
+                              window.location.replace("/Programa/");
                           });
                       }
                       console.log(respuesta);
@@ -1415,20 +1415,84 @@ html;
 
         $porcentaje = round(($progreso_curso['segundos']*100)/$secs_totales);
 
-
+        $claves_cursos = ['xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM'];
         $video_programa = <<<html
         <!--h4 class="mb-1 mt-1 text-center">Video</h4-->      
 html;
-
-        $video_programa .= <<<html
-            <div class="row mb-3 mt-0 m-auto">
+        if($id_producto == 1){
+            $video_programa .= <<<html
+            <!--<div class="row mb-3 mt-0 m-auto">
                 <div class="col-12 col-md-12 m-auto">
                     <div class="row">
                         <iframe id="iframe" class="bg-gradient-warning iframe-course" src="{$url}" width="640" height="521" frameborder="0">a</iframe>
                     </div>
                 </div>
+            </div>-->
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
             </div>
 html;
+        }else if($clave == '5MrOZa' || $clave == 'u0VKDP'){
+            $video_programa .= <<<html
+            <div class="row mb-3 mt-0 m-auto">
+                <div class="col-12 col-md-12 m-auto">
+                    <div class="row">
+                    <div class="col-12 col-md-12">
+                    <a href="/Programme/Video/$clave/$id_producto">
+                        <span class="text-bold font-30 text-lg">
+                            {$programa['subtitulo']}
+                        </span>
+                        <br><br>
+                        <span class="text-bold font-25 text-lg">
+                            {$programa['descripcion_subtitulo']}
+                            <br>
+                        </span>
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+html;
+        } else if(in_array($clave,$claves_cursos)){
+            $video_programa .= <<<html
+            <div class="row mb-3 mt-0 m-auto">
+                <div class="col-12 col-md-12 m-auto">
+                    <div class="row">
+                    <div class="col-12 col-md-12">
+                    <a href="/Programme/Video/$clave/$id_producto">
+                        <span class="text-bold font-30 text-lg">
+                            {$programa['subtitulo']}
+                        </span>
+                        <br><br>
+                        <span class="text-bold font-24 text-lg">
+                            {$programa['descripcion_subtitulo']}
+                            <br>
+                        </span>
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+html;
+        } else{
+            $video_programa .= <<<html
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+html;
+        }
+        
 
 
 

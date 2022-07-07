@@ -1,5 +1,5 @@
 <title>
-    Cursos - Neuropediatría 
+    Programme - APM 
 </title>
 <?php echo $header; ?>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -62,7 +62,7 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="col-sm-auto col-4">
                             <div class="avatar avatar-xl position-relative">
-                            <img src="/assets/img/Logo_SMN.png">
+                            <img src="/assets/img/user.png">
                             </div>
                         </div>
                         <div class="col-sm-auto col-8 my-auto">

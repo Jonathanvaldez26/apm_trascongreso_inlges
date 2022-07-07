@@ -28,8 +28,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm">Constancias</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Home</a></li>
+                    <li class="breadcrumb-item text-sm">Certificates</li>
                 </ol>
             </nav>
 
@@ -42,7 +42,7 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="/Home/" class="nav-link text-body font-weight-bold mx-lg-4 mx-0 px-0">
                             <i class="fa fa-home me-sm-0"></i>
-                            <span class="d-sm-inline d-none">Inicio</span>
+                            <span class="d-sm-inline d-none">Home</span>
                         </a>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
                     <!-- <img src="/assets/img/cinta_menu.jpeg" style="border-radius: 20px; height: 38px;" alt=""> -->
                     <div style="background-color: rgb( 0 145 135 ); border-radius: 20px; height: 38px;"></div>
                     </div>
-                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Constancias</h4>
+                    <h4 class="mb-1 mt-4 text-left"><i class="fa fa-cash-register"></i> Certificates</h4>
                 </div>
                 
                 <div class="card-body p-3">
@@ -82,9 +82,9 @@
                                     <table class="align-items-center mb-0 table table-borderless" id="user_list_table" style="width:100%">
                                         <thead class="thead-light">
                                         <tr>                                           
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7" style="width:30%">Nombre del Curso</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Progreso</th>
-                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Descargar</th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7" style="width:30%">Course Name</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Progress</th>
+                                            <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Download</th>
                                             
                                         </tr>
                                         </thead>
@@ -172,14 +172,15 @@
             var progreso = $(this).attr('data-progreso');
            
             Swal.fire({
-                title: 'Su certificado se descargara al presionar el boton acepto',
-                text: "con un total de "+progreso+" hrs. usted no podra volver a descargar el ceritficado.",
+                title: 'Your certificate will be downloaded after pressing the accept button',
+                text: "with a total of "+progreso+" hrs.",
                 icon: 'warning',
+                html: "with a total of "+progreso+" hrs." + "<h4 style='color:red'>" + " you will not be able to download the certificate again." + "</h4>",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Acepto'
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Accept'
                 }).then((result) => {
                 if (result.isConfirmed) { 
                     $("#download"+id_producto)[0].click();                       

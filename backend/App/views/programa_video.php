@@ -1,5 +1,5 @@
 <title>
-    Cursos - Neuropediatría 
+    Courses - APM 
 </title>
 <?php echo $header; ?>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -71,7 +71,7 @@
                                 <h4 class="mb-3 text-center color-green"><?php echo $nombre_programa;?></h4>
                                 <div class="">
                                     <span class="color-yellow ">
-                                        Horario: 
+                                        Schedule: 
                                         <?php echo $hora_inicio.' - '.$hora_fin;?>
                                     </span>
                                 </div>
@@ -84,7 +84,7 @@
                         
                         <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 me-4">
                             <a href="/Programme/">
-                                <span class="text-dark"><i class="fas fa-undo"></i> Regresar</span>
+                                <span class="text-dark"><i class="fas fa-undo"></i> Return</span>
                             </a>
                         </div>
                     </div>
@@ -102,15 +102,15 @@
                         </div>
                     </div>
                     <hr class="horizontal dark">
-                    <!-- Comments -->
-                    <div class="mb-1">
+                    <!-- COORDINADOR Y PROFESOR EN VIDEO -->
+                    <!-- <div class="mb-1">
                         <div class="col-12 col-md-12">
                             <span class="color-vine font-18 text-bold mb-2">
                                 Coordinador:
                             </span>
                             <br>
                             <span class="color-vine font-14 text-bold">
-                                <?php echo $coordinador;?>
+                            <?php echo $coordinador;?>
                             </span>
                             <br><br>
                             <span class="color-vine font-18 text-bold">
@@ -124,7 +124,7 @@
                                 <?php echo $desc_profesor;?>
                             </p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                     <!-- <img alt="Image" src="../../../assets/img/bruce-mars.jpg" class="avatar"> -->
                         <div class="ms-0 text-center">
                             <!-- <h6 class="mb-0 d-block"><?php echo $info_user['prefijo'].' '.$info_user['nombre'];?></h6> -->
-                            <span class="text-lg text-center text-dark opacity-8">Progreso <span id="porcentaje"><?php echo $porcentaje;?> %</span> </span>
+                            <span class="text-lg text-center text-dark opacity-8">Progress <span id="porcentaje"><?php echo $porcentaje;?> %</span> </span>
                         </div>
                     </div>
                 </div>

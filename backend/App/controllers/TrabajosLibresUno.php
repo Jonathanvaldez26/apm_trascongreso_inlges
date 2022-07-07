@@ -26,7 +26,7 @@ class TrabajosLibresUno extends Controller{
       <link id="pagestyle" href="/assets/css/style.css" rel="stylesheet" />
      
       <title>
-            Cursos - Neuropediatría
+            Cursos - APM
       </title>
 html;
 

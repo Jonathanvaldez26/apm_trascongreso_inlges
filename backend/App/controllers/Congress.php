@@ -92,10 +92,10 @@ html;
            $precio = 0;
 
             if($value['clave_socio'] == ""){
-                $title_badge = 'Este curso ya lo compraste.';
+                $title_badge = 'You have already purchased this course.';
                 $precio = $value['precio_publico'];
             }else{
-                $title_badge = 'Este curso fue asignado gratuitamente por APM';
+                $title_badge = 'This course was asigned by APM for free';
                 $precio = 0;
                 
             }
@@ -128,7 +128,7 @@ html;
                 <div class="card-body " style="height:235px;">
                     <input class="curso" hidden type="text" value="{$value['clave']}" readonly>
                     <div class="caratula-content">
-                       <!-- <a href="/Talleres/Video/{$value['clave']}"> -->
+                       <!-- <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}"> -->
                             <img class="caratula-img border-radius-15" src="/caratulas/{$value['caratula']}" style="object-fit: cover; object-position: center center; height: auto;">
                         <!--</a>-->
                         <!--<div class="duracion"><p>{$value['duracion']}</p></div>-->
@@ -154,7 +154,7 @@ html;
                             </div>
                         </div>-->
                     </div>
-                    <a href="/Talleres/Video/{$value['clave']}">
+                    <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
                         <p style="font-size: 14px;" class="text-left mx-3 mt-2" style="color: black;"><b>{$value['nombre_ingles']}</b></p>               
                         
         
@@ -268,11 +268,11 @@ html;
                     <div class="card-footer">
                         <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                         <div style = "display: flex; justify-content:start">
-                        <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>-->
+                        <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Buy</button>-->
                         <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
                         <div style = "display: flex; justify-content:start">
                             <p class="badge badge-info" style="margin-left: 5px;margin-bottom: 38px;">
-                            En espera de validación de pago. <br>Si usted ya realizo su pago ó desea reimprimir el formato <br> de pago de <a href="/ComprobantePago/" style="color: #08a1c4; text-decoration: underline; font-weight: bold; font-size: 15px;">clic aquí.</a>
+                            Waiting for payment validation. <br>If you have already made your payment or want to reprint the format <br> of payment <a href="/ComprobantePago/" style="color: #08a1c4; text-decoration: underline; font-weight: bold; font-size: 15px;">click here.</a>
                             </p>
                    
                         </div>
@@ -333,7 +333,7 @@ html;
                         <div class="card-footer">
                             <p style="font-size: 23px; color: #2B932B;" class="text-left mx-3 mt-2" style="color: black;"><b>$ {$value['precio_publico']} {$value['tipo_moneda']}</b></p>
                             <div style = "display: flex; justify-content:start">
-                            <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Comprar</button>-->
+                            <!--<button class="btn btn-primary" style="margin-right: 5px;margin-left: 5px; width:145px;" data-toggle="modal" data-target="#comprar-curso{$value['id_producto']}">Buy</button>-->
                             <!--<a class="btn btn-primary" href="/OrdenPago/impticket/{$link_parametro_user_id}/{$link_parametro_id_producto})" target="_blank" style="margin-right: 5px;margin-left: 5px; width:auto;">Reimprimir orden de pago</a>-->
                             <div style = "display: flex; justify-content:start">
                                 <p class="badge badge-danger" style="margin-left: 5px;margin-bottom: 38px;">
@@ -364,7 +364,7 @@ html;
                         <div class="card-body " style="height:235px;">
                             <input class="curso" hidden type="text" value="{$value['clave']}" readonly>
                             <div class="caratula-content">
-                            <!-- <a href="/Talleres/Video/{$value['clave']}"> -->
+                            <!-- <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}"> -->
                                 <img class="caratula-img border-radius-15" src="/caratulas/{$value['caratula']}" style="object-fit: cover; object-position: center center; height: auto;">
                             <!--</a>-->
                             <!--<div class="duracion"><p>{$value['duracion']}</p></div>-->
@@ -412,8 +412,8 @@ html;
 
                 
                     $card_cursos .= <<<html
-                        <button class="btn btn-primary btn_comprar_individual" style="margin-right: 5px;margin-left: 5px; width:145px;"  value="{$value['id_producto']}">Comprar</button>
-                        <button class="btn btn-primary btn_cart" value="{$value['id_producto']}" style="margin-right: 5px;margin-left: 5px;">Agregar <i class="fa far fa-cart-plus"></i></button>
+                        <button class="btn btn-primary btn_comprar_individual" style="margin-right: 5px;margin-left: 5px; width:145px;"  value="{$value['id_producto']}">Buy</button>
+                        <button class="btn btn-primary btn_cart" value="{$value['id_producto']}" style="margin-right: 5px;margin-left: 5px;">Add to cart <i class="fa far fa-cart-plus"></i></button>
 html;
                 }else{
                     $card_cursos .= <<<html
@@ -642,7 +642,7 @@ html;
                     <div class="col-10 m-auto text-center">
                         <h2 class="text-bolder text-gradient text-danger">
                             <i class="fas fa-exclamation"></i><br>
-                            Lo sentimos no tiene acceso a este curso, contacte a soporte.
+                            We are sorry, you don't have access to this course, contact with support.
                         </h2>
                     </div>
                 </div>                
@@ -1572,7 +1572,7 @@ html;
           <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                Completa tu compra
+                Complete your purchase
                 </h5>
 
                 <span type="button" class="btn bg-gradient-danger" data-bs-dismiss="modal" aria-label="Close">
@@ -1587,7 +1587,7 @@ html;
                         <img src="/caratulas/{$datos['caratula']}" style="width:60%; border-radius: 10px;" alt="" />
                     </div>
 
-                    <p class="text-center mt-3"><b>{$datos['nombre']}</b></p>
+                    <p class="text-center mt-3"><b>{$datos['nombre_ingles']}</b></p>
 
                     <p class="text-center" style="color: #2B932B;"><b>{$precio_curso}</b></p>
                     <input type="hidden" value="{$solo_precio_curso}" name="costo"/>
@@ -1612,18 +1612,18 @@ html;
 
                     <div class="row d-flex justify-content-center">
                         <div class="col-4">
-                            <label>Elige tu metodo de pago *</label>
+                            <label>Choose your payment method *</label>
                             <select class="multisteps-form__select form-control all_input_second_select metodo_pago" name="metodo_pago" required>
-                                <option value="" disabled selected>Selecciona una Opción</option>
+                                <option value="" disabled selected>Select an option</option>
                                 <option value="Paypal">Paypal</option>
-                                <option value="Efectivo">Efectivo</option>
+                                <option value="Efectivo">Cash</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="row d-flex justify-content-center mt-3">
                         <div class="col-md-4">
-                            <button type="button" class="btn btn-primary btn_comprar" style="width: 100%;" name="btn_tipo_pago" data-id={$datos['id_producto']} >Comprar</button>
+                            <button type="button" class="btn btn-primary btn_comprar" style="width: 100%;" name="btn_tipo_pago" data-id={$datos['id_producto']} >Buy</button>
                         </div>
                     </div>
                     
@@ -1663,7 +1663,7 @@ html;
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 
-    public function Constancy()
+    public function Certificate()
     {
         $extraHeader = <<<html
 html;
@@ -1787,7 +1787,7 @@ html;
 
             if($existe){
                 $td = '<p class="badge badge-success" style="margin-left: 5px;margin-bottom: 38px;">
-                Ya descargaste esta constancia.
+                You already downloaded this certificate.
                 </p>';
             }else{
                 $td = '
@@ -1807,7 +1807,7 @@ html;
                     <progress class="barra_progreso_small" max="{$secs_totales}" value="{$progreso_total}"></progress>
                 </div>
                 
-                <span class="text-lg text-center text-dark opacity-8">Progreso <span class="porcentaje">{$porcentaje} %</span> </span>
+                <span class="text-lg text-center text-dark opacity-8">Progress: <span class="porcentaje">{$progreso_horas} HOURS</span> </span>
                
             </td>
 

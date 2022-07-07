@@ -116,6 +116,47 @@ sql;
       return $mysqli->queryAll($query);
   }
 
+  public static function getProductosById($id){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+    SELECT * FROM productos WHERE id_producto = $id
+sql;
+    return $mysqli->queryOne($query);
+      
+  }
+
+  public static function getProgresosById($id,$clave){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+    SELECT * FROM progresos_productocursos pr
+    INNER JOIN utilerias_administradores ua ON pr.user_id = ua.user_id
+    WHERE pr.id_producto = $id AND ua.clave = '$clave'
+sql;
+    return $mysqli->queryOne($query);
+      
+  }
+
+  public static function getProgresosCongresoById($id,$clave){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+    SELECT SUM(pr.segundos) as segundos FROM progresos_productocongreso pr
+    INNER JOIN videos_congreso vc ON vc.id_video_congreso = pr.id_video_congreso
+    INNER JOIN utilerias_administradores ua ON ua.user_id = pr.user_id
+    WHERE ua.clave = '$clave' AND vc.id_producto = $id
+sql;
+    return $mysqli->queryOne($query);
+      
+  }
+
+  public static function insertImpresionConstanciaUser($user_id,$tipo_constancia,$id_producto,$horas){
+    $mysqli = Database::getInstance(true);
+    $query=<<<sql
+    INSERT INTO  impresion_constancia_user (user_id, tipo_constancia, id_producto,horas,fecha_descarga) VALUES('$user_id', '$tipo_constancia','$id_producto',$horas,NOW())
+sql;
+
+    return $mysqli->insert($query);
+  }
+
   public static function getAsignaCursoByUser($registrado, $curso){
     $mysqli = Database::getInstance(true);
     $query =<<<sql

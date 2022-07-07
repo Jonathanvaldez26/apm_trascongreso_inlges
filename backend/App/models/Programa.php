@@ -58,15 +58,16 @@ sql;
     public static function getSectionByDate($fecha){
       $mysqli = Database::getInstance();
       $query=<<<sql
-        SELECT pg.id_producto,pg.*, pf.nombre AS nombre_profesor, pf.prefijo, pf.descripcion AS desc_profesor,pf.tipo as tipo_profesor, pf2.id_profesor as id_profesor_2,pf2.nombre AS nombre_profesor_2, pf2.prefijo as prefijo_2, pf2.descripcion AS desc_profesor_2, pf2.tipo as tipo_profesor_2, pf3.id_profesor as id_profesor_3,pf3.nombre AS nombre_profesor_3, pf3.prefijo as prefijo_3, pf3.descripcion AS desc_profesor_3, pf3.tipo as tipo_profesor_3,co.nombre AS nombre_coordinador, co.prefijo AS prefijo_coordinador,co.tipo as tipo_coordinador, co.id_coordinador,co2.nombre AS nombre_coordinador_2, co2.prefijo AS prefijo_coordinador_2, co2.tipo as tipo_coordinador_2, co2.id_coordinador as id_coordinador_2, co3.nombre AS nombre_coordinador_3, co3.prefijo AS prefijo_coordinador_3, co3.tipo as tipo_coordinador_3,co3.id_coordinador as id_coordinador_3
-        FROM programa pg
-        INNER JOIN profesores pf ON pg.id_profesor = pf.id_profesor
-        INNER JOIN profesores pf2 ON (pf2.id_profesor = pg.id_profesor_2)
-        INNER JOIN profesores pf3 ON (pf3.id_profesor = pg.id_profesor_3)
-        INNER JOIN coordinadores co ON co.id_coordinador = pg.id_coordinador
-        INNER JOIN coordinadores co2 ON (co2.id_coordinador = pg.id_coordinador_2)
-        INNER JOIN coordinadores co3 ON (co3.id_coordinador = pg.id_coordinador_3)
-        WHERE fecha = '$fecha' ORDER BY pg.hora_inicio ASC
+      SELECT pg.id_producto,pg.*, pf.nombre AS nombre_profesor, pf.prefijo, pf.descripcion AS desc_profesor,pf.tipo as tipo_profesor, pf2.id_profesor as id_profesor_2,pf2.nombre AS nombre_profesor_2, pf2.prefijo as prefijo_2, pf2.descripcion AS desc_profesor_2, pf2.tipo as tipo_profesor_2, pf3.id_profesor as id_profesor_3,pf3.nombre AS nombre_profesor_3, pf3.prefijo as prefijo_3, pf3.descripcion AS desc_profesor_3, pf3.tipo as tipo_profesor_3,co.nombre AS nombre_coordinador, co.prefijo AS prefijo_coordinador,co.tipo as tipo_coordinador, co.id_coordinador,co2.nombre AS nombre_coordinador_2, co2.prefijo AS prefijo_coordinador_2, co2.tipo as tipo_coordinador_2, co2.id_coordinador as id_coordinador_2, co3.nombre AS nombre_coordinador_3, co3.prefijo AS prefijo_coordinador_3, co3.tipo as tipo_coordinador_3,co3.id_coordinador as id_coordinador_3
+      FROM programa pg
+      INNER JOIN profesores pf ON pg.id_profesor = pf.id_profesor
+      INNER JOIN profesores pf2 ON (pf2.id_profesor = pg.id_profesor_2)
+      INNER JOIN profesores pf3 ON (pf3.id_profesor = pg.id_profesor_3)
+      INNER JOIN coordinadores co ON co.id_coordinador = pg.id_coordinador
+      INNER JOIN coordinadores co2 ON (co2.id_coordinador = pg.id_coordinador_2)
+      INNER JOIN coordinadores co3 ON (co3.id_coordinador = pg.id_coordinador_3)
+      WHERE fecha = '$fecha' AND ((pg.descripcion_subtitulo != '') 
+      OR (pg.url != '')) ORDER BY pg.hora_inicio ASC;
 sql;
       return $mysqli->queryAll($query);
     }

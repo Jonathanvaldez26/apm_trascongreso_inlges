@@ -1838,7 +1838,7 @@ html;
                     <td class="text-center">
                         
                             
-                        No hay productos en su carrito
+                        Your cart is empty
                     
                     </td>  
 
