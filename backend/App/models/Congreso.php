@@ -6,7 +6,6 @@ use \Core\Database;
 use \Core\MasterDom;
 use \App\interfaces\Crud;
 use \App\controllers\UtileriasLog;
-
 class Congreso{
 
     public static function getAll(){
@@ -155,6 +154,60 @@ sql;
 sql;
       return $mysqli->queryAll($query);
     }
+
+    public static function getProductoByIdAndUser($id_producto,$user_id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * 
+      FROM impresion_constancia_user      
+      WHERE id_producto = $id_producto and user_id ='$user_id'
+sql;
+      return $mysqli->queryOne($query);
+    }
+
+    public static function getProgresoPrograma($user_id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT SUM(pp.segundos) AS total_segundos
+      FROM progresos_programa pp
+      INNER JOIN programa pr ON pp.id_programa = pr.id_programa
+      WHERE 
+      (pr.clave NOT IN ('5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP')) 
+      AND (user_id ='$user_id');
+sql;
+      return $mysqli->queryOne($query);
+    }
+
+    public static function getProgresoCursos($user_id,$id_producto){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT pr.id_producto,pp.segundos AS total_segundos_a
+      FROM progresos_programa pp
+      INNER JOIN programa pr ON pp.id_programa = pr.id_programa
+      WHERE 
+      (pr.id_producto = '$id_producto') 
+      AND (user_id ='$user_id');
+sql;
+      return $mysqli->queryOne($query);
+    }
+
+    public static function getBuscarCursos($search){
+      $mysqli = Database::getInstance();
+      $query =<<<sql
+      SELECT ua.user_id,ua.name_user, ua.clave,pp.id_producto, pro.nombre_ingles as 'nombre_producto',pro.duracion, 
+      CASE WHEN pp.comprado_en = 1 THEN "SITIO WEB" WHEN pp.comprado_en = 2 
+      THEN "CAJA" ELSE "SITIO" END as 'compro en', pp.tipo_pago, 
+      CASE WHEN pp.status = 1 
+      THEN "PAGADO" WHEN pp.status = 2 THEN "SE VOLVIO A PEDIR COMPROBANTE" ELSE "PENDIETE" 
+      END as 'estatus_pendiente_pago', IF(aspro.status = 1, "CON ACCESO", "SIN ACCESO") as 'estatus_compra' 
+      FROM pendiente_pago pp INNER JOIN utilerias_administradores ua ON(ua.user_id = pp.user_id) 
+      INNER JOIN productos pro ON (pp.id_producto = pro.id_producto) 
+      LEFT JOIN asigna_producto aspro ON(pp.user_id = aspro.user_id AND pp.id_producto = aspro.id_producto) 
+      WHERE ua.user_id = $search GROUP BY id_producto
+sql;
+
+      return $mysqli->queryAll($query);
+  }
 
     
 

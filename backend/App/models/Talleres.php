@@ -490,7 +490,7 @@ sql;
   public static function getAsignaProducto($usuario){
     $mysqli = Database::getInstance(true);
     $query =<<<sql
-    SELECT uad.*, p.nombre AS nombre_curso, p.*
+    SELECT uad.*, p.nombre_ingles as nombre, p.*
     FROM asigna_producto ap
     INNER JOIN utilerias_administradores uad
     ON ap.user_id = uad.user_id

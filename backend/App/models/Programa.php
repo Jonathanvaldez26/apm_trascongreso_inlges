@@ -22,10 +22,43 @@ sql;
       return $mysqli->queryAll($query);
     }
 
+    public static function getUsersProduct($id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT pr.* FROM programa pr
+      INNER JOIN asigna_producto ap ON pr.id_producto = ap.id_producto
+      INNER JOIN pendiente_pago pp ON pp.user_id = ap.user_id
+      WHERE (ap.id_producto = pp.id_producto) AND (ap.user_id = '$id');
+      sql;
+      return $mysqli->queryAll($query);
+    }
+
+    public static function getProductClave($id){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT progr.clave as pro_clave,ua.user_id,ua.name_user, ua.clave,pp.id_producto, pro.nombre as 'nombre_producto',pro.duracion, 
+      CASE WHEN pp.comprado_en = 1 THEN "SITIO WEB" WHEN pp.comprado_en = 2 
+      THEN "CAJA" ELSE "SITIO" END as 'compro en', pp.tipo_pago, 
+      CASE WHEN pp.status = 1 
+      THEN "PAGADO" WHEN pp.status = 2 THEN "SE VOLVIO A PEDIR COMPROBANTE" ELSE "PENDIETE" 
+      END as 'estatus_pendiente_pago', IF(aspro.status = 1, "CON ACCESO", "SIN ACCESO") as 'estatus_compra' 
+      FROM pendiente_pago pp INNER JOIN utilerias_administradores ua ON(ua.user_id = pp.user_id) 
+      INNER JOIN productos pro ON (pp.id_producto = pro.id_producto)
+      INNER JOIN progresos_programa prop ON prop.user_id = pp.user_id
+      INNER JOIN programa progr ON progr.id_programa = prop.id_programa
+      LEFT JOIN asigna_producto aspro ON(pp.user_id = aspro.user_id AND pp.id_producto = aspro.id_producto) 
+      WHERE (progr.clave IN ('5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP'))
+      AND(ua.user_id = '$id') 
+      GROUP BY pro_clave;
+      sql;
+      return $mysqli->queryOne($query);
+    }
+    
+
     public static function getSectionByDate($fecha){
       $mysqli = Database::getInstance();
       $query=<<<sql
-        SELECT pg.*, pf.nombre AS nombre_profesor, pf.prefijo, pf.descripcion AS desc_profesor,pf.tipo as tipo_profesor, pf2.id_profesor as id_profesor_2,pf2.nombre AS nombre_profesor_2, pf2.prefijo as prefijo_2, pf2.descripcion AS desc_profesor_2, pf2.tipo as tipo_profesor_2, pf3.id_profesor as id_profesor_3,pf3.nombre AS nombre_profesor_3, pf3.prefijo as prefijo_3, pf3.descripcion AS desc_profesor_3, pf3.tipo as tipo_profesor_3,co.nombre AS nombre_coordinador, co.prefijo AS prefijo_coordinador,co.tipo as tipo_coordinador, co.id_coordinador,co2.nombre AS nombre_coordinador_2, co2.prefijo AS prefijo_coordinador_2, co2.tipo as tipo_coordinador_2, co2.id_coordinador as id_coordinador_2, co3.nombre AS nombre_coordinador_3, co3.prefijo AS prefijo_coordinador_3, co3.tipo as tipo_coordinador_3,co3.id_coordinador as id_coordinador_3
+        SELECT pg.id_producto,pg.*, pf.nombre AS nombre_profesor, pf.prefijo, pf.descripcion AS desc_profesor,pf.tipo as tipo_profesor, pf2.id_profesor as id_profesor_2,pf2.nombre AS nombre_profesor_2, pf2.prefijo as prefijo_2, pf2.descripcion AS desc_profesor_2, pf2.tipo as tipo_profesor_2, pf3.id_profesor as id_profesor_3,pf3.nombre AS nombre_profesor_3, pf3.prefijo as prefijo_3, pf3.descripcion AS desc_profesor_3, pf3.tipo as tipo_profesor_3,co.nombre AS nombre_coordinador, co.prefijo AS prefijo_coordinador,co.tipo as tipo_coordinador, co.id_coordinador,co2.nombre AS nombre_coordinador_2, co2.prefijo AS prefijo_coordinador_2, co2.tipo as tipo_coordinador_2, co2.id_coordinador as id_coordinador_2, co3.nombre AS nombre_coordinador_3, co3.prefijo AS prefijo_coordinador_3, co3.tipo as tipo_coordinador_3,co3.id_coordinador as id_coordinador_3
         FROM programa pg
         INNER JOIN profesores pf ON pg.id_profesor = pf.id_profesor
         INNER JOIN profesores pf2 ON (pf2.id_profesor = pg.id_profesor_2)
@@ -201,7 +234,7 @@ sql;
     $mysqli = Database::getInstance(true);
     $query =<<<sql
     SELECT * FROM progresos_programa
-    WHERE id_programa = $num_curso AND id_registrado = $id
+    WHERE id_programa = $num_curso AND user_id = $id
 sql;
 
     return $mysqli->queryOne($query);
@@ -210,7 +243,7 @@ sql;
   public static function insertProgreso($registrado,$curso){
       $mysqli = Database::getInstance(1);
       $query=<<<sql
-      INSERT INTO progresos_programa (id_programa, id_registrado, segundos,fecha_ultima_vista) 
+      INSERT INTO progresos_programa (id_programa, user_id, segundos,fecha_ultima_vista) 
       VALUES ('$curso','$registrado','0', NOW())
 sql;
 
@@ -236,7 +269,7 @@ sql;
         UPDATE progresos_programa 
         SET segundos = '$segundos', fecha_ultima_vista = NOW()
         WHERE id_programa = '$id_programa' 
-        AND id_registrado = '$registrado'
+        AND user_id = '$registrado'
 sql;
     return $mysqli->update($query);
   } 

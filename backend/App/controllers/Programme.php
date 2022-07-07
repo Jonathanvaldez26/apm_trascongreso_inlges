@@ -5,7 +5,7 @@ use \Core\View;
 use \Core\Controller;
 use \App\models\Programa AS ProgramaDao;
 
-class Programa extends Controller{
+class Programme extends Controller{
 
     private $_contenedor;
 
@@ -87,7 +87,7 @@ html;
                      console.log(value);
                   }
                   $.ajax({
-                      url:"/Programa/uploadComprobante",
+                      url:"/Programme/uploadComprobante",
                       type: "POST",
                       data: formData,
                       cache: false,
@@ -102,7 +102,7 @@ html;
                          
                           swal("¡Se ha guardado tu prueba correctamente!", "", "success").
                           then((value) => {
-                              window.location.replace("/Programa/");
+                              window.location.replace("/Programme/");
                           });
                       }
                       console.log(respuesta);
@@ -119,18 +119,26 @@ html;
 
 html;
 
+
         // ----- Variables para la primer fecha ----- //
-        $info_fecha1 = ProgramaDao::getSectionByDate('2022-05-18');
+        $info_fecha1 = ProgramaDao::getSectionByDate('2022-06-21');
         $programa_fecha1 = '';
 
         $programa_fecha1 = <<<html
+        <h5 class="mb-3 text-center">Tuesday June 21</h5>
         
-        <br>     
-        <br>       
+        <br>            
 html;
+        $id = $_SESSION['user_id'];
+        $id_producto_clave_consulta = '';
+        $producto_2 = ProgramaDao::getUsersProduct($id);
+        $items = array();
+        foreach ($producto_2 as $key => $value_producto){
+            $items[] = $value_producto['id_producto'];
+        }
 
         foreach ($info_fecha1 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -144,6 +152,65 @@ html;
 
             $porcentaje = round(($progreso['segundos']*100)/$secs_totales);
 
+            $id = $_SESSION['user_id'];
+            $claves_cursos = ['5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP'];
+            
+                if(in_array($value['clave'],$claves_cursos) AND ($value_producto['user_id'] == $_SESSION['user_id']) AND (in_array($value['id_producto'],$items))){
+                    $submenu = <<<html
+                <span class="text-bold font-14 text-lg" readonly>
+                    {$value['descripcion_subtitulo']}
+                </span>
+                <br><br>
+html;
+                    $desc_sub = '';
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }else if((!in_array($value['id_producto'],$items))){
+                    $desc_sub = '';
+                    $sub = <<<html
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+html;               $submenu = '';
+                }
+                else{
+                    $submenu = '';
+                    $desc_sub = <<<html
+                        <span class="text-bold font-14 text-lg" readonly>
+                            {$value['descripcion_subtitulo']}
+                        </span>
+                        <br><br>
+html;
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }
+ 
+                
 
             if($value['id_coordinador'] != '' || $value['id_coordinador'] != 0){
                 $coordinador_1 = <<<html
@@ -170,51 +237,32 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <!--<a href="/Programa/Video/{$value['clave']}">-->
-                            <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                                {$value['descripcion_subtitulo']}
-                            </span>
-                            <br><br>
+                            {$sub}
+                            {$submenu}
+                            {$desc_sub}
                             <!--<span class="mt-4">
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                        <!--</a>-->
                     </div>
                     <div class="col-12 col-md-4">
-                        {$coordinador_1}
-                        <span class="color-vine font-14 text-bold">
-                            Profesor:
-                        </span>
-                        <br>
-                        <span class="color-vine font-14 text-bold">
-                            {$value['prefijo']} {$value['nombre_profesor']}
-                        </span>
-                        <p class="color-vine font-12 mb-0 text-sm">
-                            {$value['desc_profesor']}
-                        </p>
+
                     </div>
                 </div>
 html;
         }
 
         // ----- Variables para la segunda fecha ----- //
-        $info_fecha2 = ProgramaDao::getSectionByDate('2022-05-19');
+        $info_fecha2 = ProgramaDao::getSectionByDate('2022-06-22');
         $programa_fecha2 = <<<html
         
-        <h5 class="mb-3 text-center">Jueves 19 de Mayo</h5>    
+        <h5 class="mb-3 text-center">Wednesday June 22</h5>
+        
+        <br>    
 html;
 
         foreach ($info_fecha2 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -227,6 +275,66 @@ html;
             $secs_totales = (intval($duracion_hrs)*3600)+(intval($duracion_min)*60)+intval($duracion_sec);
 
             $porcentaje = round(($progreso['segundos']*100)/$secs_totales);
+
+            $id = $_SESSION['user_id'];
+            $claves_cursos = ['5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP'];
+            
+                if(in_array($value['clave'],$claves_cursos) AND ($value_producto['user_id'] == $_SESSION['user_id']) AND (in_array($value['id_producto'],$items))){
+                    $submenu = <<<html
+                <span class="text-bold font-14 text-lg" readonly>
+                    {$value['descripcion_subtitulo']}
+                </span>
+                <br><br>
+html;
+                    $desc_sub = '';
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }else if((!in_array($value['id_producto'],$items))){
+                    $desc_sub = '';
+                    $sub = <<<html
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+html;               $submenu = '';
+                }
+                else{
+                    $submenu = '';
+                    $desc_sub = <<<html
+                        <span class="text-bold font-14 text-lg" readonly>
+                            {$value['descripcion_subtitulo']}
+                        </span>
+                        <br><br>
+html;
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }
+ 
+                
 
             $coordinador_1 = '';
 
@@ -353,49 +461,37 @@ html;
             $programa_fecha2 .= <<<html
                 <div class="row mb-3">
                     <div class="col-12 col-md-2">
-                        {$simposio}
+                        <span class="color-yellow text-bold">
+                            {$hora_inicio} - {$hora_fin}
+                        </span>
                     </div>
                     <div class="col-12 col-md-6">
-                    <!--<a href="/Programa/Video/{$value['clave']}">-->
-                            <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                                {$value['descripcion_subtitulo']}
-                            </span>
-                            <br><br>
+                            {$sub}
+                            {$submenu}
+                            {$desc_sub}
                             <!--<span class="mt-4">
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                    <!--</a>-->
                     </div>
                     <div class="col-12 col-md-4">
-                        {$coordinador_1}
-                        {$coordinador_2}
-                        {$coordinador_3}
-                        {$profesor_1}
-                        {$profesor_2}
-                        {$profesor_3}
+
                     </div>
                 </div>
 html;
         }
 
         // ----- Variables para la tercer fecha ----- //
-        $info_fecha3 = ProgramaDao::getSectionByDate('2022-05-20');
+        $info_fecha3 = ProgramaDao::getSectionByDate('2022-06-23');
         $programa_fecha3 = <<<html
         
-        <h5 class="mb-3 text-center">Viernes 20 de Mayo</h5>      
+        <h5 class="mb-3 text-center">Thursday June 23</h5>
+        
+        <br>      
 html;
 
         foreach ($info_fecha3 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -408,6 +504,66 @@ html;
             $secs_totales = (intval($duracion_hrs)*3600)+(intval($duracion_min)*60)+intval($duracion_sec);
 
             $porcentaje = round(($progreso['segundos']*100)/$secs_totales);
+
+            $id = $_SESSION['user_id'];
+            $claves_cursos = ['5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP'];
+            
+                if(in_array($value['clave'],$claves_cursos) AND ($value_producto['user_id'] == $_SESSION['user_id']) AND (in_array($value['id_producto'],$items))){
+                    $submenu = <<<html
+                <span class="text-bold font-14 text-lg" readonly>
+                    {$value['descripcion_subtitulo']}
+                </span>
+                <br><br>
+html;
+                    $desc_sub = '';
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }else if((!in_array($value['id_producto'],$items))){
+                    $desc_sub = '';
+                    $sub = <<<html
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+html;               $submenu = '';
+                }
+                else{
+                    $submenu = '';
+                    $desc_sub = <<<html
+                        <span class="text-bold font-14 text-lg" readonly>
+                            {$value['descripcion_subtitulo']}
+                        </span>
+                        <br><br>
+html;
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }
+ 
+                
 
             $coordinador_1 = '';
 
@@ -520,47 +676,32 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <!--<a href="/Programa/Video/{$value['clave']}">-->
-                            <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                                {$value['descripcion_subtitulo']}
-                            </span>
-                            <br><br>
+                            {$sub}
+                            {$submenu}
+                            {$desc_sub}
                             <!--<span class="mt-4">
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                        <!--</a>-->
                     </div>
                     <div class="col-12 col-md-4">
-                        {$coordinador_1}
-                        {$coordinador_2}
-                        {$coordinador_3}
-                        {$profesor_1}
-                        {$profesor_2}
-                        {$profesor_3}
+
                     </div>
                 </div>
 html;
         }
 
         // ----- Variables para la tercer fecha ----- //
-        $info_fecha4 = ProgramaDao::getSectionByDate('2022-05-21');
+        $info_fecha4 = ProgramaDao::getSectionByDate('2022-06-24');
         $programa_fecha4 = <<<html
-        <h5 class="mb-3 text-center">Sábado 21 de Mayo</h5> 
-           
+        <h5 class="mb-3 text-center">Friday June 24</h5>
+        
+        <br>
 html;
 
         if ($info_fecha4) {
             foreach ($info_fecha4 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -573,6 +714,66 @@ html;
             $secs_totales = (intval($duracion_hrs)*3600)+(intval($duracion_min)*60)+intval($duracion_sec);
 
             $porcentaje = round(($progreso['segundos']*100)/$secs_totales);
+
+            $id = $_SESSION['user_id'];
+            $claves_cursos = ['5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP'];
+            
+                if(in_array($value['clave'],$claves_cursos) AND ($value_producto['user_id'] == $_SESSION['user_id']) AND (in_array($value['id_producto'],$items))){
+                    $submenu = <<<html
+                <span class="text-bold font-14 text-lg" readonly>
+                    {$value['descripcion_subtitulo']}
+                </span>
+                <br><br>
+html;
+                    $desc_sub = '';
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }else if((!in_array($value['id_producto'],$items))){
+                    $desc_sub = '';
+                    $sub = <<<html
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+html;               $submenu = '';
+                }
+                else{
+                    $submenu = '';
+                    $desc_sub = <<<html
+                        <span class="text-bold font-14 text-lg" readonly>
+                            {$value['descripcion_subtitulo']}
+                        </span>
+                        <br><br>
+html;
+                    $sub = <<<html
+                        <a href="/Programme/Video/{$value['clave']}">
+                            <span class="color-green text-bold font-20 text-lg">
+                                {$value['descripcion']}
+                            </span>
+                            <br><br>
+                            <span class="text-bold font-18 text-lg">
+                            {$value['subtitulo']}
+                            </span>
+                            <br><br>
+                        </a>
+html;
+                }
+ 
+                
 
             $coordinador_1 = '';
 
@@ -698,35 +899,21 @@ html;
             $programa_fecha4 .= <<<html
                 <div class="row mb-3">
                     <div class="col-12 col-md-2">
-                            {$simposio}
+                        <span class="color-yellow text-bold">
+                            {$hora_inicio} - {$hora_fin}
+                        </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <!--<a href="/Programa/Video/{$value['clave']}">-->
-                            <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
-                            <span class="text-bold font-14 text-lg">
-                                {$value['descripcion_subtitulo']}
-                            </span>
-                            <br><br>
+                            {$sub}
+                            {$submenu}
+                            {$desc_sub}
                             <!--<span class="mt-4">
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                        <!--</a>-->
                     </div>
                     <div class="col-12 col-md-4">
-                        {$coordinador_1}
-                        {$coordinador_2}
-                        {$coordinador_3}
-                        {$profesor_1}
-                        {$profesor_2}
-                        {$profesor_3}
+
                     </div>
                 </div>
 html;
@@ -742,6 +929,8 @@ html;
         View::set('header',$this->_contenedor->header($extraHeader));
         View::set('footer',$this->_contenedor->footer($extraFooter));
         View::render("programa");
+
+       
     }
 
     public function sala_uno(){
@@ -757,7 +946,7 @@ html;
 html;
 
         foreach ($info_fecha1 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -883,7 +1072,7 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <!--<a href="/Programa/Video/{$value['clave']}">-->
+                        <a href="/Programme/Video/{$value['clave']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -900,7 +1089,7 @@ html;
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                        <!--</a>-->
+                        </a>
                     </div>
                     <div class="col-12 col-md-4">
                         {$coordinador_1}
@@ -934,7 +1123,7 @@ html;
 html;
 
         foreach ($info_fecha1 as $key => $value) {
-            $progreso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$value['id_programa']);
+            $progreso = ProgramaDao::getProgreso($_SESSION['user_id'],$value['id_programa']);
 
             $hora_inicio =substr($value['hora_inicio'],0,strlen($value['hora_inicio'])-3);
             $hora_fin = substr($value['hora_fin'],0,strlen($value['hora_fin'])-3);
@@ -1060,7 +1249,7 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <!--<a href="/Programa/Video/{$value['clave']}">-->
+                        <a href="/Programme/Video/{$value['clave']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -1077,7 +1266,7 @@ html;
                                 <b>Progreso: $porcentaje %</b>
                                 <progress class="barra_progreso_small_green mt-2" max="$secs_totales" value="{$progreso['segundos']}"></progress>
                             </span>-->
-                        <!--</a>-->
+                        </a>
                     </div>
                     <div class="col-12 col-md-4">
                         {$coordinador_1}
@@ -1162,7 +1351,7 @@ html;
                      console.log(value);
                   }
                   $.ajax({
-                      url:"/Programa/uploadComprobante",
+                      url:"/Programme/uploadComprobante",
                       type: "POST",
                       data: formData,
                       cache: false,
@@ -1177,7 +1366,7 @@ html;
                          
                           swal("¡Se ha guardado tu prueba correctamente!", "", "success").
                           then((value) => {
-                              window.location.replace("/Programa/");
+                              window.location.replace("/Programme/");
                           });
                       }
                       console.log(respuesta);
@@ -1216,12 +1405,12 @@ html;
         $secs_totales = (intval($duracion_hrs)*3600)+(intval($duracion_min)*60)+intval($duracion_sec);
         $programa = ProgramaDao::getProgramByClave($clave);
 
-        $progreso_curso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$programa['id_programa']);
+        $progreso_curso = ProgramaDao::getProgreso($_SESSION['user_id'],$programa['id_programa']);
         if ($progreso_curso) {
-            $progreso_curso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$programa['id_programa']);
+            $progreso_curso = ProgramaDao::getProgreso($_SESSION['user_id'],$programa['id_programa']);
         } else {
-            ProgramaDao::insertProgreso($_SESSION['id_registrado'],$programa['id_programa']);
-            $progreso_curso = ProgramaDao::getProgreso($_SESSION['id_registrado'],$programa['id_programa']);
+            ProgramaDao::insertProgreso($_SESSION['user_id'],$programa['id_programa']);
+            $progreso_curso = ProgramaDao::getProgreso($_SESSION['user_id'],$programa['id_programa']);
         }
 
         $porcentaje = round(($progreso_curso['segundos']*100)/$secs_totales);
@@ -1264,7 +1453,7 @@ html;
         $progreso = $_POST['segundos'];
         $programa = $_POST['programa'];
 
-        ProgramaDao::updateProgresoFecha($programa, $_SESSION['id_registrado'],$progreso);
+        ProgramaDao::updateProgresoFecha($programa, $_SESSION['user_id'],$progreso);
 
         echo 'minuto '.$progreso.' '.$programa;
     }

@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Programa/">Programa</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Programme/">Programme</a></li>
                     <li class="breadcrumb-item text-sm">Video</li>
                 </ol>
             </nav>
@@ -63,7 +63,7 @@
                     <div class="row justify-content-center align-items-center">
                         <div class="col-sm-auto col-4">
                             <div class="avatar avatar-xl position-relative">
-                            <img src="/assets/img/Logo_SMNP.png">
+                            <!-- <img src="/assets/img/Logo_SMN.png"> -->
                             </div>
                         </div>
                         <div class="col-sm-auto col-8 my-auto">
@@ -83,7 +83,7 @@
                         </div>
                         
                         <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 me-4">
-                            <a href="/Programa/">
+                            <a href="/Programme/">
                                 <span class="text-dark"><i class="fas fa-undo"></i> Regresar</span>
                             </a>
                         </div>
@@ -225,21 +225,21 @@
                 $('#porcentaje').html(porcentaje_num.toFixed(0)+' %');
             },1000);
 
-            $(window).blur(function() {
-                ventana = 0;
-                increment = 0;
-                console.log('fuera de la ventana');
-            });
-            $(window).focus(function() {
-                ventana = 1;
-                increment = 1;
-                console.log('dentro de la ventana');
-            });
+            // $(window).blur(function() {
+            //     ventana = 0;
+            //     increment = 0;
+            //     console.log('fuera de la ventana');
+            // });
+            // $(window).focus(function() {
+            //     ventana = 1;
+            //     increment = 1;
+            //     console.log('dentro de la ventana');
+            // });
         }
 
         function actualizarProgreso(programa, segundos){
             $.ajax({
-                url: "/Programa/updateProgress",
+                url: "/Programme/updateProgress",
                 type: "POST",
                 data: {programa, segundos},
                 beforeSend: function() {
