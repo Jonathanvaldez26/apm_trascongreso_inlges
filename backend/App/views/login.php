@@ -185,7 +185,7 @@ echo $header;
 
                                 <!-- <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('/assets/img/curved-images/curved9.jpg')"></div>-->
                                 <video autoplay muted loop>
-                                    <source class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" src="/assets/vid/POSTER-VI.mp4" type="video/mp4">
+                                    <source class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" src="/assets/vid/poster_video_vi.mp4" type="video/mp4">
                                 </video>
 
                             </div>
