@@ -24610,6 +24610,18 @@ p {
   font-weight: 300;
 }
 
+.text-gray{
+  color:var(--bs-gray);
+}
+
+.text-gray-g{
+  color:var(--bs-gray-800);
+}
+
+.text-blue{
+  color:#196D86;
+}
+
 .text-normal {
   font-weight: 400;
 }
