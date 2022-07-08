@@ -5,7 +5,7 @@ use \Core\View;
 use \Core\Controller;
 use \App\models\Programa AS ProgramaDao;
 
-class Programme extends Controller{
+class Programa extends Controller{
 
     private $_contenedor;
 
@@ -87,7 +87,7 @@ html;
                      console.log(value);
                   }
                   $.ajax({
-                      url:"/Programme/uploadComprobante",
+                      url:"/Programa/uploadComprobante",
                       type: "POST",
                       data: formData,
                       cache: false,
@@ -102,7 +102,7 @@ html;
                          
                           swal("¡Se ha guardado tu prueba correctamente!", "", "success").
                           then((value) => {
-                              window.location.replace("/Programme/");
+                              window.location.replace("/Programa/");
                           });
                       }
                       console.log(respuesta);
@@ -164,7 +164,7 @@ html;
 html;
                     $desc_sub = '';
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -197,7 +197,7 @@ html;               $submenu = '';
                         <br><br>
 html;
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -288,7 +288,7 @@ html;
 html;
                     $desc_sub = '';
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -321,7 +321,7 @@ html;               $submenu = '';
                         <br><br>
 html;
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -517,7 +517,7 @@ html;
 html;
                     $desc_sub = '';
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -550,7 +550,7 @@ html;               $submenu = '';
                         <br><br>
 html;
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -727,7 +727,7 @@ html;
 html;
                     $desc_sub = '';
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -760,7 +760,7 @@ html;               $submenu = '';
                         <br><br>
 html;
                     $sub = <<<html
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -1072,7 +1072,7 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -1249,7 +1249,7 @@ html;
                         </span>
                     </div>
                     <div class="col-12 col-md-6">
-                        <a href="/Programme/Video/{$value['clave']}/{$value['id_producto']}">
+                        <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
                                 {$value['descripcion']}
                             </span>
@@ -1441,7 +1441,7 @@ html;
                 <div class="col-12 col-md-12 m-auto">
                     <div class="row">
                     <div class="col-12 col-md-12">
-                    <a href="/Programme/Video/$clave/$id_producto">
+                    <a href="/Programa/Video/$clave/$id_producto">
                         <span class="text-bold font-30 text-lg">
                             {$programa['subtitulo']}
                         </span>
@@ -1468,7 +1468,7 @@ html;
                 <div class="col-12 col-md-12 m-auto">
                     <div class="row">
                     <div class="col-12 col-md-12">
-                    <a href="/Programme/Video/$clave/$id_producto">
+                    <a href="/Programa/Video/$clave/$id_producto">
                         <span class="text-bold font-30 text-lg">
                             {$programa['subtitulo']}
                         </span>

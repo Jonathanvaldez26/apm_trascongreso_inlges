@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Home/">Inicio</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Programme/">Programme</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/Programa/">Programme</a></li>
                     <li class="breadcrumb-item text-sm">Video</li>
                 </ol>
             </nav>
@@ -83,7 +83,7 @@
                         </div>
                         
                         <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 me-4">
-                            <a href="/Programme/">
+                            <a href="/Programa/">
                                 <span class="text-dark"><i class="fas fa-undo"></i> Return</span>
                             </a>
                         </div>
@@ -239,7 +239,7 @@
 
         function actualizarProgreso(programa, segundos){
             $.ajax({
-                url: "/Programme/updateProgress",
+                url: "/Programa/updateProgress",
                 type: "POST",
                 data: {programa, segundos},
                 beforeSend: function() {
