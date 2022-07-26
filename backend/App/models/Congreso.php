@@ -172,7 +172,7 @@ sql;
       FROM progresos_programa pp
       INNER JOIN programa pr ON pp.id_programa = pr.id_programa
       WHERE 
-      (pr.clave NOT IN ('5MrOZa','xytB8X','inwgC3','JulKUi','KdOXkB','qO9rWF','8PgQyM','u0VKDP')) 
+      (pr.id_producto NOT IN (2,3,4,5,6,7,8,9))
       AND (user_id ='$user_id');
 sql;
       return $mysqli->queryOne($query);
@@ -181,7 +181,7 @@ sql;
     public static function getProgresoCursos($user_id,$id_producto){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT pr.id_producto,pp.segundos AS total_segundos_a
+      SELECT pr.id_producto,SUM(pp.segundos) AS total_segundos_a
       FROM progresos_programa pp
       INNER JOIN programa pr ON pp.id_programa = pr.id_programa
       WHERE 
