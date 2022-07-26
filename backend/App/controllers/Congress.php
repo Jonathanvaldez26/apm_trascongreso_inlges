@@ -1763,8 +1763,8 @@ html;
 
             $progreso_total = $progreso['segundos'] + $progreso_programa['total_segundos'] + $progreso_cursos['total_segundos_a'];
             echo $progreso['segundos'];
-            echo $progreso['total_segundos'];
-            echo $progreso['total_segundos_a'];
+            echo $progreso_programa['total_segundos'];
+            echo $progreso_cursos['total_segundos_a'];
             //Progreso Horas
             $progreso_horas = round(($progreso_total / 3600));
 
