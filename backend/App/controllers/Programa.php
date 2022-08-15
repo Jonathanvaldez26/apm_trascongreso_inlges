@@ -339,7 +339,7 @@ html;
 
                         $submenu .= <<<html
                             <a href="{$url_ruta}">
-                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo_ingles']}</span>
                             </a>
                             <br>
                             <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
@@ -608,7 +608,7 @@ html;
 
                         $submenu .= <<<html
                             <a href="{$url_ruta}">
-                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo_ingles']}</span>
                             </a>
                             <br>
                             <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
@@ -859,7 +859,7 @@ html;
 
                             $submenu .= <<<html
                         <a href="{$url_ruta}">
-                            <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                            <span class="text-bold font-12 text-lg">{$value_s['subtitulo_ingles']}</span>
                         </a>
                         <br>
                         <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
