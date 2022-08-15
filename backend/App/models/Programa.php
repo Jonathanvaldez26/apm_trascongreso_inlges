@@ -106,6 +106,16 @@ sql;
       return $mysqli->queryOne($query);
     }
 
+    public static function getProgramSubByClave($clave){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT *
+      FROM programa_subtemas
+      WHERE clave = '$clave'
+sql;
+      return $mysqli->queryOne($query);
+    }
+
 //     public static function getProgramaByClave($clave){
 //       $mysqli = Database::getInstance();
 //       $query=<<<sql
@@ -187,15 +197,15 @@ sql;
         INSERT INTO prueba_covid (id_prueba_covid, utilerias_asistentes_id, fecha_carga_documento, fecha_prueba_covid, tipo_prueba, resultado, documento, status) VALUES ('',:utilerias_asistentes_id, :fecha_carga_documento, :fecha_prueba_covid, :tipo_prueba, :resultado, :documento, 0);
 sql;
 
-    	$parametros = array(
-    		':utilerias_asistentes_id'=>$data->_user,
-    		':fecha_carga_documento'=>$fecha_carga_documento,
-    		':fecha_prueba_covid'=>$data->_fecha_prueba,
+      $parametros = array(
+        ':utilerias_asistentes_id'=>$data->_user,
+        ':fecha_carga_documento'=>$fecha_carga_documento,
+        ':fecha_prueba_covid'=>$data->_fecha_prueba,
         ':tipo_prueba'=>$data->_tipo_prueba,
         ':resultado'=>$data->_resultado,
         ':documento'=>$data->_url
             
-    	);
+      );
       $id = $mysqli->insert($query,$parametros);
       $accion = new \stdClass();
       $accion->_sql= $query;
@@ -241,6 +251,16 @@ sql;
     return $mysqli->queryOne($query);
   }
 
+  public static function getProgresoSub($id,$num_curso){
+    $mysqli = Database::getInstance(true);
+    $query =<<<sql
+    SELECT * FROM progresos_programa_sub
+    WHERE id_programa_sub = $num_curso AND user_id = $id
+sql;
+
+    return $mysqli->queryOne($query);
+  }
+
   public static function insertProgreso($registrado,$curso){
       $mysqli = Database::getInstance(1);
       $query=<<<sql
@@ -252,6 +272,18 @@ sql;
 
     return $id;
   }
+
+  public static function insertProgresoSub($registrado,$curso){
+    $mysqli = Database::getInstance(1);
+    $query=<<<sql
+    INSERT INTO progresos_programa_sub (id_programa_sub, user_id, segundos,fecha_ultima_vista) 
+    VALUES ('$curso','$registrado','0', NOW())
+sql;
+
+  $id = $mysqli->insert($query);
+
+  return $id;
+}
 
   public static function updateProgreso($id_programa, $registrado, $segundos){
       $mysqli = Database::getInstance();
@@ -273,5 +305,28 @@ sql;
         AND user_id = '$registrado'
 sql;
     return $mysqli->update($query);
+  }
+
+  public static function updateProgresoFechaSub($id_programa, $registrado, $segundos){
+    $mysqli = Database::getInstance();
+    $query=<<<sql
+        UPDATE progresos_programa_sub 
+        SET segundos = '$segundos', fecha_ultima_vista = NOW()
+        WHERE id_programa_sub = '$id_programa' 
+        AND user_id = '$registrado'
+sql;
+    return $mysqli->update($query);
+  }
+  
+  public static function getSubtemas($id_programa){
+    $mysqli = Database::getInstance();
+    $query =<<<sql
+    SELECT * FROM programa_subtemas
+    WHERE id_programa = $id_programa
+sql;
+
+    return $mysqli->queryAll($query);
   } 
+
+  
 }

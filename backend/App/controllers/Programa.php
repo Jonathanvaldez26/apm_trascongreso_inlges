@@ -318,23 +318,50 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if($value['url'] == '#'){
-                    $submenu = <<<html
-                <span class="text-bold font-14 text-lg" readonly>
-                    {$value['descripcion_subtitulo']}
-                </span>
-                <br><br>
+                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                $submenu = '';
+
+                $submenu .= <<<html
+                    <span class="text-bold font-14 text-lg" readonly>
+                        {$value['descripcion_subtitulo']}
+                    </span>
+                    
 html;
-                    $desc_sub = '';
-                    $sub = <<<html
+
+                $getSubtema = ProgramaDao::getSubtemas($value['id_programa']);
+
+                if ($getSubtema > 0) {
+
+
+                    foreach ($getSubtema as $value_s) {
+
+                        $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+
+                        $submenu .= <<<html
+                            <a href="{$url_ruta}">
+                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                            </a>
+                            <br>
+                            <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
+                            <br>
+                         
+html;
+                    }
+                }
+                $urlVideo = ($value['url'] == '' || $value['url'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+
+
+                $sub = <<<html
+                        <a href="{$urlVideo}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion']} 
                             </span>
-                            <br><br>
-                            <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
+                        </a>
+                        <br><br>
+                        <span class="text-bold font-18 text-lg">
+                        {$value['subtitulo']}
+                        </span>
+                        <br><br>
 html;
                 }else if((!in_array($value['id_producto'],$items))){
                     $desc_sub = '';
@@ -561,23 +588,49 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if($value['url'] == '#'){
-                    $submenu = <<<html
-                <span class="text-bold font-14 text-lg" readonly>
-                    {$value['descripcion_subtitulo']}
-                </span>
-                <br><br>
+                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                $submenu = '';
+
+                $submenu .= <<<html
+                    <span class="text-bold font-14 text-lg" readonly>
+                        {$value['descripcion_subtitulo']}
+                    </span>
+                    
 html;
-                    $desc_sub = '';
-                    $sub = <<<html
+
+                $getSubtema = ProgramaDao::getSubtemas($value['id_programa']);
+
+                if ($getSubtema > 0) {
+
+                    foreach ($getSubtema as $value_s) {
+
+                        $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+
+                        $submenu .= <<<html
+                            <a href="{$url_ruta}">
+                                <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                            </a>
+                            <br>
+                            <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
+                            <br>
+                         
+html;
+                    }
+                }
+                $urlVideo = ($value['url'] == '' || $value['url'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+
+
+                $sub = <<<html
+                        <a href="{$urlVideo}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion']} 
                             </span>
-                            <br><br>
-                            <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
-                            </span>
-                            <br><br>
+                        </a>
+                        <br><br>
+                        <span class="text-bold font-18 text-lg">
+                        {$value['subtitulo']}
+                        </span>
+                        <br><br>
 html;
                 }else if((!in_array($value['id_producto'],$items))){
                     $desc_sub = '';
@@ -785,18 +838,46 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if($value['url'] == '#'){
-                    $submenu = <<<html
-                <span class="text-bold font-14 text-lg" readonly>
-                    {$value['descripcion_subtitulo']}
-                </span>
-                <br><br>
+                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                    $submenu = '';
+
+                    $submenu .= <<<html
+                    <span class="text-bold font-14 text-lg" readonly>
+                        {$value['descripcion_subtitulo']}
+                    </span>
+                    
 html;
-                    $desc_sub = '';
+
+                    $getSubtema = ProgramaDao::getSubtemas($value['id_programa']);
+
+                    if ($getSubtema > 0) {
+
+
+                        foreach ($getSubtema as $value_s) {
+
+                            $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+
+                            $submenu .= <<<html
+                        <a href="{$url_ruta}">
+                            <span class="text-bold font-12 text-lg">{$value_s['subtitulo']}</span>
+                        </a>
+                        <br>
+                        <span class="text-bold font-12 text-lg text-blue">{$value_s['descripcion_subtitulo']} </span>
+                        <br>
+                     
+html;
+                        }
+                    }
+
+                    $urlVideo = ($value['url'] == '' || $value['url'] =='#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+
+
                     $sub = <<<html
-                            <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
-                            </span>
+                            <a href="{$urlVideo}">
+                                <span class="color-green text-bold font-20 text-lg">
+                                    {$value['descripcion']} 
+                                </span>
+                            </a>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
                             {$value['subtitulo']}
@@ -1569,6 +1650,254 @@ html;
         View::render("programa_video");
     }
 
+    public function VideoSub($clave, $id_producto)
+    {
+        $extraHeader = <<<html
+html;
+        $extraFooter = <<<html
+    <!--footer class="footer pt-0">
+              <div class="container-fluid">
+                  <div class="row align-items-center justify-content-lg-between">
+                      <div class="col-lg-6 mb-lg-0 mb-4">
+                          <div class="copyright text-center text-sm text-muted text-lg-start">
+                              © <script>
+                                  document.write(new Date().getFullYear())
+                              </script>,
+                              made with <i class="fa fa-heart"></i> by
+                              <a href="https://www.creative-tim.com" class="font-weight-bold" target="www.grupolahe.com">Creative GRUPO LAHE</a>.
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                              <li class="nav-item">
+                                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">privacy policies</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </footer--    >
+          <!-- jQuery -->
+            <script src="/js/jquery.min.js"></script>
+            <!--   Core JS Files   -->
+            <script src="/assets/js/core/popper.min.js"></script>
+            <script src="/assets/js/core/bootstrap.min.js"></script>
+            <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+            <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+            <!-- Kanban scripts -->
+            <script src="/assets/js/plugins/dragula/dragula.min.js"></script>
+            <script src="/assets/js/plugins/jkanban/jkanban.js"></script>
+            <script src="/assets/js/plugins/chartjs.min.js"></script>
+            <script src="/assets/js/plugins/threejs.js"></script>
+            <script src="/assets/js/plugins/orbit-controls.js"></script>
+            
+          <!-- Github buttons -->
+            <script async defer src="https://buttons.github.io/buttons.js"></script>
+          <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+            <script src="/assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+
+          <!-- VIEJO INICIO -->
+            <script src="/js/jquery.min.js"></script>
+          
+            <script src="/js/custom.min.js"></script>
+
+            <script src="/js/validate/jquery.validate.js"></script>
+            <script src="/js/alertify/alertify.min.js"></script>
+            <script src="/js/login.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <!-- VIEJO FIN -->
+   <script>
+    $( document ).ready(function() {
+
+          $("#form_vacunacion").on("submit",function(event){
+              event.preventDefault();
+              
+                  var formData = new FormData(document.getElementById("form_vacunacion"));
+                  for (var value of formData.values()) 
+                  {
+                     console.log(value);
+                  }
+                  $.ajax({
+                      url:"/Programa/uploadComprobante",
+                      type: "POST",
+                      data: formData,
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      beforeSend: function(){
+                      console.log("Procesando....");
+                  },
+                  success: function(respuesta){
+                      if(respuesta == 'success'){
+                         // $('#modal_payment_ticket').modal('toggle');
+                         
+                          swal("¡Se ha guardado tu prueba correctamente!", "", "success").
+                          then((value) => {
+                              window.location.replace("/Programa/");
+                          });
+                      }
+                      console.log(respuesta);
+                  },
+                  error:function (respuesta)
+                  {
+                      console.log(respuesta);
+                  }
+              });
+          });
+
+      });
+</script>
+
+html;
+
+        // ----- Variables para la primer fecha ----- //
+        $info_video = ProgramaDao::getProgramSubByClave($clave);
+        $video_programa = '';
+
+        $id_programa = $info_video['id_programa_sub'];
+
+        $nombre_programa = $info_video['subtitulo'];
+        $hora_inicio = $info_video['hora_inicio'];
+        $hora_fin = $info_video['hora_fin'];
+        $url = $info_video['url'];
+        $duracion = $info_video['duracion'];
+
+        $coordinador = $info_video['prefijo_coordinador'] . ' ' . $info_video['nombre_coordinador'];
+        $profesor = $info_video['prefijo'] . ' ' . $info_video['nombre_profesor'];
+        $desc_profesor = $info_video['desc_profesor'];
+
+        $duracion_sec = substr($duracion, strlen($duracion) - 2, 2);
+        $duracion_min = substr($duracion, strlen($duracion) - 5, 2);
+        $duracion_hrs = substr($duracion, 0, strpos($duracion, ':'));
+
+        $secs_totales = (intval($duracion_hrs) * 3600) + (intval($duracion_min) * 60) + intval($duracion_sec);
+        $programa = ProgramaDao::getProgramSubByClave($clave);
+
+        $progreso_curso = ProgramaDao::getProgresoSub($_SESSION['user_id'], $programa['id_programa_sub']);
+        if ($progreso_curso) {
+            $progreso_curso = ProgramaDao::getProgresoSub($_SESSION['user_id'], $programa['id_programa_sub']);
+        } else {
+            ProgramaDao::insertProgresoSub($_SESSION['user_id'], $programa['id_programa_sub']);
+            $progreso_curso = ProgramaDao::getProgresoSub($_SESSION['user_id'], $programa['id_programa_sub']);
+        }
+
+        $porcentaje = round(($progreso_curso['segundos'] * 100) / $secs_totales);
+
+        $claves_cursos = ['xytB8X', 'inwgC3', 'JulKUi', 'KdOXkB', 'qO9rWF', '8PgQyM'];
+        $video_programa = <<<html
+        <!--h4 class="mb-1 mt-1 text-center">Video</h4-->      
+html;
+        if ($id_producto == 1) {
+            $video_programa .= <<<html
+            <!--<div class="row mb-3 mt-0 m-auto">
+                <div class="col-12 col-md-12 m-auto">
+                    <div class="row">
+                        <iframe id="iframe" class="bg-gradient-warning iframe-course" src="{$url}" width="640" height="521" frameborder="0">a</iframe>
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+html;
+        } else if ($clave == '5MrOZa' || $clave == 'u0VKDP') {
+            $video_programa .= <<<html
+            <div class="row mb-3 mt-0 m-auto">
+                <div class="col-12 col-md-12 m-auto">
+                    <div class="row">
+                    <div class="col-12 col-md-12">
+                    <a href="/Programa/Video/$clave/$id_producto">
+                        <span class="text-bold font-30 text-lg">
+                            {$programa['subtitulo']}
+                        </span>
+                        <br><br>
+                        <span class="text-bold font-25 text-lg">
+                            {$programa['descripcion_subtitulo']}
+                            <br>
+                        </span>
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+html;
+        } else if (in_array($clave, $claves_cursos)) {
+            $video_programa .= <<<html
+            <div class="row mb-3 mt-0 m-auto">
+                <div class="col-12 col-md-12 m-auto">
+                    <div class="row">
+                    <div class="col-12 col-md-12">
+                    <a href="/Programa/Video/$clave/$id_producto">
+                        <span class="text-bold font-30 text-lg">
+                            {$programa['subtitulo']}
+                        </span>
+                        <br><br>
+                        <span class="text-bold font-24 text-lg">
+                            {$programa['descripcion_subtitulo']}
+                            <br>
+                        </span>
+                    </a>
+                </div>
+                    </div>
+                </div>
+            </div>
+html;
+        } else {
+            $video_programa .= <<<html
+            <div class="embed-responsive embed-responsive-16by9">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="{$url}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+html;
+        }
+
+        $icon_complete = '';
+        $hide_progress = '';
+
+        if ($porcentaje >= 95) {
+
+            $hide_progress = 'd-none';
+            $icon_complete = <<<html
+            <div style='display: flex; justify-content: center;'>
+                <p style="font-size: 22px; color:green;">Video Completado
+                <span><i class="fas fa-check-circle"></i></span>
+                </p>
+            </div>
+html;
+        }
+
+
+
+
+        View::set('video_programa', $video_programa);
+        View::set('nombre_programa', $nombre_programa);
+        View::set('hora_inicio', $hora_inicio);
+        View::set('hora_fin', $hora_fin);
+        View::set('id_programa', $id_programa);
+        View::set('url', $url);
+        View::set('porcentaje', $porcentaje);
+        View::set('coordinador', $coordinador);
+        View::set('profesor', $profesor);
+        View::set('desc_profesor', $desc_profesor);
+        View::set('progreso_curso', $progreso_curso);
+        View::set('secs_totales', $secs_totales);
+        View::set('icon_complete', $icon_complete);
+        View::set('hide_progress', $hide_progress);
+        View::set('header', $this->_contenedor->header($extraHeader));
+        View::set('footer', $this->_contenedor->footer($extraFooter));
+        View::render("programa_video_sub");
+    }
+
     public function updateProgress(){
         $progreso = $_POST['segundos'];
         $programa = $_POST['programa'];
@@ -1576,6 +1905,16 @@ html;
         ProgramaDao::updateProgresoFecha($programa, $_SESSION['user_id'],$progreso);
 
         echo 'minuto '.$progreso.' '.$programa;
+    }
+
+    public function updateProgressSub()
+    {
+        $progreso = $_POST['segundos'];
+        $programa = $_POST['programa'];
+
+        ProgramaDao::updateProgresoFechaSub($programa, $_SESSION['user_id'], $progreso);
+
+        echo 'minuto ' . $progreso . ' ' . $programa . ' ' . $_SESSION['user_id'];
     }
 
     // public function Vistas(){
