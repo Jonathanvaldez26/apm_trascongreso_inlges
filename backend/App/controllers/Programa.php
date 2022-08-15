@@ -1525,7 +1525,7 @@ html;
         $video_programa = '';
 
         $id_programa = $info_video['id_programa'];
-        $nombre_programa = $info_video['descripcion'];
+        $nombre_programa = $info_video['descripcion_ingles'];
         $hora_inicio = $info_video['hora_inicio'];
         $hora_fin = $info_video['hora_fin'];
         $url = $info_video['url_ingles'];
@@ -1756,7 +1756,7 @@ html;
 
         $id_programa = $info_video['id_programa_sub'];
 
-        $nombre_programa = $info_video['subtitulo'];
+        $nombre_programa = $info_video['subtitulo_ingles'];
         $hora_inicio = $info_video['hora_inicio'];
         $hora_fin = $info_video['hora_fin'];
         $url = $info_video['url'];
