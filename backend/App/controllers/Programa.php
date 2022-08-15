@@ -171,11 +171,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -190,11 +190,11 @@ html;
                     $desc_sub = '';
                     $sub = <<<html
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
 html;
@@ -215,11 +215,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -309,11 +309,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -354,12 +354,12 @@ html;
                 $sub = <<<html
                         <a href="{$urlVideo}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']} 
+                                {$value['descripcion_ingles']} 
                             </span>
                         </a>
                         <br><br>
                         <span class="text-bold font-18 text-lg">
-                        {$value['subtitulo']}
+                        {$value['subtitulo_ingles']}
                         </span>
                         <br><br>
 html;
@@ -380,11 +380,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -579,11 +579,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -623,12 +623,12 @@ html;
                 $sub = <<<html
                         <a href="{$urlVideo}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']} 
+                                {$value['descripcion_ingles']} 
                             </span>
                         </a>
                         <br><br>
                         <span class="text-bold font-18 text-lg">
-                        {$value['subtitulo']}
+                        {$value['subtitulo_ingles']}
                         </span>
                         <br><br>
 html;
@@ -649,11 +649,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -829,11 +829,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -875,12 +875,12 @@ html;
                     $sub = <<<html
                             <a href="{$urlVideo}">
                                 <span class="color-green text-bold font-20 text-lg">
-                                    {$value['descripcion']} 
+                                    {$value['descripcion_ingles']} 
                                 </span>
                             </a>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
 html;
@@ -901,11 +901,11 @@ html;
                     $sub = <<<html
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-18 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                         </a>
@@ -1211,11 +1211,11 @@ html;
                     <div class="col-12 col-md-6">
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-14 text-lg">
@@ -1388,11 +1388,11 @@ html;
                     <div class="col-12 col-md-6">
                         <a href="/Programa/Video/{$value['clave']}/{$value['id_producto']}">
                             <span class="color-green text-bold font-20 text-lg">
-                                {$value['descripcion']}
+                                {$value['descripcion_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-14 text-lg">
-                            {$value['subtitulo']}
+                            {$value['subtitulo_ingles']}
                             </span>
                             <br><br>
                             <span class="text-bold font-14 text-lg">
