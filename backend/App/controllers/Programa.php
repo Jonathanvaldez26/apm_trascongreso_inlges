@@ -180,7 +180,7 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if($value['url'] == '#'){
+                }else if($value['url_ingles'] == '#'){
                     $submenu = <<<html
                 <span class="text-bold font-14 text-lg" readonly>
                     {$value['descripcion_subtitulo']}
@@ -318,7 +318,7 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                }else if ($value['url_ingles'] == '#' || is_numeric(strpos($value['url_ingles'], "http"))) {
                 $submenu = '';
 
                 $submenu .= <<<html
@@ -348,7 +348,7 @@ html;
 html;
                     }
                 }
-                $urlVideo = ($value['url'] == '' || $value['url'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+                $urlVideo = ($value['url_ingles'] == '' || $value['url_ingles'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
 
 
                 $sub = <<<html
@@ -588,7 +588,7 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                }else if ($value['url_ingles'] == '#' || is_numeric(strpos($value['url_ingles'], "http"))) {
                 $submenu = '';
 
                 $submenu .= <<<html
@@ -617,7 +617,7 @@ html;
 html;
                     }
                 }
-                $urlVideo = ($value['url'] == '' || $value['url'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+                $urlVideo = ($value['url_ingles'] == '' || $value['url_ingles'] == '#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
 
 
                 $sub = <<<html
@@ -838,7 +838,7 @@ html;
                             <br><br>
                         </a>
 html;
-                }else if ($value['url'] == '#' || is_numeric(strpos($value['url'], "http"))) {
+                }else if ($value['url_ingles'] == '#' || is_numeric(strpos($value['url_ingles'], "http"))) {
                     $submenu = '';
 
                     $submenu .= <<<html
@@ -869,7 +869,7 @@ html;
                         }
                     }
 
-                    $urlVideo = ($value['url'] == '' || $value['url'] =='#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
+                    $urlVideo = ($value['url_ingles'] == '' || $value['url_ingles'] =='#') ? '#' : "/Programa/Video/{$value['clave']}/{$value['id_producto']}";
 
 
                     $sub = <<<html
