@@ -335,7 +335,7 @@ html;
 
                     foreach ($getSubtema as $value_s) {
 
-                        $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+                        $url_ruta = ($value_s['url_ingles'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
 
                         $submenu .= <<<html
                             <a href="{$url_ruta}">
@@ -604,7 +604,7 @@ html;
 
                     foreach ($getSubtema as $value_s) {
 
-                        $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+                        $url_ruta = ($value_s['url_ingles'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
 
                         $submenu .= <<<html
                             <a href="{$url_ruta}">
@@ -855,7 +855,7 @@ html;
 
                         foreach ($getSubtema as $value_s) {
 
-                            $url_ruta = ($value_s['url'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
+                            $url_ruta = ($value_s['url_ingles'] == '#') ? '#' : "/Programa/VideoSub/{$value_s['clave']}/{$value_s['id_producto']}";
 
                             $submenu .= <<<html
                         <a href="{$url_ruta}">
