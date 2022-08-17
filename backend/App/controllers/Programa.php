@@ -1759,7 +1759,7 @@ html;
         $nombre_programa = $info_video['subtitulo_ingles'];
         $hora_inicio = $info_video['hora_inicio'];
         $hora_fin = $info_video['hora_fin'];
-        $url = $info_video['url'];
+        $url = $info_video['url_ingles'];
         $duracion = $info_video['duracion'];
 
         $coordinador = $info_video['prefijo_coordinador'] . ' ' . $info_video['nombre_coordinador'];
